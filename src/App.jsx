@@ -27,7 +27,8 @@ import Events from "./pages/EventManagement/Events"
 import Users from "./pages/EventManagement/Users";
 import AddEventPage from "./pages/EventManagement/AddEventPage"
 import AddUserPage from "./pages/EventManagement/AddUserPage"
-
+import UsersList from "./pages/UsersSection/Users"
+import AddUsersFormPage from "./pages/UsersSection/addUser"
 
 import "./i18n"
 
@@ -64,7 +65,9 @@ function App() {
         <Route exact path="/events/createEvent" element={<AddEventPage/>}/>
         <Route path="/events/AllEvents" element={<Events />} />
         <Route path="/events/markAttendance" element={<AddUserPage />} />
-
+        <Route path="/users/allUsers" element={<UsersList />} />
+        <Route path="/users/addUser" element={<AddUsersFormPage />} />
+        
       </Routes>
     </UserProvider>
   )
