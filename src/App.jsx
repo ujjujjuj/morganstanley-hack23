@@ -23,6 +23,12 @@ import Events from "./pages/events/Events"
 import EventPost from "./pages/events/EventPage"
 
 
+import Events from "./pages/EventManagement/Events"
+import Users from "./pages/EventManagement/Users";
+import AddEventPage from "./pages/EventManagement/AddEventPage"
+import AddUserPage from "./pages/EventManagement/AddUserPage"
+
+
 import "./i18n"
 
 import { UserProvider } from "../hooks/useUser"
@@ -52,6 +58,13 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/events/list" element={<Events />} />
         <Route path="/events/list/:id" element={<EventPost />} />
+
+        {/* Event Management All Routes !! */}
+        <Route exact path="/events/userList" element={<Users/>}/>
+        <Route exact path="/events/createEvent" element={<AddEventPage/>}/>
+        <Route path="/events/AllEvents" element={<Events />} />
+        <Route path="/events/markAttendance" element={<AddUserPage />} />
+
       </Routes>
     </UserProvider>
   )
