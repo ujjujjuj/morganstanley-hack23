@@ -19,6 +19,10 @@ import PageNotFound from "./pages/utility/PageNotFound"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
 import ResetPassword from "./pages/ResetPassword"
+import Events from "./pages/events/Events" 
+import EventPost from "./pages/events/EventPage"
+
+
 import "./i18n"
 
 import { UserProvider } from "../hooks/useUser"
@@ -46,6 +50,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/events/list" element={<Events />} />
+        <Route path="/events/list/:id" element={<EventPost />} />
       </Routes>
     </UserProvider>
   )
