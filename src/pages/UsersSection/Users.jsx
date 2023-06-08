@@ -29,7 +29,7 @@ function UsersList() {
   // }
 
   function addUser(){
-    navigate("/users/addUser");
+    navigate("/users/editBasicDetails");
   }
 
   return (

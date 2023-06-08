@@ -5,6 +5,7 @@ function EventUserTableItem(props) {
   const navigate = useNavigate();
   function showUserProfile(){
     console.log("Details :) ");
+    navigate("/users/editBasicDetails",{state:{id:props._id,type:"Event"}});
   }
   return (
     <tr>
@@ -48,6 +49,11 @@ function EventUserTableItem(props) {
       </td>
       <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">{props.language}</div>
+      </td>
+      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <button onClick={showUserProfile} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+        User Details
+      </button>
       </td>
       {(props.isBoth==="Yes") && <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">

@@ -22,12 +22,14 @@ import ResetPassword from "./pages/ResetPassword"
 import EventsList from "./pages/events/Events"
 import EventPost from "./pages/events/EventPage"
 
+// Event Management and user management related Routes
 import Events from "./pages/EventManagement/Events"
 import Users from "./pages/EventManagement/Users"
 import AddEventPage from "./pages/EventManagement/AddEventPage"
 import AddUserPage from "./pages/EventManagement/AddUserPage"
 import UsersList from "./pages/UsersSection/Users"
 import AddUsersFormPage from "./pages/UsersSection/addUser"
+import UserEditPage from "./pages/UsersSection/Account"
 
 import "./i18n"
 
@@ -59,13 +61,15 @@ function App() {
         <Route path="/events/list" element={<EventsList />} />
         <Route path="/events/list/:id" element={<EventPost />} />
 
-        {/* Event Management All Routes !! */}
+        {/* Event Management and User Management All Routes !! */}
         <Route exact path="/events/userList" element={<Users />} />
         <Route exact path="/events/createEvent" element={<AddEventPage />} />
         <Route path="/events/AllEvents" element={<Events />} />
         <Route path="/events/markAttendance" element={<AddUserPage />} />
         <Route path="/users/allUsers" element={<UsersList />} />
         <Route path="/users/addUser" element={<AddUsersFormPage />} />
+        <Route path="/users/editBasicDetails" element={<UserEditPage />} />
+
       </Routes>
     </UserProvider>
   )
