@@ -5,9 +5,15 @@ import { Link } from "react-router-dom";
 import TinyMiraclesLogo from "../images/tinymiracles.webp";
 import AuthImage from "../images/auth-image.webp";
 
+const languages = [
+  { name: "English", code: "en" },
+  { name: "हिन्दी", code: "hi" },
+  { name: "मराठी", code: "mr" },
+]
 const Signin = () => {
   const { t } = useTranslation();
 
+  const { i18n } = useTranslation()
   return (
     <main className="bg-white">
       <div className="relative md:flex">
@@ -22,7 +28,6 @@ const Signin = () => {
                 />
               </div>
             </div>
-
             <div className="px-8 py-8 mx-auto w-full max-w-lg">
               <h1 className="mb-6 text-3xl font-bold text-slate-800">
                 {t("login")} ✨
@@ -90,7 +95,23 @@ const Signin = () => {
             </div>
           </div>
         </div>
-
+        <div className="mt-auto ml-1rem text-white fixed lang">
+            <div className="flex flex-row gap items-start">
+            {languages.map((language) => (
+              <span
+                key={language.code}
+                className={`transition-transform cursor-pointer hover:scale-110 font-semibold ${
+                  i18n.language === language.code
+                    ? "text-blue-400"
+                    : "text-gray-400"
+                }`}
+                onClick={() => i18n.changeLanguage(language.code)}
+              >
+                {language.name}
+              </span>
+            ))}
+          </div>
+        </div>
         {/* Image */}
         <div
           className="hidden absolute top-0 right-0 bottom-0 md:block md:w-1/2"
@@ -103,6 +124,7 @@ const Signin = () => {
             height="1024"
             alt="Authentication"
           />
+          
         </div>
       </div>
     </main>
