@@ -5,9 +5,14 @@ import AuthImage from "../images/auth-image.webp";
 import TinyMiraclesLogo from "../images/tinymiracles.webp";
 import { useTranslation } from "react-i18next";
 
+const languages = [
+  { name: "English", code: "en" },
+  { name: "हिन्दी", code: "hi" },
+  { name: "मराठी", code: "mr" },
+]
 function Signup() {
   const { t } = useTranslation();
-
+  const { i18n } = useTranslation()
   return (
     <main className="bg-white">
       <div className="relative md:flex">
@@ -118,7 +123,23 @@ function Signup() {
             </div>
           </div>
         </div>
-
+        <div className="mt-auto ml-1rem text-white fixed lang">
+            <div className="flex flex-row gap items-start">
+            {languages.map((language) => (
+              <span
+                key={language.code}
+                className={`transition-transform cursor-pointer hover:scale-110 font-semibold ${
+                  i18n.language === language.code
+                    ? "text-blue-400"
+                    : "text-gray-400"
+                }`}
+                onClick={() => i18n.changeLanguage(language.code)}
+              >
+                {language.name}
+              </span>
+            ))}
+          </div>
+        </div>
         {/* Image */}
         <div
           className="hidden absolute top-0 right-0 bottom-0 md:block md:w-1/2"

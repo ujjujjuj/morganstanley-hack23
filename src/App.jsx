@@ -10,9 +10,9 @@ import Dashboard from "./pages/Dashboard"
 import Customers from "./pages/ecommerce/Customers"
 import Inbox from "./pages/Inbox"
 import Campaigns from "./pages/Campaigns"
-import UsersTabs from "./pages/community/UsersTabs"
-import Meetups from "./pages/community/Meetups"
-import MeetupsPost from "./pages/community/MeetupsPost"
+// import UsersTabs from "./pages/community/UsersTabs"
+// import Meetups from "./pages/community/Meetups"
+// import MeetupsPost from "./pages/community/MeetupsPost"
 import Messages from "./pages/Messages"
 import Calendar from "./pages/Calendar"
 import PageNotFound from "./pages/utility/PageNotFound"
@@ -22,16 +22,23 @@ import ResetPassword from "./pages/ResetPassword"
 import EventsList from "./pages/events/Events"
 import EventPost from "./pages/events/EventPage"
 
+// Event Management and user management related Routes
 import Events from "./pages/EventManagement/Events"
 import Users from "./pages/EventManagement/Users"
 import AddEventPage from "./pages/EventManagement/AddEventPage"
 import AddUserPage from "./pages/EventManagement/AddUserPage"
 import UsersList from "./pages/UsersSection/Users"
 import AddUsersFormPage from "./pages/UsersSection/addUser"
+import UserEditPage from "./pages/UsersSection/Account"
+
+// community related routes 
 
 import "./i18n"
 
 import { UserProvider } from "../hooks/useUser"
+import UsersCommunity from "./pages/community/userCommunities"
+import AddCommunityForm from "./pages/community/addCommunityForm"
+import AddCommunity from "./pages/community/addCommunity"
 
 function App() {
   const location = useLocation()
@@ -47,8 +54,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
         <Route path="/events/customers" element={<Customers />} />
-        <Route path="/community/meetups" element={<Meetups />} />
-        <Route path="/community/meetups-post" element={<MeetupsPost />} />
+        {/* <Route path="/community/meetups" element={<Meetups />} />
+        <Route path="/community/meetups-post" element={<MeetupsPost />} /> */}
         <Route path="/messages" element={<Messages />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/Inbox" element={<Inbox />} />
@@ -59,13 +66,18 @@ function App() {
         <Route path="/events/list" element={<EventsList />} />
         <Route path="/events/list/:id" element={<EventPost />} />
 
-        {/* Event Management All Routes !! */}
+        {/* Event Management and User Management All Routes !! */}
         <Route exact path="/events/userList" element={<Users />} />
         <Route exact path="/events/createEvent" element={<AddEventPage />} />
         <Route path="/events/AllEvents" element={<Events />} />
         <Route path="/events/markAttendance" element={<AddUserPage />} />
         <Route path="/users/allUsers" element={<UsersList />} />
         <Route path="/users/addUser" element={<AddUsersFormPage />} />
+        <Route path="/users/editBasicDetails" element={<UserEditPage />} />
+
+        {/* Community realted Routes */}
+        <Route path="/community" element={<UsersCommunity/>} />        
+        <Route path="/community/addCommunity" element={<AddCommunity/>} />
       </Routes>
     </UserProvider>
   )

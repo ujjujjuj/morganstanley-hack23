@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 function EventUserTableItem(props) {
   const navigate = useNavigate();
-  function showUserProfile(){
+  function editUser(){
     console.log("Details :) ");
+
+    navigate("/users/editBasicDetails",{state:{id:props._id,type:"User"}});
+
   }
   return (
     <tr>
@@ -49,11 +52,11 @@ function EventUserTableItem(props) {
       <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">{props.language}</div>
       </td>
-      {/* <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-      <button class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <button onClick={editUser} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
         User Details
       </button>
-      </td> */}
+      </td>
       {(props.isBoth==="Yes") && <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">
         {(props.typeOfEvent==="Attend") ?(<span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-base font-medium text-green-700 ring-1 ring-inset ring-green-600/20">

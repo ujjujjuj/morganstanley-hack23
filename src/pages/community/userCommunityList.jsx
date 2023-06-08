@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import EventUserTableItem from './UserTableItem';
+import EventUserTableItem from './communityItem';
 
 function EventUsersTable(props) {
 
   // let customers=[];
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState({});
 
   // props.list !! : "Attend" or "Register"
   // console.log(props.list);
@@ -32,19 +32,20 @@ function EventUsersTable(props) {
       // /registeredList ispe bhi call karke registerList bhi mangwalo !!
       // also have : only registered and only attended ka funda !! 
       // have a tag against them !! 
-        async function fetchData() {
-            try {
-              // get all users list !! 
-              const response = await fetch('http://localhost:3000/user');
-              if (!response.ok) {
-                  throw new Error('Request failed with status ' + response.status);
-              }
-              const data = await response.json();
-              setList(data.result);
-            } catch (error) {
-              console.log('Error:', error);
-            }
+    
+      async function fetchData() {
+        try {
+          // get all users list !! 
+          const response = await fetch('http://localhost:3000/user/group/community');
+          if (!response.ok) {
+              throw new Error('Request failed with status ' + response.status);
           }
+          const data = await response.json();
+          setList(data.result);
+        } catch (error) {
+          console.log('Error:', error);
+        }
+      }
       
             fetchData();
 
@@ -64,40 +65,38 @@ function EventUsersTable(props) {
     setList(filteredCollections);
   };
 
-  useEffect(() => {
-    async function fetchData2() {
-      try {
-        // get all users list !! 
-        const response = await fetch('http://localhost:3000/user');
-        if (!response.ok) {
-            throw new Error('Request failed with status ' + response.status);
-        }
-        const data = await response.json();
-        const result=data.result;
-        // DoesNotExist
-        const filteredData = result.filter(user => !/^DoesNotExist/.test(user.pwd));
-        setList(filteredData);
-      } catch (error) {
-        console.log('Error:', error);
-      }
-    }
-    async function fetchData() {
-      try {
-        if(props.factor==="None"){
-          fetchData2();
-          return;
-        }
+//   useEffect(() => {
+//     async function fetchData2() {
+//       try {
+//         // get all users list !! 
+//         const response = await fetch('http://localhost:3000/user');
+//         if (!response.ok) {
+//             throw new Error('Request failed with status ' + response.status);
+//         }
+//         const data = await response.json();
+//         setList(data.result);
+//         console.log(list);
+//       } catch (error) {
+//         console.log('Error:', error);
+//       }
+//     }
+//     async function fetchData() {
+//       try {
+//         if(props.factor==="None"){
+//           fetchData2();
+//           return;
+//         }
 
-        searchUserCollections(props.factor,props.value);
+//         searchUserCollections(props.factor,props.value);
 
-      } catch (error) {
-        console.log('Error:', error);
-      }
-    }
+//       } catch (error) {
+//         console.log('Error:', error);
+//       }
+//     }
 
-      fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.factor]);
+//       fetchData();
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, [props.factor]);
 
   const handleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -124,7 +123,7 @@ function EventUsersTable(props) {
   return (
     <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
       <header className="px-5 py-4">
-        <h2 className="font-semibold text-slate-800">All Users <span className="text-slate-400 font-medium">{list.length}</span></h2>
+        <h2 className="font-semibold text-slate-800">All Community<span className="text-slate-400 font-medium">{list.length}</span></h2>
       </header>
       <div>
 
@@ -144,44 +143,20 @@ function EventUsersTable(props) {
                 </th> */}
 
                 <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Name</div>
+                  <div className="font-semibold text-left">Community Name</div>
                 </th>
                 <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Age</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Community</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Phone Number</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Primary Language</div>
+                  <div className="font-semibold text-left">Number of Users</div>
                 </th>
               </tr>
             </thead>
             {/* Table body */}
-            <tbody className="text-sm divide-y divide-slate-200">
-              {
-                list.map(participant => {
-                  return (
-                    <EventUserTableItem
-                      typeOfEvent="Attend"
-                      key={participant._id}
-                      _id={participant._id}
-                      name={participant.basicDetails.name}
-                      age={participant.basicDetails.age}
-                      community={participant.basicDetails.Community}
-                      phone={participant.basicDetails.PhoneNumber}
-                      language={participant.basicDetails.primaryLanguage}
-                    />
-                  )
-                })
-              }
-            </tbody>
-
-
-
+                 {/* key , data[key] */}
+                 <tbody className="text-sm divide-y divide-slate-200">
+                    {Object.keys(list).map(key => (
+                        <EventUserTableItem community={key} count={list[key].length} />
+                    ))}
+                </tbody>
           </table>
 
         </div>
