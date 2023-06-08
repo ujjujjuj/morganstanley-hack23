@@ -19,12 +19,11 @@ import PageNotFound from "./pages/utility/PageNotFound"
 import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
 import ResetPassword from "./pages/ResetPassword"
-import Events from "./pages/events/Events" 
+import EventsList from "./pages/events/Events"
 import EventPost from "./pages/events/EventPage"
 
-
 import Events from "./pages/EventManagement/Events"
-import Users from "./pages/EventManagement/Users";
+import Users from "./pages/EventManagement/Users"
 import AddEventPage from "./pages/EventManagement/AddEventPage"
 import AddUserPage from "./pages/EventManagement/AddUserPage"
 import UsersList from "./pages/UsersSection/Users"
@@ -57,17 +56,16 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/events/list" element={<Events />} />
+        <Route path="/events/list" element={<EventsList />} />
         <Route path="/events/list/:id" element={<EventPost />} />
 
         {/* Event Management All Routes !! */}
-        <Route exact path="/events/userList" element={<Users/>}/>
-        <Route exact path="/events/createEvent" element={<AddEventPage/>}/>
+        <Route exact path="/events/userList" element={<Users />} />
+        <Route exact path="/events/createEvent" element={<AddEventPage />} />
         <Route path="/events/AllEvents" element={<Events />} />
         <Route path="/events/markAttendance" element={<AddUserPage />} />
         <Route path="/users/allUsers" element={<UsersList />} />
         <Route path="/users/addUser" element={<AddUsersFormPage />} />
-        
       </Routes>
     </UserProvider>
   )

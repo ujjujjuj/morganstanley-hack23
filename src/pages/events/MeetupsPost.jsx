@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link } from "react-router-dom"
+import { format } from "date-fns"
+import EventDisplay from "./DateFormat"
 
 function MeetupsPosts({
   _id,
@@ -55,7 +57,7 @@ function MeetupsPosts({
         </div>
       </article>
     </>
-  );
+  )
 }
 
-export default MeetupsPosts;
+export default MeetupsPosts

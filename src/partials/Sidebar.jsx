@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 import { NavLink, useLocation } from "react-router-dom"
 import TinyMiraclesLogo from "../images/tinymiracleswhite.webp"
 
@@ -9,10 +9,10 @@ const languages = [
   { name: "English", code: "en" },
   { name: "हिन्दी", code: "hi" },
   { name: "मराठी", code: "mr" },
-];
+]
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const { pathname } = useLocation()  
+  const { pathname } = useLocation()
   const { i18n } = useTranslation()
 
   const trigger = useRef(null)
@@ -171,9 +171,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 </NavLink>
               </li>
               {/* E-Commerce */}
-              <SidebarLinkGroup
-                activecondition={pathname.includes("events")}
-              >
+              <SidebarLinkGroup activecondition={pathname.includes("events")}>
                 {(handleClick, open) => {
                   return (
                     <>
@@ -253,6 +251,22 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                             >
                               <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                                 User List
+                              </span>
+                            </NavLink>
+                          </li>
+                          <li className="mb-1 last:mb-0">
+                            <NavLink
+                              end
+                              to="/events/list"
+                              className={({ isActive }) =>
+                                "block transition duration-150 truncate " +
+                                (isActive
+                                  ? "text-indigo-500"
+                                  : "text-slate-400 hover:text-slate-200")
+                              }
+                            >
+                              <span className="text-sm font-medium lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                                Events List
                               </span>
                             </NavLink>
                           </li>

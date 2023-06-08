@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import Sidebar from "../../partials/Sidebar";
-import Header from "../../partials/Header";
-import EventsPosts from "./EventsPosts";
+import Sidebar from "../../partials/Sidebar"
+import Header from "../../partials/Header"
+import EventsPosts from "./EventsPosts"
 
-function Events() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+function EventsList() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -27,7 +27,7 @@ function Events() {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-export default Events;
+export default EventsList

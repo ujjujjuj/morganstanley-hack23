@@ -1,50 +1,50 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import MeetupsPost from "./MeetupsPost";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+import MeetupsPost from "./MeetupsPost"
+import { Link } from "react-router-dom"
 
 export default function EventsPosts() {
-  const [posts, setPosts] = useState([]);
-  const [upcomingEvents, setUpcomingEvents] = useState([]);
-  const [pastEvents, setPastEvents] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [posts, setPosts] = useState([])
+  const [upcomingEvents, setUpcomingEvents] = useState([])
+  const [pastEvents, setPastEvents] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState("")
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/events/")
+      .get("http://15.206.18.143:3000/events/list")
       .then((response) => {
-        console.log(response);
+        console.log(response)
 
         const sortedPosts = response.data.sort((a, b) => {
           return (
             new Date(b.eventStartTime).getTime() -
             new Date(a.eventStartTime).getTime()
-          );
-        });
+          )
+        })
 
-        setPosts(response.data);
-        const today = new Date().toISOString();
+        setPosts(response.data)
+        const today = new Date().toISOString()
         const upcoming = sortedPosts.filter(
           (post) => new Date(post.eventStartTime).toISOString() >= today
-        );
+        )
         const past = sortedPosts.filter(
           (post) => new Date(post.eventStartTime).toISOString() < today
-        );
-        setUpcomingEvents(upcoming);
-        setPastEvents(past);
+        )
+        setUpcomingEvents(upcoming)
+        setPastEvents(past)
       })
       .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
-  }, []);
+        console.error("Error fetching data: ", error)
+      })
+  }, [])
 
   const categories = [
     "Legal counsel",
-    "Financial",
+    "Bank",
     "Employment and Entrepreneurship",
-    "Health and Wellness",
+    "Medical",
     "Women's Rights",
-  ];
+  ]
 
   return (
     <>
@@ -95,5 +95,5 @@ export default function EventsPosts() {
           ))}
       </div>
     </>
-  );
+  )
 }
