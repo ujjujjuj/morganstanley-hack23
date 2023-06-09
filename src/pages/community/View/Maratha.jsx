@@ -52,21 +52,19 @@ function Maratha() {
             <div className="flex flex-col gap-4">
               <div className="flex space-between gap-4 flex-col xl:flex-row">
                 <iframe
-                  className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
+                  className="bg-white border-none rounded-sm h-[300px] xl:flex-1"
                   src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64825d5c-1717-4add-836f-8659c85444b6&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
-                  className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805c35-4539-4d14-8d50-9807fe142564&maxDataAge=3600&theme=light&autoRefresh=true"
+                  className="bg-white border-none rounded-sm h-[300px] xl:flex-1"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482ddb8-5a6d-4e55-8d1b-8cc4969a9d44&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
-                  className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805c35-4539-4d14-8d50-9807fe142564&maxDataAge=3600&theme=light&autoRefresh=true"
+                  className="bg-white border-none rounded-sm h-[300px] xl:flex-1"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482e555-befa-449e-813e-059a97f73f3e&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
-                <iframe
-                  className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805c35-4539-4d14-8d50-9807fe142564&maxDataAge=3600&theme=light&autoRefresh=true"
-                ></iframe>
+                
+                
               </div>
               {/* div for 3 charts in a row */}
               <div className="flex space-between gap-4 flex-col xl:flex-row">
