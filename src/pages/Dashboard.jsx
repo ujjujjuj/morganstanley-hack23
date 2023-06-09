@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import Sidebar from "../partials/Sidebar"
 import Header from "../partials/Header"
+import WelcomeBanner from '../partials/analytics/Welcome';
 
 function Analytics() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -17,14 +18,14 @@ function Analytics() {
         <main>
           <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
             {/* Page header */}
-            <div className="mb-8 sm:flex sm:justify-between sm:items-center">
+            {/* <div className="mb-8 sm:flex sm:justify-between sm:items-center"> */}
               {/* Left: Title */}
-              <div className="mb-4 sm:mb-0">
-                <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
-                  Analytics ✨
-                </h1>
-              </div>
-            </div>
+              {/* <div className="mb-4 sm:mb-0"> */}
+              <WelcomeBanner/>
+                {/* <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
+                </h1> */}
+              {/* </div> */}
+            {/* </div> */}
 
             {/* Cards */}
             {/* <div className="grid grid-cols-12 gap-6">
