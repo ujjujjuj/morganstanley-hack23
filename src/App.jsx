@@ -31,7 +31,7 @@ import UsersList from "./pages/UsersSection/Users"
 import AddUsersFormPage from "./pages/UsersSection/addUser"
 import UserEditPage from "./pages/UsersSection/Account"
 
-// community related routes 
+// community related routes
 
 import "./i18n"
 
@@ -40,14 +40,12 @@ import UsersCommunity from "./pages/community/userCommunities"
 import AddCommunityForm from "./pages/community/addCommunityForm"
 import AddCommunity from "./pages/community/addCommunity"
 
-
 // community details pages
- import Chambhar from "./pages/community/View/Chambhar"
- import MahadevKoli from "./pages/community/View/Mahadev Koli"  
- import Dhangar from "./pages/community/View/Dhangar"
- import  Mali from "./pages/community/View/Mali"
- import Maratha from "./pages/community/View/Maratha"
-
+import Chambhar from "./pages/community/View/Chambhar"
+import MahadevKoli from "./pages/community/View/Mahadev Koli"
+import Dhangar from "./pages/community/View/Dhangar"
+import Mali from "./pages/community/View/Mali"
+import Maratha from "./pages/community/View/Maratha"
 
 function App() {
   const location = useLocation()
@@ -62,7 +60,6 @@ function App() {
     <UserProvider>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-        <Route path="/events/customers" element={<Customers />} />
         {/* <Route path="/community/meetups" element={<Meetups />} />
         <Route path="/community/meetups-post" element={<MeetupsPost />} /> */}
         <Route path="/messages" element={<Messages />} />
@@ -85,13 +82,14 @@ function App() {
         <Route path="/users/editBasicDetails" element={<UserEditPage />} />
 
         {/* Community realted Routes */}
-        <Route path="/community" element={<UsersCommunity/>} />        
-        <Route path="/community/addCommunity" element={<AddCommunity/>} />
-        <Route path="/community/Chambhar" element={<Chambhar/>} />
-        <Route path="/community/MahadevKoli" element={<MahadevKoli/>} />
-        <Route path="/community/Dhangar" element={<Dhangar/>} />
-        <Route path="/community/Mali" element={<Mali/>} />
-        <Route path="/community/Maratha" element={<Maratha/>} />
+        <Route path="/community" element={<UsersCommunity />} />
+        <Route path="/community/allCommunities" element={<Campaigns />} />
+        <Route path="/community/addCommunity" element={<AddCommunity />} />
+        <Route path="/community/Chambhar" element={<Chambhar />} />
+        <Route path="/community/MahadevKoli" element={<MahadevKoli />} />
+        <Route path="/community/Dhangar" element={<Dhangar />} />
+        <Route path="/community/Mali" element={<Mali />} />
+        <Route path="/community/Maratha" element={<Maratha />} />
       </Routes>
     </UserProvider>
   )
