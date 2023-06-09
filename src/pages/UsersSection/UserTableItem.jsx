@@ -37,25 +37,26 @@ function EventUserTableItem(props) {
           
         {/* </div> */}
       {/* </td> */}
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-          <div className="text-left">{props.name}</div>
+      
+      <td className="px-8 py-3">
+        <div className="text-left">{props.name}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-          <div className="text-left">{props.age}</div>
+      <td className="px-8 py-3">
+        <div className="text-left">{props.age}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <td className="px-8 py-3">
         <div className="text-left">{props.community}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <td className="px-8 py-3">
         <div className="text-left">{props.phone}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <td className="px-8 py-3">
         <div className="text-left">{props.language}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-      <button onClick={editUser} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
-        User Details
-      </button>
+      <td className="px-8 py-3">
+        <button onClick={editUser} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">
+          User Details
+        </button>
       </td>
       {(props.isBoth==="Yes") && <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">

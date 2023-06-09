@@ -36,7 +36,7 @@ function EventsTableItem(props) {
         <div className="flex items-center">
           <label className="inline-flex">
             <span className="sr-only">Select</span>
-            <input id={props.sessionId} className="form-checkbox" type="checkbox" onChange={props.handleClick} checked={props.isChecked} />
+            <input id={props.sessionId} style={{ visibility: 'hidden' }} className="form-checkbox" type="checkbox" onChange={props.handleClick} checked={props.isChecked} />
           </label>
         </div>
       </td>

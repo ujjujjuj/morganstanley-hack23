@@ -41,7 +41,13 @@ function EventUsersTable(props) {
               throw new Error('Request failed with status ' + response.status);
           }
           const data = await response.json();
-          setList(data.result);
+          const reversedObj = Object.entries(data.result)
+            .reverse()
+            .reduce((acc, [key, value]) => {
+              acc[key] = value;
+              return acc;
+            }, {});
+          setList(reversedObj);
         } catch (error) {
           console.log('Error:', error);
         }

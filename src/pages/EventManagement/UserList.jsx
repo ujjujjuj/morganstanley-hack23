@@ -149,34 +149,26 @@ function EventUsersTable(props) {
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
             {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
-              <tr>
-                {/* <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                  <div className="flex items-center">
-                    <label className="inline-flex">
-                      <span className="sr-only">Select all</span>
-                      <input className="form-checkbox" type="checkbox" checked={selectAll} onChange={handleSelectAll} />
-                    </label>
-                  </div>
-                </th> */}
-
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Name</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Age</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Community</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Phone Number</div>
-                </th>
-                <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Primary Language</div>
-                </th>
-              </tr>
-            </thead>
+            <thead>
+    <tr>
+      <th className="px-8 py-3">
+        <div className="font-semibold text-left">Name</div>
+      </th>
+      <th className="px-8 py-3">
+        <div className="font-semibold text-left">Age</div>
+      </th>
+      <th className="px-8 py-3">
+        <div className="font-semibold text-left">Community</div>
+      </th>
+      <th className="px-8 py-3">
+        <div className="font-semibold text-left">Phone Number</div>
+      </th>
+      <th className="px-8 py-3">
+        <div className="font-semibold text-left">Primary Language</div>
+      </th>
+      <th className="px-8 py-3"></th>
+    </tr>
+  </thead>
             {/* Table body */}
             {/* <tbody className="text-sm divide-y divide-slate-200">
               {
