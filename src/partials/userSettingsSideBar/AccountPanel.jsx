@@ -119,7 +119,7 @@ function AccountPanel(props) {
       <div className="grow">
         {/* Panel body */}
         <div className="p-6 space-y-6">
-          <h2 className="text-2xl text-slate-800 font-bold mb-5">My Account</h2>
+          <h2 className="text-2xl text-slate-800 font-bold mb-5">Basic Details</h2>
 
           {/* section 1 - My Profile           */}
           <section>

@@ -50,7 +50,7 @@ function UserEditPage() {
             </div>
 
             {/* Content */}
-            <div className="bg-white shadow-lg rounded-sm mb-8">
+            <div className="bg-white flex-col  shadow-lg rounded-sm mb-8">
               <div className="">
                 <AccountPanel id={location.state.id}/>
                 <PageDivider/>
@@ -65,6 +65,8 @@ function UserEditPage() {
                 <Socioeconomic id={location.state.id}/>
                 <PageDivider/>
                 <br></br>
+
+                <div className="flex pb-4 pr-4">
                 <button onClick={()=>{
                   if(location.state.type==="Event"){
                     navigate("/events/AllEvents");
@@ -72,9 +74,10 @@ function UserEditPage() {
                   else{
                     navigate("/users/allUsers");
                   }
-                }}class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                }}
+                className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                   Go Back
-                </button>
+                </button> </div>
               </div>
             </div>
           </div>

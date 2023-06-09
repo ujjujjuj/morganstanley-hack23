@@ -5,7 +5,7 @@ const EditDropdown = ({ options, value, onChange }) => {
     <select
       value={value}
       onChange={onChange}
-      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+      className="ml-auto w-24 sm:w-36  px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>

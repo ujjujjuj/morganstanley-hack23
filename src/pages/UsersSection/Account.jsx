@@ -40,19 +40,20 @@ function UserEditPage() {
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <EditFilterComponent setFactor={setFactor} id={location.state.id}/>
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
             {/* Page header */}
-            <div className="mb-8">
-              {/* Title */}
-              <h1 className="text-2xl md:text-3xl text-slate-800 font-bold">
-                My Profile ✨
-              </h1>
-            </div>
+            <div className="mb-8 flex">
+  {/* Title */}
+  <h1 className="text-2xl ml-2 sm:ml-0 mt-6 md:text-3xl text-slate-800 font-bold whitespace-nowrap">
+  User's Profile&nbsp;✨
+</h1>
+    
+  <EditFilterComponent setFactor={setFactor} id={location.state.id} />
+</div>
             
             {/* Content */}
-            <div className="bg-white shadow-lg rounded-sm mb-8">
+            <div className="bg-white flex-col  shadow-lg rounded-sm mb-8">
             {factor==="View"?<div className="">
                 <AccountPanel showSave="No" id={location.state.id}/>
                 <PageDivider/>
@@ -67,6 +68,7 @@ function UserEditPage() {
                 <Socioeconomic showSave="No" id={location.state.id}/>
                 <PageDivider/>
                 <br></br>
+                <div className="flex pb-4 pr-4">
                 <button onClick={()=>{
                   if(location.state.type==="Event"){
                     navigate("/events/AllEvents");
@@ -74,9 +76,10 @@ function UserEditPage() {
                   else{
                     navigate("/users/allUsers");
                   }
-                }}class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                }}
+                className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                   Go Back
-                </button>
+                </button> </div>
               </div>:
             <div className="">
                 <AccountPanel showSave="Yes" id={location.state.id}/>
@@ -92,6 +95,7 @@ function UserEditPage() {
                 <Socioeconomic showSave="Yes" id={location.state.id}/>
                 <PageDivider/>
                 <br></br>
+                <div className="flex pb-4 pr-4">
                 <button onClick={()=>{
                   if(location.state.type==="Event"){
                     navigate("/events/AllEvents");
@@ -99,9 +103,10 @@ function UserEditPage() {
                   else{
                     navigate("/users/allUsers");
                   }
-                }}class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                }}
+                className="ml-auto bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                   Go Back
-                </button>
+                </button> </div>
               </div>}
 
 
