@@ -67,6 +67,7 @@ function SuggestedUser(props) {
                 list.map(participant => {
                   return (
                     <SuggestedUserTableItem
+                    type={props.type}
                       eventId={props.eventId}
                       key={participant._id}
                       _id={participant._id}

@@ -47,7 +47,7 @@ function AddUserPage() {
             </div>
 
             {/* Form */}
-            <AttendanceForm eventId={location.state.eventId}/>
+            <AttendanceForm type={location.state.type} eventId={location.state.eventId}/>
 
           </div>
         </main>
