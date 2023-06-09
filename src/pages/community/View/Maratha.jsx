@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-import Sidebar from "../partials/Sidebar"
-import Header from "../partials/Header"
-import Datepicker from "../components/Datepicker"
+import Sidebar from "../../../partials/Sidebar"
+import Header from "../../../partials/Header"
+
 
 
 function Maratha() {
@@ -25,15 +25,11 @@ function Maratha() {
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-2xl md:text-3xl text-slate-800 font-bold">
-                  Analytics ✨
+                Maratha Community ✨
                 </h1>
               </div>
 
-              {/* Right: Actions */}
-              <div className="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-                {/* Datepicker built with flatpickr */}
-                <Datepicker align="right" />
-              </div>
+             
             </div>
 
             {/* Cards */}
@@ -57,7 +53,7 @@ function Maratha() {
               <div className="flex space-between gap-4 flex-col 2xl:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805c35-4539-4d14-8d50-9807fe142564&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64825d5c-1717-4add-836f-8659c85444b6&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
@@ -76,26 +72,23 @@ function Maratha() {
               <div className="flex space-between gap-4 flex-col xl:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=648056d4-b1b7-41ea-8cc7-8619fa588a67&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64824e44-79a4-477b-8a9c-eb36e60d5741&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=648058a3-ba3a-4dd1-8beb-cde198a42548&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64825a59-c5f2-45fe-8a97-764f6c635f1f&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
-                <iframe
-                  className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project-0-zwpmz/embed/charts?id=647fa2e3-1b39-4a97-8822-968c68c6ef81&maxDataAge=3600&theme=light&autoRefresh=true"
-                ></iframe>
+                
               </div>
               {/* div for 3 charts in a row */}
               <div className="flex space-between gap-4 flex-col xl:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805d32-a88f-4f32-8938-011d4f279f5a&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482490d-7c96-4420-871b-09a29252c315&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64805db0-abe9-4522-8d84-1e7088a94264&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64824bf0-1717-4818-8593-8659c843b987&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
@@ -105,13 +98,10 @@ function Maratha() {
               {/* div for 2 charts in a row */}
               <div className="flex space-between gap-4 flex-col lg:flex-row">
                 <iframe
-                  className="bg-white border-none rounded-sm h-[480px] lg:flex-1"
-                  src="https://charts.mongodb.com/charts-project-0-zwpmz/embed/charts?id=647fa2e3-1b39-4a97-8822-968c68c6ef81&maxDataAge=3600&theme=light&autoRefresh=true"
+                  className="bg-white border-none rounded-sm h-[600px] lg:flex-1"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482569c-8d6d-4b3f-88fa-e3ca791f2ce1&maxDataAge=3600&theme=light&autoRefresh=true"
                 ></iframe>
-                <iframe
-                  className="bg-white border-none rounded-sm h-[480px] lg:flex-1"
-                  src="https://charts.mongodb.com/charts-project-0-zwpmz/embed/charts?id=647fa2e3-1b39-4a97-8822-968c68c6ef81&maxDataAge=3600&theme=light&autoRefresh=true"
-                ></iframe>
+               
               </div>
 
             </div>

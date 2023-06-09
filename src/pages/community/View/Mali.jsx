@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
-import Sidebar from "../partials/Sidebar"
-import Header from "../partials/Header"
-import Datepicker from "../components/Datepicker"
+import Sidebar from "../../../partials/Sidebar"
+import Header from "../../../partials/Header"
+import Datepicker from "../../../components/Datepicker"
 
 
 function Mali() {
@@ -25,7 +25,7 @@ function Mali() {
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-2xl md:text-3xl text-slate-800 font-bold">
-                  Analytics ✨
+                Mali Community ✨
                 </h1>
               </div>
 

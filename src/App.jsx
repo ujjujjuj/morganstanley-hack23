@@ -40,6 +40,15 @@ import UsersCommunity from "./pages/community/userCommunities"
 import AddCommunityForm from "./pages/community/addCommunityForm"
 import AddCommunity from "./pages/community/addCommunity"
 
+
+// community details pages
+ import Chambhar from "./pages/community/View/Chambhar"
+ import MahadevKoli from "./pages/community/View/Mahadev Koli"  
+ import Dhangar from "./pages/community/View/Dhangar"
+ import  Mali from "./pages/community/View/Mali"
+ import Maratha from "./pages/community/View/Maratha"
+
+
 function App() {
   const location = useLocation()
 
@@ -78,6 +87,11 @@ function App() {
         {/* Community realted Routes */}
         <Route path="/community" element={<UsersCommunity/>} />        
         <Route path="/community/addCommunity" element={<AddCommunity/>} />
+        <Route path="/community/Chambhar" element={<Chambhar/>} />
+        <Route path="/community/MahadevKoli" element={<MahadevKoli/>} />
+        <Route path="/community/Dhangar" element={<Dhangar/>} />
+        <Route path="/community/Mali" element={<Mali/>} />
+        <Route path="/community/Maratha" element={<Maratha/>} />
       </Routes>
     </UserProvider>
   )
