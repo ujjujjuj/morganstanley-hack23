@@ -100,7 +100,7 @@ function Analytics() {
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] lg:flex-1"
-                  // src="https://charts.mongodb.com/charts-project-0-zwpmz/embed/charts?id=647fa2e3-1b39-4a97-8822-968c68c6ef81&maxDataAge=300&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482112d-030e-4716-8c71-bfd54ab65894&maxDataAge=300&theme=light&autoRefresh=true"
                 ></iframe>
               </div>
               <div className="flex flex-col gap-4 space-between lg:flex-row">
