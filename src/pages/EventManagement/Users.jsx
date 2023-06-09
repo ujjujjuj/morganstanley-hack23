@@ -106,10 +106,10 @@ function Users() {
             {/* Table */}
             <EventUsersTable value={value} factor={factor} list={list} eventId={location.state.eventId} selectedItems={handleSelectedItems} />
 
-            {/* Pagination */}
+            {/* Pagination
             <div className="mt-8">
               <PaginationClassic />
-            </div>
+            </div> */}
 
           </div>
         </main>
