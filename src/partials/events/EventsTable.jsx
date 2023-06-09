@@ -27,7 +27,9 @@ function EventsTable({
         const data = await response.json();
         console.log(data.result);
         const customers= data.result;
-        setList(customers);
+        const ans = [...customers].reverse();
+        setList(ans);
+        // setList(customers);
         // Do something with the data
       } catch (error) {
         console.log('Error:', error);
@@ -57,7 +59,9 @@ function EventsTable({
         const data = await response.json();
         console.log(data.result);
         const customers= data.result;
-        setList(customers);
+        const ans = [...customers].reverse();
+        setList(ans);
+        // setList(customers);
         // Do something with the data
       } catch (error) {
         console.log('Error:', error);

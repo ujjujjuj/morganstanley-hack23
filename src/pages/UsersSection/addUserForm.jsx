@@ -1,4 +1,4 @@
-import { React,useState }from "react";
+import { React,useEffect,useState }from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserForm() {
@@ -8,10 +8,33 @@ export default function UserForm() {
     
     const [gender,setGender]=useState("");
     
-    const [Community,setCommunity]=useState("");
+    // const [Community,setCommunity]=useState("");
     const [PhoneNumber,setPhoneNumber]=useState(0);
     // duration details 
+    const [Community, setCommunityStatus] = useState(""); // state variable for marital status
+    const[communityList,setCommunityList]=useState({});
 
+    useEffect(() => {
+    
+      // console.log(id);
+      const fetchCommunity=async () => {
+        try {
+          const response = await fetch('http://localhost:3000/user/group/community');
+          if (response.ok) {
+            const data = await response.json();
+            // console.log(data); // Process the response data
+            setCommunityList(data.result);
+            console.log(data.result);
+          } else {
+            throw new Error('Request failed with status: ' + response.status);
+          }
+        } catch (error) {
+          console.error('Error:', error.message);
+        }
+      };
+      // fetchUserDetail();
+      fetchCommunity();
+    }, []);
     const navigate=useNavigate();
     const postData = async ({name,pwd,PhoneNumber,gender,Community}) => {
       
@@ -45,7 +68,9 @@ export default function UserForm() {
         }
       };
 
-
+      const handleCommunityChange = (e) => {
+        setCommunityStatus(e.target.value);
+      };
     async function handleSubmit(e){
         e.preventDefault();
         await postData({
@@ -125,7 +150,7 @@ export default function UserForm() {
                 </select>
               </div>
 
-            <div className="sm:col-span-3">
+            {/* <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                 Community
               </label>
@@ -140,7 +165,27 @@ export default function UserForm() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
+            </div> */}
+            <div className="sm:col-span-3">
+                  <label className="block text-sm font-medium mb-1" htmlFor="community">
+                    Community <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    id="community"
+                    className="form-select w-full"
+                    value={Community}
+                    onChange={handleCommunityChange}
+                    required
+                  >
+                    <option value="">Select a community</option>
+                    {Object.entries(communityList).map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                  {/* Your other fields go here */}
+                </div>
 
           {/* pwd */}
           <div className="sm:col-span-3">

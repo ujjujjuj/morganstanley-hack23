@@ -40,7 +40,9 @@ function EventUsersTable(props) {
                   throw new Error('Request failed with status ' + response.status);
               }
               const data = await response.json();
-              setList(data.result);
+              const ans = [...data.result].reverse();
+              setList(ans);
+              console.log(ans);
             } catch (error) {
               console.log('Error:', error);
             }
@@ -76,7 +78,10 @@ function EventUsersTable(props) {
         const result=data.result;
         // DoesNotExist
         const filteredData = result.filter(user => !/^DoesNotExist/.test(user.pwd));
-        setList(filteredData);
+        const ans = [...filteredData].reverse();
+        setList(ans);
+        //       console.log(ans);
+        // setList(filteredData);
       } catch (error) {
         console.log('Error:', error);
       }
