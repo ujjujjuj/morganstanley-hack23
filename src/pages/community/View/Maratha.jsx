@@ -50,7 +50,7 @@ function Maratha() {
             </div> */}
             {/* Main Container div */}
             <div className="flex flex-col gap-4">
-              <div className="flex space-between gap-4 flex-col 2xl:flex-row">
+              <div className="flex space-between gap-4 flex-col xl:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[320px] 2xl:flex-1"
                   src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64825d5c-1717-4add-836f-8659c85444b6&maxDataAge=3600&theme=light&autoRefresh=true"
