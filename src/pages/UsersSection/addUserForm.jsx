@@ -85,7 +85,8 @@ export default function UserForm() {
               </div>
             </div>
 
-            <div className="sm:col-span-3">
+            {/* old gender component */}
+            {/* <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                 Gender
               </label>
@@ -100,7 +101,29 @@ export default function UserForm() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
+            </div> */}
+
+            {/* New Gender Component */}
+            <div className="sm:col-span-3">
+                <label
+                  className="block text-sm font-medium mb-1"
+                  htmlFor="gender"
+                >
+                  Gender <span className="text-rose-500">*</span>
+                </label>
+                <select
+                  id="gender"
+                  className="form-select w-full"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  required
+                >
+                  <option value="">Select</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
 
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">

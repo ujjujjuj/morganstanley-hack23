@@ -16,7 +16,12 @@ function EventsTableItem(props) {
       eventName:props.eventName,
       category:props.category,
       details:props.eventDetails,
-      location:props.eventLocation
+      location:props.eventLocation,
+      attended:props.attended,
+      registered:props.registered,
+      followUp:props.followUp,
+      feedback:props.feedback,
+      imageUrl:props.imageUrl    
     }});
   }
   // basically : edit pe basically : events/addEvent me pahunch jaoge 
@@ -60,7 +65,7 @@ function EventsTableItem(props) {
         <div className="text-left">{props.category}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <div className="text-left">Maharashtra</div>
+        <div className="text-left">{props.eventLocation}</div>
       </td>
       <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="text-left">{props.feedbacksCount}</div>

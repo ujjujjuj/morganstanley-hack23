@@ -130,19 +130,19 @@ function EducationStatus(props) {
         </div>
 
         {/* Panel footer */}
-        <footer>
+        {(props.showSave==="Yes") && <footer>
           <div className="flex flex-col px-6 py-5 border-t border-slate-200">
             <div className="flex self-end">
               <button
-                onSubmit={handleSubmit}
                 type="submit"
+                onSubmit={handleSubmit}
                 className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
               >
                 Save
               </button>
             </div>
           </div>
-        </footer>
+        </footer>}
       </div>
     </form>
   );

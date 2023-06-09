@@ -160,10 +160,14 @@ function EventsTable({
                       _id={event._id}
                       eventDetails={event.eventDetails}
                       eventName={event.eventName}
-                      participants={event.attended}
+                      attended={event.attended}
+                      registered={event.registered}
+                      followUp={event.followUp}
+                      feedback={event.feedback}
+                      url={event.imageUrl}
                       participantsCount={event.attended.length}
                       category={event.category}
-                      eventLocation={event.location}
+                      eventLocation={event.eventLocation}
                       registeredCount={event.registered.length}
                       feedbacksCount={event.feedback.length}
                       handleClick={handleClick}

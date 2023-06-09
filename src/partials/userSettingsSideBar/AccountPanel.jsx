@@ -502,7 +502,7 @@ function AccountPanel(props) {
         </div>
 
         {/* Panel footer */}
-        <footer>
+        {(props.showSave==="Yes") && <footer>
           <div className="flex flex-col px-6 py-5 border-t border-slate-200">
             <div className="flex self-end">
               <button
@@ -514,7 +514,7 @@ function AccountPanel(props) {
               </button>
             </div>
           </div>
-        </footer>
+        </footer>}
       </div>
     </form>
   );

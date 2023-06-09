@@ -10,7 +10,6 @@ import Employment from "../../partials/userSettingsSideBar/Employment";
 import GovtID from "../../partials/userSettingsSideBar/GovtID";
 import MedicalStatus from "../../partials/userSettingsSideBar/Medical";
 import Socioeconomic from "../../partials/userSettingsSideBar/Socioeconomic";
-import EditFilterComponent from "./filter";
 
 const PageDivider = () => {
   return (
@@ -28,7 +27,6 @@ function UserEditPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location=useLocation();
 
-  const [factor,setFactor]=useState("View");
   const navigate=useNavigate();
   console.log(location.state.id);
   return (
@@ -40,7 +38,7 @@ function UserEditPage() {
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <EditFilterComponent setFactor={setFactor} id={location.state.id}/>
+
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
             {/* Page header */}
@@ -50,46 +48,21 @@ function UserEditPage() {
                 My Profile ✨
               </h1>
             </div>
-            
+
             {/* Content */}
             <div className="bg-white shadow-lg rounded-sm mb-8">
-            {factor==="View"?<div className="">
-                <AccountPanel showSave="No" id={location.state.id}/>
+              <div className="">
+                <AccountPanel id={location.state.id}/>
                 <PageDivider/>
-                <Education showSave="No" id={location.state.id}/>
+                <Education id={location.state.id}/>
                 <PageDivider/>
-                <Employment showSave="No" id={location.state.id}/>
+                <Employment id={location.state.id}/>
                 <PageDivider/>
-                <GovtID showSave="No" id={location.state.id}/>
+                <GovtID id={location.state.id}/>
                 <PageDivider/>
-                <MedicalStatus showSave="No" id={location.state.id}/>
+                <MedicalStatus id={location.state.id}/>
                 <PageDivider/>
-                <Socioeconomic showSave="No" id={location.state.id}/>
-                <PageDivider/>
-                <br></br>
-                <button onClick={()=>{
-                  if(location.state.type==="Event"){
-                    navigate("/events/AllEvents");
-                  }
-                  else{
-                    navigate("/users/allUsers");
-                  }
-                }}class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
-                  Go Back
-                </button>
-              </div>:
-            <div className="">
-                <AccountPanel showSave="Yes" id={location.state.id}/>
-                <PageDivider/>
-                <Education showSave="Yes" id={location.state.id}/>
-                <PageDivider/>
-                <Employment showSave="Yes" id={location.state.id}/>
-                <PageDivider/>
-                <GovtID showSave="Yes" id={location.state.id}/>
-                <PageDivider/>
-                <MedicalStatus showSave="Yes" id={location.state.id}/>
-                <PageDivider/>
-                <Socioeconomic showSave="Yes" id={location.state.id}/>
+                <Socioeconomic id={location.state.id}/>
                 <PageDivider/>
                 <br></br>
                 <button onClick={()=>{
@@ -102,15 +75,8 @@ function UserEditPage() {
                 }}class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
                   Go Back
                 </button>
-              </div>}
-
-
-
-
+              </div>
             </div>
-
-
-
           </div>
         </main>
       </div>
