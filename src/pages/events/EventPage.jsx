@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import React from "react"
 import EventDisplay from "./DateFormat"
+import { Pie } from 'react-chartjs-2';
+
 
 import Sidebar from "../../partials/Sidebar"
 import Header from "../../partials/Header"
@@ -10,9 +12,12 @@ import Header from "../../partials/Header"
 import { Link } from "react-router-dom"
 
 export default function EventPost() {
-  const [postInfo, setPostInfo] = useState(null)
+  const [postInfo, setPostInfo] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { id } = useParams()
+  const attended = postInfo ? postInfo.attended.length : 0;
+  const registered = postInfo ? postInfo.registered.length : 0;
+  const didNotAttend = registered - attended;
 
   useEffect(() => {
     fetch(`http://15.206.18.143:3000/events/list/${id}`).then((response) => {
@@ -113,7 +118,29 @@ export default function EventPost() {
                   <div className="">
                     Registered ({postInfo.registered.length})
                   </div>
+                  <div className="">Attended ({postInfo.attended.length})</div>
                 </div>
+                {/* <div className="flex justify-between space-x-1 mb-0 bg-white p-5 shadow-lg rounded-sm border border-slate-200 text-sm text-slate-800 font-semibold lg:w-72 xl:w-80">
+  {postInfo && (
+    console.log('Attended:', attended, 'Did not attend:', didNotAttend), // Add this line to log attended and didNotAttend
+    <Pie
+      data={{
+        labels: ["Attended", "Did not Attend"],
+        datasets: [
+          {
+            data: [attended, didNotAttend],
+            backgroundColor: [
+              "rgba(75, 192, 192, 1)", // darker cyan
+              "rgba(255, 99, 132, 1)", // darker pink
+            ],
+          },
+        ],
+      }}
+    />
+  )}
+</div> */}
+
+                
               </div>
             </div>
           </div>

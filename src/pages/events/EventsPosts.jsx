@@ -39,11 +39,13 @@ export default function EventsPosts() {
   }, [])
 
   const categories = [
-    "Legal counsel",
-    "Bank",
-    "Employment and Entrepreneurship",
-    "Medical",
+    "Child Education and Enrichment",
+    "Legal",
     "Women's Rights",
+    "Financial Literacy",
+    "Health and Wellbeing",
+    "Government Assistance Programs",
+    "Employment and Career Development",
   ]
 
   return (

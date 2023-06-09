@@ -13,6 +13,15 @@ function MeetupsPosts({
   eventDetails,
   imageUrl,
 }) {
+
+    // Function to truncate the string
+    const truncateString = (str, num) => {
+      if (str.length <= num) {
+        return str;
+      }
+      return str.slice(0, num) + "...";
+    };
+
   return (
     <>
       {/* Item 1 */}
@@ -45,7 +54,7 @@ function MeetupsPosts({
             <h3 className="text-lg font-bold text-slate-800">{eventName}</h3>
           </Link>
           {/* Event details */}
-          <div className="text-sm">{eventDetails}</div>
+          <div className="text-sm">{truncateString(eventDetails, 180)}</div>
           {/* </div> */}
           {/* Footer */}
           <div className="flex justify-between mt-3">
