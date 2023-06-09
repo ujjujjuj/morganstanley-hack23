@@ -17,6 +17,17 @@ function MyCalendar() {
   const [events, setEvents] = useState([]);
   const navigate = useNavigate();
 
+  // Map each category to a color
+  const categoryColors = {
+    "Child Education and Enrichment": "#f39c12", // orange
+    // blue
+    "Women's Rights": "#9b59b6", // purple
+    "Financial Literacy": "#2ecc71", // green
+    "Health and Wellbeing": "#e74c3c", // red
+    "Government Assistance Programs": "#34495e", // dark blue
+    "Employment and Career Development": "#16a085", // teal
+  };
+
   useEffect(() => {
     axios
       .get("http://15.206.18.143:3000/events/list")
@@ -26,6 +37,8 @@ function MyCalendar() {
           start: new Date(event.eventStartTime),
           end: new Date(event.eventStartTime),
           id: event._id, // Ensure this field exists in your API response
+          // Use the category to determine the color of the event
+          category: event.category,
         }));
         setEvents(fetchedEvents);
       })
@@ -35,9 +48,24 @@ function MyCalendar() {
   }, []);
 
   const handleEventSelect = (event) => {
-    navigate(`/events/list/${event.id}`);
+    navigate(`/event/${event.id}`);
   };
-
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    var backgroundColor = categoryColors[event.category];
+    var style = {
+      backgroundColor: backgroundColor,
+      borderRadius: "5px", // rounded corners
+      opacity: 0.8,
+      color: "white", // change text color to white for better contrast
+      border: "0px",
+      display: "block",
+      fontWeight: "bold", // bold text
+      padding: "5px", // space around the text
+    };
+    return {
+      style: style,
+    };
+  };
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
@@ -57,6 +85,7 @@ function MyCalendar() {
               events={events}
               style={{ height: "100%" }}
               onSelectEvent={handleEventSelect}
+              eventPropGetter={eventStyleGetter}
             />
           </div>
         </main>
