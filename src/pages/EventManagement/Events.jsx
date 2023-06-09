@@ -79,9 +79,9 @@ function Events() {
             
             
             {/* Pagination */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <PaginationClassic />
-            </div>
+            </div> */}
 
           </div>
         </main>

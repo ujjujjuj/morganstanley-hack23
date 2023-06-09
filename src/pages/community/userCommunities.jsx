@@ -75,9 +75,9 @@ function UsersCommunity() {
             <EventUsersTable value={value} factor={factor} list={list} selectedItems={handleSelectedItems} />
 
             {/* Pagination */}
-            <div className="mt-8">
+            {/* <div className="mt-8">
               <PaginationClassic />
-            </div>
+            </div> */}
 
           </div>
         </main>
