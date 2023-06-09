@@ -8,7 +8,23 @@ function EventsTableItem(props) {
     // console.log(props._id);
     navigate('/events/userList',{state:{eventId:props._id}});
   }
-  
+
+  let editEvent=()=>{
+    navigate("/events/createEvent",{state:
+      {eventId:props._id,
+        type:"Edit",
+      eventName:props.eventName,
+      category:props.category,
+      details:props.eventDetails,
+      location:props.eventLocation
+    }});
+  }
+  // basically : edit pe basically : events/addEvent me pahunch jaoge 
+  // navigate("/events/createEvent") , {state:{eventId:props.eventId}}
+  // basically : useEffect rakhlo fir usme : mangwalo saare properties 
+  // if type="Edit"
+  // and normal wale me pass : type="Add" and eventId as any uuvid();
+
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -33,7 +49,7 @@ function EventsTableItem(props) {
           {/* <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
             <img className="rounded-full" src={props.image} width="40" height="40" alt={props.name} />
           </div> */}
-          <div className="font-medium text-slate-800">{props.eventName}</div>
+          <div onClick={editEvent} style={{ cursor: 'pointer' }} className="font-medium text-slate-800">{props.eventName}</div>
           
         </div>
       </td>
