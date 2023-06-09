@@ -1,48 +1,45 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
-import Sidebar from '../partials/Sidebar';
-import Header from '../partials/Header';
-import MessagesSidebar from '../partials/messages/MessagesSidebar';
-import MessagesHeader from '../partials/messages/MessagesHeader';
-import MessagesBody from '../partials/messages/MessagesBody';
-import MessagesFooter from '../partials/messages/MessagesFooter';
+import Sidebar from "../partials/Sidebar";
+import Header from "../partials/Header";
 
 function Messages() {
-
-  const contentArea = useRef(null)
+  const contentArea = useRef(null);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [msgSidebarOpen, setMsgSidebarOpen] = useState(true);
-
-  useEffect(() => {
-    contentArea.current.scrollTop = 99999999
-  }, [msgSidebarOpen]); // automatically scroll the chat and make the most recent message visible
 
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
       {/* Content area */}
-      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden" ref={contentArea}>
+      <div
+        className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden"
+        ref={contentArea}
+      >
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="relative flex">
-            {/* Messages sidebar */}
-            <MessagesSidebar msgSidebarOpen={msgSidebarOpen} setMsgSidebarOpen={setMsgSidebarOpen} />
-
-            {/* Messages body */}
-            <div
-              className={`grow flex flex-col md:translate-x-0 transition-transform duration-300 ease-in-out ${
-                msgSidebarOpen ? 'translate-x-1/3' : 'translate-x-0'
-              }`}
-            >
-              <MessagesHeader msgSidebarOpen={msgSidebarOpen} setMsgSidebarOpen={setMsgSidebarOpen} />
-              <MessagesBody />
-              <MessagesFooter />
+        <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
+          <div className="mb-8 sm:flex sm:justify-between sm:items-center">
+              {/* Left: Title */}
+              <div className="mb-4 sm:mb-0">
+                <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
+                Support Responses
+                </h1>
+              </div>
             </div>
+            <iframe
+              className="airtable-embed"
+              src="https://airtable.com/embed/shr2EMp9aWNMA8KxW?backgroundColor=blue&viewControls=on"
+              frameborder="0"
+              onmousewheel=""
+              width="100%"
+              height="533"
+              style={{ background: "transparent", border: "1px solid #ccc" }}
+              title="Airtable Data"
+            />
           </div>
         </main>
       </div>
