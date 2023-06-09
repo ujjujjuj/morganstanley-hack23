@@ -127,7 +127,7 @@ function EventsTable({
                   <div className="flex items-center">
                     <label className="inline-flex">
                       <span className="sr-only">Select all</span>
-                      <input className="form-checkbox" type="checkbox" checked={selectAll} onChange={handleSelectAll} />
+                      <input className="form-checkbox" style={{visibility:"hidden"}}type="checkbox" checked={selectAll} onChange={handleSelectAll} />
                     </label>
                   </div>
                 </th>
