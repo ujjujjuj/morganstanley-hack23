@@ -1,14 +1,28 @@
-import { React,useState }from "react";
-import { useNavigate } from "react-router-dom";
+import { React,useEffect,useState }from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function EventForm() {
-
+    const location1=useLocation();
     const [eventName,setEventName]=useState("");
     const [location,setLocation]=useState("");
     const [category,setEventCategory]=useState("");
     const [eventDuration,setEvenDuration]=useState(0);
     const [eventDetails,setEventDetails]=useState("");
     // duration details 
+
+    useEffect(()=>{
+      console.log("Both");  
+      if(location1.state.type==="Edit"){
+
+          console.log("Edit");
+          console.log(location1.state.eventId);
+          setEventName(location1.state.eventName)
+          setEventCategory(location1.state.category)
+          setLocation(location1.state.location)
+          setEventDetails(location1.state.details)
+          // console.log(location1.state);
+        }
+    },[]);
 
     const navigate=useNavigate();
     const postData = async (data) => {
@@ -36,11 +50,50 @@ export default function EventForm() {
 
     async function handleSubmit(e){
         e.preventDefault();
-        await postData({
+
+        if(location1.state.type==="Edit"){
+            // put karo rather then post !! 
+            const eventId=location1.state.eventId; 
+            console.log(eventId);
+            const body={
+              eventId:eventId,
+              category:category,
+              location:location,
+              eventName:eventName,
+              eventDuration:eventDuration,
+              eventDetails:eventDetails
+            }
+            console.log(body);
+            const requestOptions = {
+              method: 'PUT',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            };  
+
+            try {
+              const response = await fetch('http://localhost:3000/events/editEvent', requestOptions);
+              if (response.ok) {
+                console.log('Event updated successfully');
+              } else {
+                throw new Error('Failed to update event');
+              }
+             
+                // just navigate !! 
+                navigate("/events/AllEvents");
+            } catch (error) {
+              console.error('Error updating event:', error);
+                // just navigate !! 
+                navigate("/events/AllEvents");
+            }
+        }
+        else{
+          await postData({
             eventName,category,location,eventDetails,eventDuration
         });
+        
         // just navigate !! 
         navigate("/events/AllEvents");
+      }
     }
     function handleCancel(){
         navigate("/events/AllEvents");

@@ -21,7 +21,7 @@ function Events() {
 
   let handleClickFnc=()=>{
     // console.log("clicked !! ");
-    navigate("/events/createEvent");
+    navigate("/events/createEvent",{state:{eventId:"None",type:"Add"}});
   }
 
   return (

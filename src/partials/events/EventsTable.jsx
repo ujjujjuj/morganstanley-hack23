@@ -158,6 +158,7 @@ function EventsTable({
                     <EventsTableItem
                       key={event._id}
                       _id={event._id}
+                      eventDetails={event.eventDetails}
                       eventName={event.eventName}
                       participants={event.attended}
                       participantsCount={event.attended.length}
