@@ -5,7 +5,7 @@ import Header from "../partials/Header"
 import Datepicker from "../components/Datepicker"
 
 
-function Analytics() {
+function Chambhar() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -122,4 +122,4 @@ function Analytics() {
   )
 }
 
-export default Analytics
+export default Chambhar
