@@ -18,10 +18,30 @@ function AccountPanel(props) {
   const [community, setCommunityStatus] = useState(""); // state variable for marital status
   // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
   const id=props.id; 
+  const[communityList,setCommunityList]=useState({});
+
+  const handleCommunityChange = (e) => {
+    setCommunityStatus(e.target.value);
+  };
 
   useEffect(() => {
     
     console.log(id);
+    const fetchCommunity=async () => {
+      try {
+        const response = await fetch('http://localhost:3000/user/group/community');
+        if (response.ok) {
+          const data = await response.json();
+          // console.log(data); // Process the response data
+          setCommunityList(data.result);
+          console.log(data.result);
+        } else {
+          throw new Error('Request failed with status: ' + response.status);
+        }
+      } catch (error) {
+        console.error('Error:', error.message);
+      }
+    };
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
@@ -56,6 +76,7 @@ function AccountPanel(props) {
       }
     };
     fetchUserDetail();
+    fetchCommunity();
   }, []);
 
   const handleSubmit = async (event) => {
@@ -176,7 +197,8 @@ function AccountPanel(props) {
             </h2>
             <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 ">
               {/* Community */}
-              <div className="sm:w-1/3">
+              {/* Old community */}
+              {/* <div className="sm:w-1/3">
                 <label
                   className="block text-sm font-medium mb-1"
                   htmlFor="Community"
@@ -190,10 +212,30 @@ function AccountPanel(props) {
                   value={community}
                   onChange={(e) => setCommunityStatus(e.target.value)}
                   required
-                />
+                /> */}
                 {/* your other fields go here */}
-              </div>
+              {/* </div> */}
 
+              <div className="sm:w-1/3">
+                  <label className="block text-sm font-medium mb-1" htmlFor="community">
+                    Community <span className="text-rose-500">*</span>
+                  </label>
+                  <select
+                    id="community"
+                    className="form-select w-full"
+                    value={community}
+                    onChange={handleCommunityChange}
+                    required
+                  >
+                    <option value="">Select a community</option>
+                    {Object.entries(communityList).map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                  {/* Your other fields go here */}
+                </div>
 
               {/* phone no,*/}
               <div className="sm:w-1/3">
