@@ -135,7 +135,7 @@ const Signin = () => {
                 </div>
               </form>
               {/* Footer */}
-              <div className="pt-5 mt-6 border-t border-slate-200">
+              <div className="mt-6 border-t border-slate-200">
                 <div className="text-sm">
                   {t("dontHaveAnAccount")}&nbsp;
                   <Link
@@ -149,7 +149,7 @@ const Signin = () => {
             </div>
           </div>
         </div>
-        <div className="fixed mt-auto text-white ml-1rem lang">
+        <div className="absolute mt-auto text-white ml-1rem lang">
           <div className="flex flex-row items-start gap">
             {languages.map((language) => (
               <span

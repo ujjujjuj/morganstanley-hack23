@@ -105,9 +105,17 @@ input[type="search"]::-webkit-search-results-decoration {
   scrollbar-width: none;  /* Firefox */
 }
 .lang{
-    bottom: 1rem;
+    bottom: 0.5rem;
     margin-left:1rem;
 }
 .gap{
-    gap:2rem;
+    gap:1rem;
+}
+.pos{
+    position:relative;
+}
+@media screen and (min-width: 768px) {
+    .pos{
+        position: fixed; /* Fixed position on large devices */
+    }
 }
