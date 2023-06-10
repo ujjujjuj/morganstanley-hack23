@@ -8,15 +8,6 @@ import { useNavigate } from "react-router-dom"
 
 function Analytics() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { user } = useUser()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    console.log(user.role)
-    if (user.role === "User") {
-      navigate("/user")
-    }
-  }, [user.role])
 
   return (
     <div className="flex overflow-hidden h-screen">

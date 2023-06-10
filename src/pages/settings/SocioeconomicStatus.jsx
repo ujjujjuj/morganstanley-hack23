@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-import Sidebar from "../../partials/UserSidebar";
-import Header from "../../partials/UserHeader";
-import SettingsSidebar from "../../partials/settings/SettingsSidebar";
-import AccountPanel from "../../partials/settings/AccountPanel";
+import Sidebar from "../../partials/UserSidebar"
+import Header from "../../partials/UserHeader"
+import SettingsSidebar from "../../partials/settings/SettingsSidebar"
+import Socioeconomic from "../../partials/settings/Socioeconomic"
+import { useTranslation } from "react-i18next"
 
-function Account() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+function SocioeconomicStatus() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { i18n } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <div className="flex overflow-hidden h-screen">
@@ -24,7 +27,7 @@ function Account() {
             <div className="mb-8">
               {/* Title */}
               <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
-                My Profile ✨
+                {t("MyProfile")}
               </h1>
             </div>
 
@@ -32,14 +35,14 @@ function Account() {
             <div className="mb-8 bg-white rounded-sm shadow-lg">
               <div className="flex flex-col md:flex-row md:-mr-px">
                 <SettingsSidebar />
-                <AccountPanel />
+                <Socioeconomic />
               </div>
             </div>
           </div>
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-export default Account;
+export default SocioeconomicStatus

@@ -31,6 +31,9 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     if (!user.isLoggedIn) {
       navigate("/signin")
     }
+    if (user.role === "User") {
+      navigate("/user/")
+    }
   }, [user.role])
 
   useEffect(() => {

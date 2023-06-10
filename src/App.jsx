@@ -22,7 +22,7 @@ import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
 import ResetPassword from "./pages/ResetPassword"
 import EventsList from "./pages/events/Events"
-import EventPost from "./pages/events/EventPage"
+import EventPost from "./pages/community/EventPage"
 
 // Event Management and user management related Routes
 import Events from "./pages/EventManagement/Events"
@@ -48,6 +48,19 @@ import MahadevKoli from "./pages/community/View/Mahadev Koli"
 import Dhangar from "./pages/community/View/Dhangar"
 import Mali from "./pages/community/View/Mali"
 import Maratha from "./pages/community/View/Maratha"
+import Meetups from "./pages/community/ Meetups"
+import RegisteredEventsList from "./pages/registered/RegisteredEvents"
+import RegisteredEventPost from "./pages/registered/EventPage"
+import TasksList from "./pages/tasks/TasksList"
+import Faqs from "./pages/Faqs"
+import MedicalRecords from "./pages/settings/MedicalRecords"
+import EducationStatus from "./pages/settings/EducationStatus"
+import EmploymentStatus from "./pages/settings/EmploymentStatus"
+import GovtID from "./partials/userSettingsSideBar/GovtID"
+import GovtId from "./pages/settings/GovtID"
+import SocioeconomicStatus from "./pages/settings/SocioeconomicStatus"
+import Account from "./pages/settings/Account"
+import MyCalendar from "./pages/AdminCalendar"
 
 function App() {
   const location = useLocation()
@@ -65,7 +78,7 @@ function App() {
         {/* <Route path="/community/meetups" element={<Meetups />} />
         <Route path="/community/meetups-post" element={<MeetupsPost />} /> */}
         <Route path="/messages" element={<Messages />} />
-        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/calendar" element={<MyCalendar />} />
         <Route path="/Inbox" element={<Inbox />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
@@ -92,6 +105,34 @@ function App() {
         <Route path="/community/Dhangar" element={<Dhangar />} />
         <Route path="/community/Mali" element={<Mali />} />
         <Route path="/community/Maratha" element={<Maratha />} />
+
+        {/* User side Routes */}
+        <Route path="/user/" element={<Meetups />} />
+        <Route path="/user/event/:id" element={<EventPost />} />
+        <Route path="/user/registered/" element={<RegisteredEventsList />} />
+        <Route path="/user/registered/:id" element={<RegisteredEventPost />} />
+        <Route path="/user/tasks/" element={<TasksList />} />
+        <Route path="/user/calendar/" element={<Calendar />} />
+        <Route path="/user/settings/account" element={<Account />} />
+        <Route
+          path="/user/settings/MedicalRecords"
+          element={<MedicalRecords />}
+        />
+        <Route
+          path="/user/settings/EducationStatus"
+          element={<EducationStatus />}
+        />
+        <Route
+          path="/user/settings/EmploymentStatus"
+          element={<EmploymentStatus />}
+        />
+        <Route path="/user/settings/GovtID" element={<GovtId />} />
+        <Route
+          path="/user/settings/SocioeconomicStatus"
+          element={<SocioeconomicStatus />}
+        />
+        <Route path="/user/contact/" element={<Messages />} />
+        <Route path="/user/faqs" element={<Faqs />} />
       </Routes>
       <ToastContainer />
     </UserProvider>

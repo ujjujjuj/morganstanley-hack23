@@ -2,21 +2,23 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import React from "react"
 import EventDisplay from "./DateFormat"
-import { Pie } from "react-chartjs-2"
+import axios from "axios"
+import DialogflowMessenger from "../../utils/DialogflowMessenger"
 
 import Sidebar from "../../partials/UserSidebar"
 import Header from "../../partials/UserHeader"
 
 // import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom"
+import useUser from "../../../hooks/useUser"
 
 export default function EventPost() {
   const [postInfo, setPostInfo] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { id } = useParams()
-  const attended = postInfo ? postInfo.attended.length : 0
-  const registered = postInfo ? postInfo.registered.length : 0
-  const didNotAttend = registered - attended
+  const [isRegistered, setIsRegistered] = useState(false)
+
+  const { user } = useUser()
 
   useEffect(() => {
     fetch(`http://localhost:3000/events/list/${id}`).then((response) => {
@@ -25,6 +27,34 @@ export default function EventPost() {
       })
     })
   }, [])
+
+  const registerForEvent = async () => {
+    if (postInfo) {
+      try {
+        const response = await axios.post(
+          "http://localhost:3000/user/registerForAnEvent",
+          {
+            eventId: postInfo._id,
+            userId: user._id,
+          }
+        )
+
+        if (response.data.message === "Success !!") {
+          setIsRegistered(true)
+        } else {
+          alert("Error: " + response.data.message)
+        }
+      } catch (error) {
+        console.error("An error occurred:", error)
+        if (error.response && error.response.data.message === "repeat") {
+          alert("You are already registered for this event.")
+          setIsRegistered(true)
+        } else {
+          alert("An error occurred. Please try again.")
+        }
+      }
+    }
+  }
 
   if (!postInfo) return ""
 
@@ -37,6 +67,7 @@ export default function EventPost() {
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <DialogflowMessenger />
 
         <main>
           <div className="px-4 py-8 w-full sm:px-6 lg:px-8">
@@ -111,33 +142,38 @@ export default function EventPost() {
 
               {/* Sidebar */}
               <div className="space-y-4">
-                {/* 1nd block */}
+                {/* 1st block */}
+                <div className="p-5 bg-white rounded-sm border shadow-lg border-slate-200 lg:w-72 xl:w-80">
+                  <div className="space-y-2">
+                    <button
+                      className={`btn w-full ${
+                        isRegistered
+                          ? "bg-green-500 hover:bg-green-600"
+                          : "bg-indigo-500 hover:bg-indigo-600"
+                      } text-white`}
+                      onClick={registerForEvent}
+                      disabled={!postInfo}
+                    >
+                      <svg
+                        className="w-4 h-4 fill-current shrink-0"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
+                      </svg>
+                      <span className="ml-1">
+                        {isRegistered ? "Registered" : "Register"}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 2nd block */}
 
                 <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
                   <div className="">
-                    Registered ({postInfo.registered.length})
+                    Registered Users ({postInfo.registered.length})
                   </div>
-                  <div className="">Attended ({postInfo.attended.length})</div>
                 </div>
-                {/* <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
-  {postInfo && (
-    console.log('Attended:', attended, 'Did not attend:', didNotAttend), // Add this line to log attended and didNotAttend
-    <Pie
-      data={{
-        labels: ["Attended", "Did not Attend"],
-        datasets: [
-          {
-            data: [attended, didNotAttend],
-            backgroundColor: [
-              "rgba(75, 192, 192, 1)", // darker cyan
-              "rgba(255, 99, 132, 1)", // darker pink
-            ],
-          },
-        ],
-      }}
-    />
-  )}
-</div> */}
               </div>
             </div>
           </div>

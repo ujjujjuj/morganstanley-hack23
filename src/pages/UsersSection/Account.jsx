@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Sidebar from "../../partials/Sidebar";
 import Header from "../../partials/Header";
-import SettingsSidebar from "../../partials/userSettingsSideBar/SettingsSidebar";
+import SettingsSidebar from "../../partials/settings/SettingsSidebar";
 import AccountPanel from "../../partials/userSettingsSideBar/AccountPanel";
 import { useLocation, useNavigate } from "react-router-dom";
 import Education from "../../partials/userSettingsSideBar/Education";
