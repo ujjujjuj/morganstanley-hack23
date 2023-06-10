@@ -37,6 +37,8 @@ const resources = {
       Campaigns: "Campaigns",
       MyProfile: "My Profile ✨",
       Pages: "Pages",
+      Tasks: "Tasks",
+      FAQ: "FAQ",
       //my profle
       BasicDetails: " Basic Details",
       GovernmentIDs: "Government IDs",
@@ -128,6 +130,9 @@ const resources = {
       FutureEvents: "Future Events",
       PastEvents: "Past Events",
       TotalEvents: "Total events",
+      //Welcome banner
+      Goodafternoon: "Good Afternoon",
+      bannerLine: "Here is what's happening with your community today",
     },
   },
   hi: {
@@ -161,6 +166,8 @@ const resources = {
       Campaigns: "Campaigns",
       MyProfile: "My Profile ✨",
       Pages: "Pages",
+      Tasks: "कार्य",
+      FAQ: "अक्सर पूछे जाने वाले प्रश्न",
       //my profle
       BasicDetails: " Basic Details",
       GovernmentIDs: "Government IDs",
@@ -252,8 +259,8 @@ const resources = {
       FutureEvents: "Future Events",
       PastEvents: "Past Events",
       TotalEvents: "Total events",
-      AllEvents: "सभी घटनाएँ",
-      RegisteredEvents: "पंजीकृत ईवेंट",
+      AllEvents: "सभी कार्यक्रम",
+      RegisteredEvents: "पंजीकृत कार्यक्रम",
       Messages: "संदेश",
       Calendar: "कैलेंडर",
       Campaigns: "अभियान",
@@ -350,6 +357,9 @@ const resources = {
       FutureEvents: "भविष्य में कार्यक्रम",
       PastEvents: "पिछले कार्यक्रम",
       TotalEvents: "कुल कार्यक्रम",
+      //Welcome banner
+      Goodafternoon: "नमस्कार",
+      bannerLine: "आज आपके समुदाय के साथ क्या हो रहा ,वह यहाँ है",
     },
   },
   mr: {
@@ -382,6 +392,9 @@ const resources = {
       Campaigns: "मोहिमा",
       MyProfile: "माझी प्रोफाईल",
       Pages: "पृष्ठे[संपादन]",
+      Tasks: "कामे",
+      Tasks: "कामे",
+      FAQ: "सामान्य प्रश्न",
       //my profle
       BasicDetails: "मूलभूत तपशील",
       GovernmentIDs: "सरकारी आय.डी.",
@@ -474,6 +487,9 @@ const resources = {
       FutureEvents: "भविष्यातील कार्यक्रम",
       PastEvents: "भूतकाळातील कार्यक्रम",
       TotalEvents: "एकूण कार्यक्रम",
+      //Welcome banner
+      Goodafternoon: "शुभ दुपार",
+      bannerLine: "आज आपल्या समाजाचे जे होत आहे ते येथे आहे.",
     },
   },
 }

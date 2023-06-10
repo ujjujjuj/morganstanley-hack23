@@ -42,7 +42,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     if (!user.isLoggedIn) {
       navigate("/signin")
     }
-    console.log(user.role);
+    console.log(user.role)
     if (user.role !== "User") {
       navigate("/")
     }
@@ -619,7 +619,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       />
                     </svg>
                     <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      FAQ
+                      {t("FAQ")}
                     </span>
                   </div>
                 </NavLink>
