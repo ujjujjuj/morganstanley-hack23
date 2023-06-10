@@ -27,9 +27,11 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
   )
 
-  if (!user.isLoggedIn) {
-    navigate("/signin")
-  }
+  useEffect(() => {
+    if (!user.isLoggedIn) {
+      navigate("/signin")
+    }
+  }, [user.role])
 
   useEffect(() => {
     const clickHandler = ({ target }) => {

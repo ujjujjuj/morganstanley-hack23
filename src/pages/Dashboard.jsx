@@ -1,11 +1,23 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import Sidebar from "../partials/Sidebar"
 import Header from "../partials/Header"
-import WelcomeBanner from '../partials/analytics/Welcome';
+import WelcomeBanner from "../partials/analytics/Welcome"
+import useUser from "../../hooks/useUser"
+import { useNavigate } from "react-router-dom"
 
 function Analytics() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { user } = useUser()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    console.log(user.role)
+    if (user.role === "User") {
+      navigate("/user")
+    }
+  }, [user.role])
+
   return (
     <div className="flex overflow-hidden h-screen">
       {/* Sidebar */}
@@ -19,12 +31,12 @@ function Analytics() {
           <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
             {/* Page header */}
             {/* <div className="mb-8 sm:flex sm:justify-between sm:items-center"> */}
-              {/* Left: Title */}
-              {/* <div className="mb-4 sm:mb-0"> */}
-              <WelcomeBanner/>
-                {/* <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
+            {/* Left: Title */}
+            {/* <div className="mb-4 sm:mb-0"> */}
+            <WelcomeBanner />
+            {/* <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
                 </h1> */}
-              {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
 
             {/* Cards */}

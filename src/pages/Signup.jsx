@@ -24,9 +24,10 @@ function Signup() {
 
   const formSubmit = (e) => {
     e.preventDefault()
-    const { name, number, password } = Object.fromEntries(
+    const { name, number, password, community, gender } = Object.fromEntries(
       new FormData(e.target)
     )
+
     if (!name || !number || !password) {
       toast.error("Please provide all the details")
       return
@@ -42,10 +43,18 @@ function Signup() {
     }
 
     const toastId = toast.loading("Logging in")
-    fetch("http://localhost:3000/user/register/admin", {
+    fetch("http://localhost:3000/user/register/byUser", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, number, password }),
+      body: JSON.stringify({
+        pwd: password,
+        basicDetails: {
+          PhoneNumber: number,
+          name,
+          gender,
+          Community: community,
+        },
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -124,6 +133,45 @@ function Signup() {
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
+                      htmlFor="community"
+                    >
+                      Community <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      id="community"
+                      className="w-full form-select"
+                      name="community"
+                    >
+                      <option>Maratha</option> <option>Brahmin</option>{" "}
+                      <option>Kunbi</option> <option>Dhangar</option>{" "}
+                      <option>Chambhar</option> <option>Mahadev Koli</option>{" "}
+                      <option>Mali</option> <option>Agri</option>{" "}
+                      <option>Bhandari</option> <option>Vanjari</option>{" "}
+                      <option>Teli</option> <option>Leva Patil</option>{" "}
+                      <option>Matang</option> <option>Nhavi</option>{" "}
+                      <option>Lingayat</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      className="block mb-1 text-sm font-medium"
+                      htmlFor="gender"
+                    >
+                      Gender <span className="text-rose-500">*</span>
+                    </label>
+                    <select
+                      id="gender"
+                      className="w-full form-select"
+                      name="gender"
+                    >
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      className="block mb-1 text-sm font-medium"
                       htmlFor="password"
                     >
                       Password <span className="text-rose-500">*</span>
@@ -160,8 +208,8 @@ function Signup() {
             </div>
           </div>
         </div>
-        <div className="mt-auto ml-1rem text-white fixed lang">
-          <div className="flex flex-row gap items-start">
+        <div className="fixed mt-auto text-white ml-1rem lang">
+          <div className="flex flex-row items-start gap">
             {languages.map((language) => (
               <span
                 key={language.code}
