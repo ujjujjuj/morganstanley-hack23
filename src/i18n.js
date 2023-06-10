@@ -39,6 +39,7 @@ const resources = {
       Pages: "Pages",
       Tasks: "Tasks",
       FAQ: "FAQ",
+      YourProgress: "Your Progress",
       //my profle
       BasicDetails: " Basic Details",
       GovernmentIDs: "Government IDs",
@@ -168,6 +169,7 @@ const resources = {
       Pages: "Pages",
       Tasks: "कार्य",
       FAQ: "अक्सर पूछे जाने वाले प्रश्न",
+      YourProgress: "आपकी प्रगति",
       //my profle
       BasicDetails: " Basic Details",
       GovernmentIDs: "Government IDs",
@@ -395,6 +397,7 @@ const resources = {
       Tasks: "कामे",
       Tasks: "कामे",
       FAQ: "सामान्य प्रश्न",
+      YourProgress: "तुमची प्रगती",
       //my profle
       BasicDetails: "मूलभूत तपशील",
       GovernmentIDs: "सरकारी आय.डी.",

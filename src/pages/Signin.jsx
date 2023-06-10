@@ -47,27 +47,31 @@ const Signin = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ PhoneNumber: number, pwd: password }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        if (!data._id) throw "Invalid"
-        toast.update(toastId, {
-          render: "Logged In",
-          type: toast.TYPE.SUCCESS,
-          autoClose: 3000,
-          isLoading: false,
-        })
-        loginUser(data)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data)
+      if (data.message === 'INVALID CREDENTIALS !!!') {
+        throw "Invalid Credentials"
+      } else if (!data._id) {
+        throw "Invalid"
+      }
+      toast.update(toastId, {
+        render: "Logged In",
+        type: toast.TYPE.SUCCESS,
+        autoClose: 3000,
+        isLoading: false,
       })
-      .catch((e) => {
-        toast.update(toastId, {
-          render: "An unknown error occured",
-          type: toast.TYPE.ERROR,
-          autoClose: 3000,
-          isLoading: false,
-        })
-        console.log(e)
+      loginUser(data)
+    })
+    .catch((e) => {
+      toast.update(toastId, {
+        render: e,
+        type: toast.TYPE.ERROR,
+        autoClose: 3000,
+        isLoading: false,
       })
+      console.log(e)
+    })
   }
 
   return (
