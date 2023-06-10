@@ -144,6 +144,7 @@ function Signup() {
                       className="w-full form-select"
                       name="community"
                     >
+                      <option value="">Select Community</option>
                       <option>Maratha</option> <option>Brahmin</option>{" "}
                       <option>Kunbi</option> <option>Dhangar</option>{" "}
                       <option>Chambhar</option> <option>Mahadev Koli</option>{" "}
