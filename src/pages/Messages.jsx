@@ -26,7 +26,7 @@ function Messages() {
               {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
-                Support Responses
+                  Support Responses
                 </h1>
               </div>
             </div>

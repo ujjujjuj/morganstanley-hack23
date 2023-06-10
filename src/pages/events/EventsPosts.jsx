@@ -50,7 +50,7 @@ export default function EventsPosts() {
 
   return (
     <>
-      <div className="sm:flex sm:justify-between sm:items-center mb-2">
+      <div className="hidden sm:flex sm:justify-between sm:items-center mb-2">
         {/* Filters */}
         <div className="mb-0">
           <ul className="flex flex-wrap -m-1">
