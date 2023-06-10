@@ -97,16 +97,16 @@ function SuggestedUserTableItem(props) {
           
         {/* </div> */}
       {/* </td> */}
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-          <div className="text-left">{props.name}</div>
+      <td className="px-8 py-3">
+        <div className="text-left">{props.name}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-          <div className="text-left">{props.age}</div>
+      <td className="px-8 py-3">
+        <div className="text-left">{props.age}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <td className="px-8 py-3">
         <div className="text-left">{props.community}</div>
       </td>
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+      <td className="px-8 py-3">
         <div className="text-left">{props.phone}</div>
       </td>
       {(props.type==="Attend")?
