@@ -14,7 +14,7 @@ const languages = [
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const { pathname } = useLocation()
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const trigger = useRef(null)
   const sidebar = useRef(null)
@@ -126,7 +126,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                 •••
               </span>
               <span className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                Pages
+                {t("pages")}
               </span>
             </h3>
             <ul className="mt-3">
@@ -173,7 +173,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       />
                     </svg>
                     <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      Dashboard
+                      {t("dashboard")}
                     </span>
                   </div>
                 </NavLink>
@@ -228,7 +228,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               />
                             </svg>
                             <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                              Events
+                              {t("events")}
                             </span>
                           </div>
                           {/* Icon */}
@@ -258,7 +258,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Manage Events
+                                {t("manageEvents")}
                               </span>
                             </NavLink>
                           </li>
@@ -274,7 +274,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Events View
+                                {t("eventsView")}
                               </span>
                             </NavLink>
                           </li>
@@ -319,7 +319,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         />
                       </svg>
                       <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                        Users
+                        {t("users")}
                       </span>
                     </div>
                   </div>
@@ -369,7 +369,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               />
                             </svg>
                             <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                              Community
+                              {t("community")}
                             </span>
                           </div>
                           {/* Icon */}
@@ -399,7 +399,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Manage Community
+                                {t("manageCommunity")}
                               </span>
                             </NavLink>
                           </li>
@@ -415,7 +415,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               }
                             >
                               <span className="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                All Communities
+                                {t("allCommunities")}
                               </span>
                             </NavLink>
                           </li>
@@ -464,7 +464,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       />
                     </svg>
                     <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      Inbox
+                      {t("inbox")}
                     </span>
                   </div>
                 </NavLink>
@@ -504,7 +504,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                       />
                     </svg>
                     <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      Calendar
+                      {t("calendar")}
                     </span>
                   </div>
                 </NavLink>
@@ -545,7 +545,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         />
                       </svg>
                       <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                        Support Responses
+                        {t("supportResponses")}
                       </span>
                     </div>
                     {/* Badge */}
