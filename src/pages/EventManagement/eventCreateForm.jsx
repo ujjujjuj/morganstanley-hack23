@@ -8,7 +8,7 @@ export default function EventForm() {
     const [category,setEventCategory]=useState("");
     const [eventDuration,setEvenDuration]=useState(0);
     const [eventDetails,setEventDetails]=useState("");
-    const [eventDateTime, setEventDateTime] = useState(""); // Add this line
+    const [eventStartTime, seteventStartTime] = useState(""); // Add this line
   // duration details 
 
     // duration details 
@@ -26,22 +26,23 @@ export default function EventForm() {
         setEventCategory(location1.state.category);
         setLocation(location1.state.location);
         setEventDetails(location1.state.details);
+        seteventStartTime(location1.state.eventStartTime);
     
         // Convert the fetched dateTime to the required format
-        if (location1.state.eventDateTime) {
-          let dt = new Date(location1.state.eventDateTime);
-          let year = dt.getUTCFullYear();
-          let month = ("0" + (dt.getUTCMonth() + 1)).slice(-2);
-          let date = ("0" + dt.getUTCDate()).slice(-2);
-          let hours = ("0" + dt.getUTCHours()).slice(-2);
-          let minutes = ("0" + dt.getUTCMinutes()).slice(-2);
+        // if (location1.state.eventStartTime) {
+        //   let dt = new Date(location1.state.eventStartTime);
+        //   let year = dt.getUTCFullYear();
+        //   let month = ("0" + (dt.getUTCMonth() + 1)).slice(-2);
+        //   let date = ("0" + dt.getUTCDate()).slice(-2);
+        //   let hours = ("0" + dt.getUTCHours()).slice(-2);
+        //   let minutes = ("0" + dt.getUTCMinutes()).slice(-2);
     
-          let newDateTime = `${year}-${month}-${date}T${hours}:${minutes}`;
-          setEventDateTime(newDateTime);
+        //   let newDateTime = `${year}-${month}-${date}T${hours}:${minutes}`;
+        //   seteventStartTime(newDateTime);
   
-           // Here is the console.log statement
-           console.log("Converted event date and time: ", newDateTime);
-        }
+        //    // Here is the console.log statement
+        //    console.log("Converted event date and time: ", newDateTime);
+        // }
       }
     },[]);
 
@@ -88,7 +89,7 @@ export default function EventForm() {
               followedUp:location1.state.followUp,
               feedback:location1.state.feedback,
               imageUrl:location1.state.imageUrl,
-              eventStartTime: eventDateTime // Add this line
+              eventStartTime: eventStartTime // Add this line
             }
             console.log(body);
             const requestOptions = {
@@ -115,7 +116,7 @@ export default function EventForm() {
         }
         else{
           await postData({
-            eventName,category,location,eventDetails,eventDuration
+            eventName,category,location,eventDetails,eventDuration,eventStartTime
         });
         
         // just navigate !! 
@@ -152,6 +153,25 @@ export default function EventForm() {
                 />
               </div>
             </div>
+
+            <div className="sm:col-span-6 lg:col-span-3">
+        <label htmlFor="event-date-time" className="block text-sm font-medium leading-6 text-gray-900">
+          Event Date and Time
+        </label>
+        <div className="mt-2">
+          <input
+            onChange={(event) => { seteventStartTime(event.target.value) }}
+            type="datetime-local"
+            name="event-date-time"
+            id="event-date-time"
+            value={eventStartTime}
+            autoComplete="off"
+            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+
 
           {/* Event details */}
           <div className="sm:col-span-6">
