@@ -8,6 +8,7 @@ import DialogflowMessenger from "../../utils/DialogflowMessenger";
 
 import Sidebar from "../../partials/Sidebar";
 import Header from "../../partials/Header";
+import useUser from "../../../hooks/useUser";
 
 // import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
@@ -20,11 +21,13 @@ export default function RegisteredEventPost() {
   const attended = postInfo ? postInfo.attended.length : 0;
   const registered = postInfo ? postInfo.registered.length : 0;
   const didNotAttend = registered - attended;
+  const { user } = useUser()
+  const userID = user._id
 
-  const userID = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now reaplce it by userid from token
+ 
 
   useEffect(() => {
-    fetch(`http://15.206.18.143:3000/events/list/${id}`).then((response) => {
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then((response) => {
       response.json().then((data) => {
         setPostInfo(data);
       });
@@ -34,7 +37,7 @@ export default function RegisteredEventPost() {
     if (postInfo) {
       try {
         const response = await axios.post(
-          "http://15.206.18.143:3000/user/attendAnEvent",
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/attendAnEvent`,
           {
             eventId: postInfo._id,
             userId: userID,
