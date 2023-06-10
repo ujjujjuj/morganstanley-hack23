@@ -78,7 +78,7 @@ export default function EventPost() {
                 <div className="mb-6">
                   <Link
                     className="px-3 bg-white btn-sm border-slate-200 hover:border-slate-300 text-slate-600"
-                    to="/user/"
+                    to="/events/list/"
                   >
                     <svg
                       className="mr-2 fill-current text-slate-400"
@@ -143,29 +143,6 @@ export default function EventPost() {
               {/* Sidebar */}
               <div className="space-y-4">
                 {/* 1st block */}
-                <div className="p-5 bg-white rounded-sm border shadow-lg border-slate-200 lg:w-72 xl:w-80">
-                  <div className="space-y-2">
-                    <button
-                      className={`btn w-full ${
-                        isRegistered
-                          ? "bg-green-500 hover:bg-green-600"
-                          : "bg-indigo-500 hover:bg-indigo-600"
-                      } text-white`}
-                      onClick={registerForEvent}
-                      disabled={!postInfo}
-                    >
-                      <svg
-                        className="w-4 h-4 fill-current shrink-0"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
-                      </svg>
-                      <span className="ml-1">
-                        {isRegistered ? "Registered" : "Register"}
-                      </span>
-                    </button>
-                  </div>
-                </div>
 
                 {/* 2nd block */}
 

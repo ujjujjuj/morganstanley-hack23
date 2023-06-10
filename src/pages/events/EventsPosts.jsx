@@ -11,7 +11,7 @@ export default function EventsPosts() {
 
   useEffect(() => {
     axios
-      .get("http://15.206.18.143:3000/events/list")
+      .get("http://localhost:3000/events/list")
       .then((response) => {
         console.log(response)
 
@@ -23,13 +23,15 @@ export default function EventsPosts() {
         })
 
         setPosts(response.data)
-        const today = new Date().toISOString()
+        const today = Date.now()
+
         const upcoming = sortedPosts.filter(
-          (post) => new Date(post.eventStartTime).toISOString() >= today
+          (post) => new Date(post.eventStartTime).getTime() >= today
         )
         const past = sortedPosts.filter(
-          (post) => new Date(post.eventStartTime).toISOString() < today
+          (post) => new Date(post.eventStartTime).getTime() < today
         )
+        console.log(past)
         setUpcomingEvents(upcoming)
         setPastEvents(past)
       })

@@ -16,6 +16,7 @@ import Campaigns from "./pages/Campaigns"
 // import Meetups from "./pages/community/Meetups"
 // import MeetupsPost from "./pages/community/MeetupsPost"
 import Messages from "./pages/Messages"
+import AdminMessages from "./pages/AdminMessages"
 import Calendar from "./pages/Calendar"
 import PageNotFound from "./pages/utility/PageNotFound"
 import Signin from "./pages/Signin"
@@ -23,6 +24,7 @@ import Signup from "./pages/Signup"
 import ResetPassword from "./pages/ResetPassword"
 import EventsList from "./pages/events/Events"
 import EventPost from "./pages/community/EventPage"
+import AdminEventPost from "./pages/community/AdminEventPage"
 
 // Event Management and user management related Routes
 import Events from "./pages/EventManagement/Events"
@@ -77,7 +79,7 @@ function App() {
         <Route exact path="/" element={<Dashboard />} />
         {/* <Route path="/community/meetups" element={<Meetups />} />
         <Route path="/community/meetups-post" element={<MeetupsPost />} /> */}
-        <Route path="/messages" element={<Messages />} />
+        <Route path="/messages" element={<AdminMessages />} />
         <Route path="/calendar" element={<MyCalendar />} />
         <Route path="/Inbox" element={<Inbox />} />
         <Route path="/signin" element={<Signin />} />
@@ -85,7 +87,7 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/events/list" element={<EventsList />} />
-        <Route path="/events/list/:id" element={<EventPost />} />
+        <Route path="/events/list/:id" element={<AdminEventPost />} />
 
         {/* Event Management and User Management All Routes !! */}
         <Route exact path="/events/userList" element={<Users />} />
