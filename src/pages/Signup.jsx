@@ -59,35 +59,34 @@ function Signup() {
       }),
     })
     .then((res) => res.json())
-    .then((data) => {
-      if (data.message === 'Phone number already exists.') {
-        toast.error("Phone number already exists.")
-        toast.update(toastId, {
-          render: "Failed to register",
-          type: toast.TYPE.ERROR,
-          autoClose: 3000,
-          isLoading: false,
-        })
-      } else {
-        console.log(data)
-        toast.update(toastId, {
-          render: "Logged In",
-          type: toast.TYPE.SUCCESS,
-          autoClose: 3000,
-          isLoading: false,
-        })
-        loginUser(data)
-      }
+.then((data) => {
+  if (data.message === 'Phone number already exists.') {
+    toast.dismiss(toastId);
+    toast.error("Phone number already exists.")
+  } else if (data.message === 'INVALID CREDENTIALS !!!') {
+    toast.dismiss(toastId);
+    toast.error("Invalid credentials.")
+  } else {
+    console.log(data)
+    toast.update(toastId, {
+      render: "Logged In",
+      type: toast.TYPE.SUCCESS,
+      autoClose: 3000,
+      isLoading: false,
     })
-    .catch((e) => {
-      toast.update(toastId, {
-        render: "Failed to login",
-        type: toast.TYPE.ERROR,
-        autoClose: 3000,
-        isLoading: false,
-      })
-      console.log(e)
-    })
+    loginUser(data)
+  }
+})
+.catch((e) => {
+  toast.update(toastId, {
+    render: "Failed to login",
+    type: toast.TYPE.ERROR,
+    autoClose: 3000,
+    isLoading: false,
+  })
+  console.log(e)
+})
+
     
   }
 
