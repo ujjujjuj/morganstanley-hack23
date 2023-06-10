@@ -15,9 +15,7 @@ export default function EventsPosts() {
   useEffect(() => {
     axios
       .get(
-        `${import.meta.env.VITE_SERVER_ADDRESS}/user/getUsersRegisteredEvents/${
-          user._id
-        }`
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/getUsersRegisteredEvents/${user._id}`
       )
       .then((response) => {
         console.log(response)
@@ -39,9 +37,7 @@ export default function EventsPosts() {
   useEffect(() => {
     axios
       .get(
-        `${import.meta.env.VITE_SERVER_ADDRESS}/user/getUsersAttendedEvents/${
-          user._id
-        }`
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/getUsersAttendedEvents/${user._id}`
       )
       .then((response) => {
         console.log(response)

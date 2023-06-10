@@ -5,6 +5,7 @@ import EventDisplay from "./DateFormat"
 import axios from "axios"
 import { Pie } from "react-chartjs-2"
 import DialogflowMessenger from "../../utils/DialogflowMessenger"
+import useUser from "../../../hooks/useUser"
 
 import Sidebar from "../../partials/UserSidebar"
 import Header from "../../partials/UserHeader"
@@ -20,8 +21,8 @@ export default function RegisteredEventPost() {
   const attended = postInfo ? postInfo.attended.length : 0
   const registered = postInfo ? postInfo.registered.length : 0
   const didNotAttend = registered - attended
-
-  const userID = "d667476a-6f64-47c4-8eb7-4d4504927b60" // Constant user ID for now reaplce it by userid from token
+  const { user } = useUser()
+  const userID = user._id
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then(
