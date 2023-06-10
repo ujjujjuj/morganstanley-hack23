@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import AuthImage from "../images/auth-image.webp"
 import TinyMiraclesLogo from "../images/tinymiracles.webp"
 import { useTranslation } from "react-i18next"
+import useUser from "../../hooks/useUser"
 
 const languages = [
   { name: "English", code: "en" },
@@ -14,6 +15,14 @@ const languages = [
 function ResetPassword() {
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+
+  const { user } = useUser()
+
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/")
+    }
+  }, [user])
 
   return (
     <main className="bg-white">
@@ -82,8 +91,8 @@ function ResetPassword() {
           />
         </div>
       </div>
-      <div className="mt-auto ml-1rem text-white fixed lang">
-        <div className="flex flex-row gap items-start">
+      <div className="fixed mt-auto text-white ml-1rem lang">
+        <div className="flex flex-row items-start gap">
           {languages.map((language) => (
             <span
               key={language.code}

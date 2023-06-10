@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
 import AuthImage from "../images/auth-image.webp"
@@ -18,9 +18,11 @@ function Signup() {
   const { user, loginUser } = useUser()
   const navigate = useNavigate()
 
-  if (user.isLoggedIn) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/")
+    }
+  }, [user])
 
   const formSubmit = (e) => {
     e.preventDefault()
@@ -208,8 +210,8 @@ function Signup() {
             </div>
           </div>
         </div>
-        
-        <div className="pos mt-auto text-white ml-1rem lang">
+
+        <div className="mt-auto text-white pos ml-1rem lang">
           <div className="flex flex-row items-start gap">
             {languages.map((language) => (
               <span
