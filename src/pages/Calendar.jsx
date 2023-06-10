@@ -30,7 +30,7 @@ function MyCalendar() {
 
   useEffect(() => {
     axios
-      .get("http://15.206.18.143:3000/events/list")
+      .get(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list`)
       .then((response) => {
         const fetchedEvents = response.data.map((event) => ({
           title: event.eventName,
@@ -48,7 +48,7 @@ function MyCalendar() {
   }, [])
 
   const handleEventSelect = (event) => {
-    navigate(`/event/${event.id}`)
+    navigate(`/user/event/${event.id}`)
   }
   const eventStyleGetter = (event, start, end, isSelected) => {
     var backgroundColor = categoryColors[event.category]

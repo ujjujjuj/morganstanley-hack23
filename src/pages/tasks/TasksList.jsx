@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useUser from "../../../hooks/useUser"
 
-import Sidebar from "../../partials/Sidebar";
-import Header from "../../partials/Header";
+import Sidebar from "../../partials/UserSidebar"
+import Header from "../../partials/UserHeader"
 import DialogflowMessenger from "../../utils/DialogflowMessenger";
 import Tasks from "./Tasks";
 import Feedback from "./Feedback"; // Import the Feedback component
