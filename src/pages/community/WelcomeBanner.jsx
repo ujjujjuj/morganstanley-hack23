@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import useUser from "../../../hooks/useUser"
+import { useTranslation } from "react-i18next"
 
 function WelcomeBanner() {
   const { user } = useUser()
-
+  const { i18n } = useTranslation()
+  const { t } = useTranslation()
   return (
     <div className="overflow-hidden relative p-4 mb-8 bg-indigo-200 rounded-sm sm:p-6">
       {/* Background illustration */}
@@ -73,9 +75,9 @@ function WelcomeBanner() {
       {/* Content */}
       <div className="relative">
         <h1 className="mb-1 text-2xl font-bold md:text-3xl text-slate-800">
-          Good afternoon, {user.name}. 👋
+          {t("Goodafternoon")} , {user.name}. 👋
         </h1>
-        <p>Here is what&apos;s happening with your community today:</p>
+        <p>{t("bannerLine")}:</p>
       </div>
     </div>
   )
