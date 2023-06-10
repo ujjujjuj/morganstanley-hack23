@@ -1,32 +1,68 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import React from "react"
-import EventDisplay from "./DateFormat"
-import { Pie } from "react-chartjs-2"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import React from "react";
+import EventDisplay from "./DateFormat";
+import axios from "axios";
+import { Pie } from "react-chartjs-2";
+import DialogflowMessenger from "../../utils/DialogflowMessenger";
 
-import Sidebar from "../../partials/UserSidebar"
-import Header from "../../partials/UserHeader"
+import Sidebar from "../../partials/Sidebar";
+import Header from "../../partials/Header";
 
 // import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-export default function EventPost() {
-  const [postInfo, setPostInfo] = useState(null)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { id } = useParams()
-  const attended = postInfo ? postInfo.attended.length : 0
-  const registered = postInfo ? postInfo.registered.length : 0
-  const didNotAttend = registered - attended
+export default function RegisteredEventPost() {
+  const [postInfo, setPostInfo] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { id } = useParams();
+  const [isAttended, setIsAttended] = useState(false);
+  const attended = postInfo ? postInfo.attended.length : 0;
+  const registered = postInfo ? postInfo.registered.length : 0;
+  const didNotAttend = registered - attended;
+
+  const userID = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now reaplce it by userid from token
 
   useEffect(() => {
-    fetch(`http://localhost:3000/events/list/${id}`).then((response) => {
+    fetch(`http://15.206.18.143:3000/events/list/${id}`).then((response) => {
       response.json().then((data) => {
-        setPostInfo(data)
-      })
-    })
-  }, [])
+        setPostInfo(data);
+      });
+    });
+  }, []);
+  const attendEvent = async () => {
+    if (postInfo) {
+      try {
+        const response = await axios.post(
+          "http://15.206.18.143:3000/user/attendAnEvent",
+          {
+            eventId: postInfo._id,
+            userId: userID,
+          }
+        );
 
-  if (!postInfo) return ""
+        if (response.data.message === "Success !!") {
+          setIsAttended(true);
+        } else {
+          alert("Error: " + response.data.message);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+        if (
+          error.response &&
+          error.response.data.message ===
+            "User is already registered for this event."
+        ) {
+          alert("You have already attended this event.");
+          setIsAttended(true);
+        } else {
+          alert("An error occurred. Please try again.");
+        }
+      }
+    }
+  };
+
+  if (!postInfo) return "";
 
   return (
     <div className="flex overflow-hidden h-screen">
@@ -37,6 +73,7 @@ export default function EventPost() {
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <DialogflowMessenger />
 
         <main>
           <div className="px-4 py-8 w-full sm:px-6 lg:px-8">
@@ -47,7 +84,7 @@ export default function EventPost() {
                 <div className="mb-6">
                   <Link
                     className="px-3 bg-white btn-sm border-slate-200 hover:border-slate-300 text-slate-600"
-                    to="/user/"
+                    to="/registered"
                   >
                     <svg
                       className="mr-2 fill-current text-slate-400"
@@ -111,7 +148,39 @@ export default function EventPost() {
 
               {/* Sidebar */}
               <div className="space-y-4">
-                {/* 1nd block */}
+                {/* 1st block */}
+                <div className="p-5 bg-white rounded-sm border shadow-lg border-slate-200 lg:w-72 xl:w-80">
+                  <div className="space-y-2">
+                    {isAttended ? (
+                      <button
+                        className="w-full text-white bg-green-500 btn hover:bg-green-600"
+                        disabled
+                      >
+                        <svg
+                          className="w-4 h-4 fill-current shrink-0"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
+                        </svg>
+                        <span className="ml-1">Attended</span>
+                      </button>
+                    ) : (
+                      <button
+                        className="w-full text-white bg-indigo-500 btn hover:bg-indigo-600"
+                        onClick={attendEvent}
+                        disabled={!postInfo}
+                      >
+                        <svg
+                          className="w-4 h-4 fill-current shrink-0"
+                          viewBox="0 0 16 16"
+                        >
+                          <path d="m2.457 8.516.969-.99 2.516 2.481 5.324-5.304.985.989-6.309 6.284z" />
+                        </svg>
+                        <span className="ml-1">Attending</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
 
                 <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
                   <div className="">
@@ -119,30 +188,11 @@ export default function EventPost() {
                   </div>
                   <div className="">Attended ({postInfo.attended.length})</div>
                 </div>
-                {/* <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
-  {postInfo && (
-    console.log('Attended:', attended, 'Did not attend:', didNotAttend), // Add this line to log attended and didNotAttend
-    <Pie
-      data={{
-        labels: ["Attended", "Did not Attend"],
-        datasets: [
-          {
-            data: [attended, didNotAttend],
-            backgroundColor: [
-              "rgba(75, 192, 192, 1)", // darker cyan
-              "rgba(255, 99, 132, 1)", // darker pink
-            ],
-          },
-        ],
-      }}
-    />
-  )}
-</div> */}
               </div>
             </div>
           </div>
         </main>
       </div>
     </div>
-  )
+  );
 }

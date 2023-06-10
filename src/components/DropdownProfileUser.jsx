@@ -86,7 +86,7 @@ function DropdownProfile({ align }) {
         >
           <div className="pt-0.5 pb-2 px-3 mb-1 border-b border-slate-200">
             <div className="font-medium text-slate-800">{user.name}</div>
-            <div className="text-xs italic text-slate-500">Administrator</div>
+            <div className="text-xs italic text-slate-500">User</div>
           </div>
           <ul>
             <li>

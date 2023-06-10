@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
-import InboxSidebar from '../partials/inbox/InboxSidebar';
-import InboxBody from '../partials/inbox/InboxBody';
+// import InboxSidebar from '../partials/inbox/InboxSidebar';
 
 function Inbox() {
 
@@ -11,25 +10,22 @@ function Inbox() {
   const [inboxSidebarOpen, setInboxSidebarOpen] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex overflow-hidden h-screen">
 
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* Content area */} 
-      <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+      <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
 
         {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
-          <div className="relative flex">
+          <div className="flex relative">
 
             {/* Inbox sidebar */}
-            <InboxSidebar inboxSidebarOpen={inboxSidebarOpen} setInboxSidebarOpen={setInboxSidebarOpen} />
-
             {/* Inbox body */}
-            <InboxBody inboxSidebarOpen={inboxSidebarOpen} setInboxSidebarOpen={setInboxSidebarOpen} />
 
           </div>
         </main>

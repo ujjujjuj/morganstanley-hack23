@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react"
+import { Link } from "react-router-dom"
 
-import Sidebar from "../../partials/Sidebar";
-import Header from "../../partials/Header";
+import Sidebar from "../../partials/Sidebar"
+import Header from "../../partials/Header"
 
-import NotFoundImage from "../../images/404-illustration.svg";
+import NotFoundImage from "../../images/404-illustration.svg"
 
 function PageNotFound() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex overflow-hidden h-screen">
+    <div className="flex overflow-hidden items-center h-screen bg-white justify-normal">
       {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
       {/* Content area */}
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1 bg-white">
-        {/*  Site header */}
-        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
         <main>
           <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
             <div className="m-auto mt-16 max-w-2xl">
@@ -47,7 +42,7 @@ function PageNotFound() {
         </main>
       </div>
     </div>
-  );
+  )
 }
 
-export default PageNotFound;
+export default PageNotFound

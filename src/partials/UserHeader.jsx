@@ -1,10 +1,6 @@
-import React, { useState } from "react"
+import React from "react"
 
-import SearchModal from "../components/ModalSearch"
-import Notifications from "../components/DropdownNotifications"
-import Help from "../components/DropdownHelp"
-import UserMenu from "../components/DropdownProfile"
-import useUser from "../../hooks/useUser"
+import UserMenu from "../components/DropdownProfileUser"
 
 function Header({ sidebarOpen, setSidebarOpen }) {
   return (
