@@ -9,7 +9,7 @@
 //     console.log(props.eventId);
 //     const fetchData = async () => {
 //         try {
-//           const response = await fetch(`http://localhost:3000/user/filter/name?name=${props.name}`);
+//           const response = await fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/user/filter/name?name=${props.name}`);
 //           const data = await response.json();
 //           // console.log(data);
 //           if(data.hasOwnProperty('result')){
@@ -23,15 +23,13 @@
 //           console.log("No user Found !!");
 //         }
 //       };
-  
+
 //       if (props.name) {
 //         fetchData();
 //       }
 
 //     // eslint-disable-next-line react-hooks/exhaustive-deps
 //   }, [props.name]);
-
-
 
 //   return (
 //     <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
@@ -63,7 +61,7 @@
 //             </thead>
 //             {/* Table body */}
 //             <tbody className="text-sm divide-y divide-slate-200">
-//               { list.length>0 && 
+//               { list.length>0 &&
 //                 list.map(participant => {
 //                   return (
 //                     <SuggestedUserTableItem

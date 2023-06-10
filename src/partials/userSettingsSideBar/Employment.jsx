@@ -1,42 +1,42 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // import axios for making HTTP requests
+import React, { useState, useEffect } from "react"
+import axios from "axios" // import axios for making HTTP requests
 
 function Employment(props) {
-  const [currentEmployment, setCurrentEmployment] = useState(""); // state variable for currentEmployment
-  const [previousEmployment, setPreviousEmployment] = useState(""); // state variable for previousEmployment
-  const [jobTraining, setJobTraining] = useState(""); // state variable for jobTraining
-  const [workNature, setWorkNature] = useState(""); // state variable for workNature
-  const [workIndustry, setWorkIndustry] = useState(""); // state variable for workExperience
-  const [openForEmployment, setOpenForEmployment] = useState(""); // state variable for openForEmployment
+  const [currentEmployment, setCurrentEmployment] = useState("") // state variable for currentEmployment
+  const [previousEmployment, setPreviousEmployment] = useState("") // state variable for previousEmployment
+  const [jobTraining, setJobTraining] = useState("") // state variable for jobTraining
+  const [workNature, setWorkNature] = useState("") // state variable for workNature
+  const [workIndustry, setWorkIndustry] = useState("") // state variable for workExperience
+  const [openForEmployment, setOpenForEmployment] = useState("") // state variable for openForEmployment
 
   // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
-  const id=props.id; 
+  const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
-        );
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
+        )
 
-        setCurrentEmployment(response.data.employmentStatus.currentEmployment);
-        setPreviousEmployment(response.data.employmentStatus.prevEmployment);
-        setJobTraining(response.data.employmentStatus.jobTraining);
-        setWorkNature(response.data.employmentStatus.workNature);
-        setWorkIndustry(response.data.employmentStatus.workIndustry);
-        setOpenForEmployment(response.data.employmentStatus.openForEmployment);
+        setCurrentEmployment(response.data.employmentStatus.currentEmployment)
+        setPreviousEmployment(response.data.employmentStatus.prevEmployment)
+        setJobTraining(response.data.employmentStatus.jobTraining)
+        setWorkNature(response.data.employmentStatus.workNature)
+        setWorkIndustry(response.data.employmentStatus.workIndustry)
+        setOpenForEmployment(response.data.employmentStatus.openForEmployment)
       } catch (error) {
-        console.error("Failed to fetch user details.", error);
+        console.error("Failed to fetch user details.", error)
       }
-    };
-    fetchUserDetail();
-  }, []);
+    }
+    fetchUserDetail()
+  }, [])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           employmentStatus: {
             currentEmployment: currentEmployment,
@@ -47,14 +47,14 @@ function Employment(props) {
             openForEmployment: openForEmployment,
           },
         }
-      );
-      console.log(response.data);
-      alert("Profile updated successfully.");
+      )
+      console.log(response.data)
+      alert("Profile updated successfully.")
     } catch (error) {
-      console.error("Failed to update profile.", error);
-      alert("Failed to update profile.");
+      console.error("Failed to update profile.", error)
+      alert("Failed to update profile.")
     }
-  };
+  }
   return (
     <form className="w-full  " onSubmit={handleSubmit}>
       <div className="grow">
@@ -178,22 +178,24 @@ function Employment(props) {
         </div>
 
         {/* Panel footer */}
-        {(props.showSave==="Yes") && <footer>
-          <div className="flex flex-col px-6 py-5 border-t border-slate-200">
-            <div className="flex self-end">
-              <button
-                type="submit"
-                onSubmit={handleSubmit}
-                className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
-              >
-                Save
-              </button>
+        {props.showSave === "Yes" && (
+          <footer>
+            <div className="flex flex-col px-6 py-5 border-t border-slate-200">
+              <div className="flex self-end">
+                <button
+                  type="submit"
+                  onSubmit={handleSubmit}
+                  className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
+                >
+                  Save
+                </button>
+              </div>
             </div>
-          </div>
-        </footer>}
+          </footer>
+        )}
       </div>
     </form>
-  );
+  )
 }
 
-export default Employment;
+export default Employment

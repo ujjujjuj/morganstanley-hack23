@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // import axios for making HTTP requests
+import React, { useState, useEffect } from "react"
+import axios from "axios" // import axios for making HTTP requests
 
 function MedicalStatus(props) {
-  const [hospitalizationRecords, setHospitalizationRecords] = useState(""); // state variable for hospitalizationRecords
-  const [chronicIllnesses, setChronicIllnesses] = useState(""); // state variable for chronicIllnesses
-  const [currentMedications, setCurrentMedications] = useState(""); // state variable for currentMedications
-  const [bloodGroup, setBloodGroup] = useState(""); // state variable bloodGroup
-  const [allergies, setAllergies] = useState(""); // state variable allergies
-  const [vaccinationRecords, setVaccinationRecords] = useState(""); // state variable vaccinationRecords
-  const [healthInsurance, setHealthInsurance] = useState(""); // state variable healthInsurance
+  const [hospitalizationRecords, setHospitalizationRecords] = useState("") // state variable for hospitalizationRecords
+  const [chronicIllnesses, setChronicIllnesses] = useState("") // state variable for chronicIllnesses
+  const [currentMedications, setCurrentMedications] = useState("") // state variable for currentMedications
+  const [bloodGroup, setBloodGroup] = useState("") // state variable bloodGroup
+  const [allergies, setAllergies] = useState("") // state variable allergies
+  const [vaccinationRecords, setVaccinationRecords] = useState("") // state variable vaccinationRecords
+  const [healthInsurance, setHealthInsurance] = useState("") // state variable healthInsurance
 
   // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
-  const id=props.id; 
+  const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
-        );
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
+        )
 
         setHospitalizationRecords(
           response.data.medicalRecords.hospitalizationRecords
-        );
-        setChronicIllnesses(response.data.medicalRecords.chronicIllnesses);
-        setCurrentMedications(response.data.medicalRecords.currentMedications);
-        setBloodGroup(response.data.medicalRecords.bloodGroup);
-        setAllergies(response.data.medicalRecords.allergies);
-        setVaccinationRecords(response.data.medicalRecords.vaccinationRecords);
-        setHealthInsurance(response.data.medicalRecords.healthInsurance);
+        )
+        setChronicIllnesses(response.data.medicalRecords.chronicIllnesses)
+        setCurrentMedications(response.data.medicalRecords.currentMedications)
+        setBloodGroup(response.data.medicalRecords.bloodGroup)
+        setAllergies(response.data.medicalRecords.allergies)
+        setVaccinationRecords(response.data.medicalRecords.vaccinationRecords)
+        setHealthInsurance(response.data.medicalRecords.healthInsurance)
       } catch (error) {
-        console.error("Failed to fetch user details.", error);
+        console.error("Failed to fetch user details.", error)
       }
-    };
-    fetchUserDetail();
-  }, []);
+    }
+    fetchUserDetail()
+  }, [])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           medicalRecords: {
             hospitalizationRecords: hospitalizationRecords,
@@ -52,14 +52,14 @@ function MedicalStatus(props) {
             healthInsurance: healthInsurance,
           },
         }
-      );
-      console.log(response.data);
-      alert("Profile updated successfully.");
+      )
+      console.log(response.data)
+      alert("Profile updated successfully.")
     } catch (error) {
-      console.error("Failed to update profile.", error);
-      alert("Failed to update profile.");
+      console.error("Failed to update profile.", error)
+      alert("Failed to update profile.")
     }
-  };
+  }
   return (
     <form className="w-full  " onSubmit={handleSubmit}>
       <div className="grow">
@@ -226,22 +226,24 @@ function MedicalStatus(props) {
         </div>
 
         {/* Panel footer */}
-        {(props.showSave==="Yes") && <footer>
-          <div className="flex flex-col px-6 py-5 border-t border-slate-200">
-            <div className="flex self-end">
-              <button
-                type="submit"
-                onSubmit={handleSubmit}
-                className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
-              >
-                Save
-              </button>
+        {props.showSave === "Yes" && (
+          <footer>
+            <div className="flex flex-col px-6 py-5 border-t border-slate-200">
+              <div className="flex self-end">
+                <button
+                  type="submit"
+                  onSubmit={handleSubmit}
+                  className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
+                >
+                  Save
+                </button>
+              </div>
             </div>
-          </div>
-        </footer>}
+          </footer>
+        )}
       </div>
     </form>
-  );
+  )
 }
 
-export default MedicalStatus;
+export default MedicalStatus

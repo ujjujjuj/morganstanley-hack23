@@ -43,7 +43,7 @@ function Signup() {
     }
 
     const toastId = toast.loading("Logging in")
-    fetch("http://localhost:3000/user/register/byUser", {
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/user/register/byUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -22,7 +22,6 @@ const Signin = () => {
   if (user.isLoggedIn) {
     navigate("/")
   }
-  console.log(import.meta.env.VITE_USER_DASHBOARD)
   const formSubmit = (e) => {
     e.preventDefault()
 
@@ -40,7 +39,7 @@ const Signin = () => {
     }
 
     const toastId = toast.loading("Logging in")
-    fetch("http://localhost:3000/user/login", {
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/user/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ PhoneNumber: number, pwd: password }),

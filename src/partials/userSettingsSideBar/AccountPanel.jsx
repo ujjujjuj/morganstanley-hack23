@@ -1,90 +1,89 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // import axios for making HTTP requests
+import React, { useState, useEffect } from "react"
+import axios from "axios" // import axios for making HTTP requests
 
 function AccountPanel(props) {
-  const [kids, setKids] = useState(0);
-  const [dependents, setDependents] = useState(0);
-  const [name, setName] = useState(""); // state variable for name
-  const [age, setAge] = useState(""); // state variable for age
-  const [gender, setGender] = useState(""); // state variable for gender
-  const [phoneNumber, setPhoneNumber] = useState(""); // state variable for phone number
-  const [primaryLanguage, setPrimaryLanguage] = useState(""); // state variable for primary language
-  const [zip, setZip] = useState(""); // state variable for zip code
-  const [city, setCity] = useState(""); // state variable for city
-  const [state, setState] = useState(""); // state variable for state
-  const [address1, setAddress] = useState(""); // state variable for address
-  const [maritalStatus, setMaritalStatus] = useState(""); // state variable for marital status
-  const [familyIncome, setFamilyIncome] = useState(""); // state variable for family income
-  const [community, setCommunityStatus] = useState(""); // state variable for marital status
+  const [kids, setKids] = useState(0)
+  const [dependents, setDependents] = useState(0)
+  const [name, setName] = useState("") // state variable for name
+  const [age, setAge] = useState("") // state variable for age
+  const [gender, setGender] = useState("") // state variable for gender
+  const [phoneNumber, setPhoneNumber] = useState("") // state variable for phone number
+  const [primaryLanguage, setPrimaryLanguage] = useState("") // state variable for primary language
+  const [zip, setZip] = useState("") // state variable for zip code
+  const [city, setCity] = useState("") // state variable for city
+  const [state, setState] = useState("") // state variable for state
+  const [address1, setAddress] = useState("") // state variable for address
+  const [maritalStatus, setMaritalStatus] = useState("") // state variable for marital status
+  const [familyIncome, setFamilyIncome] = useState("") // state variable for family income
+  const [community, setCommunityStatus] = useState("") // state variable for marital status
   // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
-  const id=props.id; 
-  const[communityList,setCommunityList]=useState({});
+  const id = props.id
+  const [communityList, setCommunityList] = useState({})
 
   const handleCommunityChange = (e) => {
-    setCommunityStatus(e.target.value);
-  };
+    setCommunityStatus(e.target.value)
+  }
 
   useEffect(() => {
-    
-    console.log(id);
-    const fetchCommunity=async () => {
+    console.log(id)
+    const fetchCommunity = async () => {
       try {
-        const response = await fetch('http://localhost:3000/user/group/community');
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/group/community`
+        )
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.json()
           // console.log(data); // Process the response data
-          setCommunityList(data.result);
-          console.log(data.result);
+          setCommunityList(data.result)
+          console.log(data.result)
         } else {
-          throw new Error('Request failed with status: ' + response.status);
+          throw new Error("Request failed with status: " + response.status)
         }
       } catch (error) {
-        console.error('Error:', error.message);
+        console.error("Error:", error.message)
       }
-    };
+    }
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
-        );
-        setName(response.data.basicDetails.name);
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
+        )
+        setName(response.data.basicDetails.name)
 
-        setAge(response.data.basicDetails.age);
-        setGender(response.data.basicDetails.gender);
-        console.log(response.data.basicDetails.gender);
-        setCommunityStatus(response.data.basicDetails.Community);
-        setPhoneNumber(response.data.basicDetails.PhoneNumber);
-        console.log(response.data.basicDetails.PhoneNumber);
-        setAddress(response.data.basicDetails.address.address1);
-        console.log(response.data.basicDetails.address.address1);
-        setCity(response.data.basicDetails.address.city);
-        console.log(response.data.basicDetails.address.city);
-        setState(response.data.basicDetails.address.state);
-        console.log(response.data.basicDetails.address.state);
-        setZip(response.data.basicDetails.address.zip);
-        console.log(response.data.basicDetails.address.zip);
-        setPrimaryLanguage(response.data.basicDetails.primaryLanguage);
-        setKids(response.data.basicDetails.familyDetails.numOfChild);
-        setDependents(response.data.basicDetails.familyDetails.dependents);
-        setMaritalStatus(
-          response.data.basicDetails.familyDetails.maritalStatus
-        );
+        setAge(response.data.basicDetails.age)
+        setGender(response.data.basicDetails.gender)
+        console.log(response.data.basicDetails.gender)
+        setCommunityStatus(response.data.basicDetails.Community)
+        setPhoneNumber(response.data.basicDetails.PhoneNumber)
+        console.log(response.data.basicDetails.PhoneNumber)
+        setAddress(response.data.basicDetails.address.address1)
+        console.log(response.data.basicDetails.address.address1)
+        setCity(response.data.basicDetails.address.city)
+        console.log(response.data.basicDetails.address.city)
+        setState(response.data.basicDetails.address.state)
+        console.log(response.data.basicDetails.address.state)
+        setZip(response.data.basicDetails.address.zip)
+        console.log(response.data.basicDetails.address.zip)
+        setPrimaryLanguage(response.data.basicDetails.primaryLanguage)
+        setKids(response.data.basicDetails.familyDetails.numOfChild)
+        setDependents(response.data.basicDetails.familyDetails.dependents)
+        setMaritalStatus(response.data.basicDetails.familyDetails.maritalStatus)
 
-        setFamilyIncome(response.data.basicDetails.familyDetails.income);
+        setFamilyIncome(response.data.basicDetails.familyDetails.income)
       } catch (error) {
-        console.error("Failed to fetch user details.", error);
+        console.error("Failed to fetch user details.", error)
       }
-    };
-    fetchUserDetail();
-    fetchCommunity();
-  }, []);
+    }
+    fetchUserDetail()
+    fetchCommunity()
+  }, [])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           basicDetails: {
             name: name,
@@ -106,20 +105,22 @@ function AccountPanel(props) {
             primaryLanguage: primaryLanguage,
           },
         }
-      );
-      console.log(response.data);
-      alert("Profile updated successfully.");
+      )
+      console.log(response.data)
+      alert("Profile updated successfully.")
     } catch (error) {
-      console.error("Failed to update profile.", error);
-      alert("Failed to update profile.");
+      console.error("Failed to update profile.", error)
+      alert("Failed to update profile.")
     }
-  };
+  }
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="grow">
         {/* Panel body */}
         <div className="p-6 space-y-6">
-          <h2 className="text-2xl text-slate-800 font-bold mb-5">Basic Details</h2>
+          <h2 className="text-2xl text-slate-800 font-bold mb-5">
+            Basic Details
+          </h2>
 
           {/* section 1 - My Profile           */}
           <section>
@@ -213,29 +214,32 @@ function AccountPanel(props) {
                   onChange={(e) => setCommunityStatus(e.target.value)}
                   required
                 /> */}
-                {/* your other fields go here */}
+              {/* your other fields go here */}
               {/* </div> */}
 
               <div className="sm:w-1/3">
-                  <label className="block text-sm font-medium mb-1" htmlFor="community">
-                    Community <span className="text-rose-500">*</span>
-                  </label>
-                  <select
-                    id="community"
-                    className="form-select w-full"
-                    value={community}
-                    onChange={handleCommunityChange}
-                    required
-                  >
-                    <option value="">Select a community</option>
-                    {Object.entries(communityList).map(([value, label]) => (
-                      <option key={value} value={value}>
-                        {value}
-                      </option>
-                    ))}
-                  </select>
-                  {/* Your other fields go here */}
-                </div>
+                <label
+                  className="block text-sm font-medium mb-1"
+                  htmlFor="community"
+                >
+                  Community <span className="text-rose-500">*</span>
+                </label>
+                <select
+                  id="community"
+                  className="form-select w-full"
+                  value={community}
+                  onChange={handleCommunityChange}
+                  required
+                >
+                  <option value="">Select a community</option>
+                  {Object.entries(communityList).map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+                {/* Your other fields go here */}
+              </div>
 
               {/* phone no,*/}
               <div className="sm:w-1/3">
@@ -544,22 +548,24 @@ function AccountPanel(props) {
         </div>
 
         {/* Panel footer */}
-        {(props.showSave==="Yes") && <footer>
-          <div className="flex flex-col px-6 py-5 border-t border-slate-200">
-            <div className="flex self-end">
-              <button
-                type="submit"
-                onSubmit={handleSubmit}
-                className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
-              >
-                Save
-              </button>
+        {props.showSave === "Yes" && (
+          <footer>
+            <div className="flex flex-col px-6 py-5 border-t border-slate-200">
+              <div className="flex self-end">
+                <button
+                  type="submit"
+                  onSubmit={handleSubmit}
+                  className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
+                >
+                  Save
+                </button>
+              </div>
             </div>
-          </div>
-        </footer>}
+          </footer>
+        )}
       </div>
     </form>
-  );
+  )
 }
 
-export default AccountPanel;
+export default AccountPanel

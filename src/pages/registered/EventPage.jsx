@@ -24,17 +24,19 @@ export default function RegisteredEventPost() {
   const userID = "d667476a-6f64-47c4-8eb7-4d4504927b60" // Constant user ID for now reaplce it by userid from token
 
   useEffect(() => {
-    fetch(`http://localhost:3000/events/list/${id}`).then((response) => {
-      response.json().then((data) => {
-        setPostInfo(data)
-      })
-    })
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then(
+      (response) => {
+        response.json().then((data) => {
+          setPostInfo(data)
+        })
+      }
+    )
   }, [])
   const attendEvent = async () => {
     if (postInfo) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/user/attendAnEvent",
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/attendAnEvent`,
           {
             eventId: postInfo._id,
             userId: userID,

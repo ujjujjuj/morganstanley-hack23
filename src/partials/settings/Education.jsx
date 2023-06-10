@@ -9,13 +9,13 @@ function EducationStatus() {
   const [furtherStudyInterest, setFurtherStudyInterest] = useState("") // state variable for jobTraining
   const { i18n } = useTranslation()
   const { t } = useTranslation()
-const { user } = useUser()
+  const { user } = useUser()
 
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${user._id}`
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${user._id}`
         )
 
         setCurrentEducationLevel(
@@ -37,7 +37,7 @@ const { user } = useUser()
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/userUpdates/${user._id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${user._id}`,
         {
           educationStatus: {
             currentEducationLevel: currentEducationLevel,

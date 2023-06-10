@@ -21,18 +21,20 @@ export default function EventPost() {
   const { user } = useUser()
 
   useEffect(() => {
-    fetch(`http://localhost:3000/events/list/${id}`).then((response) => {
-      response.json().then((data) => {
-        setPostInfo(data)
-      })
-    })
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then(
+      (response) => {
+        response.json().then((data) => {
+          setPostInfo(data)
+        })
+      }
+    )
   }, [])
 
   const registerForEvent = async () => {
     if (postInfo) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/user/registerForAnEvent",
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/registerForAnEvent`,
           {
             eventId: postInfo._id,
             userId: user._id,

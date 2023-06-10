@@ -20,7 +20,7 @@ function MedicalStatus() {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
         )
 
         setHospitalizationRecords(
@@ -44,7 +44,7 @@ function MedicalStatus() {
 
     try {
       const response = await axios.put(
-      `http://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           medicalRecords: {
             hospitalizationRecords: hospitalizationRecords,

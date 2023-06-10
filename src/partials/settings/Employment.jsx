@@ -19,7 +19,7 @@ function Employment() {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
         )
 
         setCurrentEmployment(response.data.employmentStatus.currentEmployment)
@@ -40,7 +40,7 @@ function Employment() {
 
     try {
       const response = await axios.put(
-        `hhttp://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           employmentStatus: {
             currentEmployment: currentEmployment,
