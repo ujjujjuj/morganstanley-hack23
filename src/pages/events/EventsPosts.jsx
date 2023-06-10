@@ -11,7 +11,7 @@ export default function EventsPosts() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/events/list")
+      .get(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list`)
       .then((response) => {
         console.log(response)
 

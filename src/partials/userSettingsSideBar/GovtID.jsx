@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios"; // import axios for making HTTP requests
+import React, { useState, useEffect } from "react"
+import axios from "axios" // import axios for making HTTP requests
 
 function GovtID(props) {
-  const [aadharcard, setAadharCard] = useState(""); // state variable for aadharcard
-  const [rationcard, setRationCard] = useState(""); // state variable for rationcard
-  const [esharamcard, setEsharamCard] = useState(""); // state variable for esharamCard
-  const [voterID, setVoterID] = useState(""); // state variable for voterID
-  const [pancard, setPancard] = useState(""); // state variable for pancard
+  const [aadharcard, setAadharCard] = useState("") // state variable for aadharcard
+  const [rationcard, setRationCard] = useState("") // state variable for rationcard
+  const [esharamcard, setEsharamCard] = useState("") // state variable for esharamCard
+  const [voterID, setVoterID] = useState("") // state variable for voterID
+  const [pancard, setPancard] = useState("") // state variable for pancard
 
   // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
-  const id=props.id; 
+  const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/user/user/${id}`
-        );
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/user/${id}`
+        )
 
-        setAadharCard(response.data.govtSchemes.aadharCard);
-        setRationCard(response.data.govtSchemes.rationCard);
-        setEsharamCard(response.data.govtSchemes.esharamCard);
-        setVoterID(response.data.govtSchemes.panCard);
-        setPancard(response.data.govtSchemes.voterId);
+        setAadharCard(response.data.govtSchemes.aadharCard)
+        setRationCard(response.data.govtSchemes.rationCard)
+        setEsharamCard(response.data.govtSchemes.esharamCard)
+        setVoterID(response.data.govtSchemes.panCard)
+        setPancard(response.data.govtSchemes.voterId)
       } catch (error) {
-        console.error("Failed to fetch user details.", error);
+        console.error("Failed to fetch user details.", error)
       }
-    };
-    fetchUserDetail();
-  }, []);
+    }
+    fetchUserDetail()
+  }, [])
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/user/userUpdates/${id}`,
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/userUpdates/${id}`,
         {
           govtSchemes: {
             rationCard: rationcard,
@@ -44,14 +44,14 @@ function GovtID(props) {
             voterId: voterID,
           },
         }
-      );
-      console.log(response.data);
-      alert("Profile updated successfully.");
+      )
+      console.log(response.data)
+      alert("Profile updated successfully.")
     } catch (error) {
-      console.error("Failed to update profile.", error);
-      alert("Failed to update profile.");
+      console.error("Failed to update profile.", error)
+      alert("Failed to update profile.")
     }
-  };
+  }
   return (
     <form className="w-full  " onSubmit={handleSubmit}>
       <div className="grow">
@@ -161,22 +161,24 @@ function GovtID(props) {
         </div>
 
         {/* Panel footer */}
-        {(props.showSave==="Yes") && <footer>
-          <div className="flex flex-col px-6 py-5 border-t border-slate-200">
-            <div className="flex self-end">
-              <button
-                type="submit"
-                onSubmit={handleSubmit}
-                className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
-              >
-                Save
-              </button>
+        {props.showSave === "Yes" && (
+          <footer>
+            <div className="flex flex-col px-6 py-5 border-t border-slate-200">
+              <div className="flex self-end">
+                <button
+                  type="submit"
+                  onSubmit={handleSubmit}
+                  className="btn bg-indigo-500 hover:bg-indigo-600 text-white ml-3"
+                >
+                  Save
+                </button>
+              </div>
             </div>
-          </div>
-        </footer>}
+          </footer>
+        )}
       </div>
     </form>
-  );
+  )
 }
 
-export default GovtID;
+export default GovtID

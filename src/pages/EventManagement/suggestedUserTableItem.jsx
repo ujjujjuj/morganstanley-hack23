@@ -1,72 +1,72 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
 function SuggestedUserTableItem(props) {
-  const navigate = useNavigate();
-  async function addUser(e){
-    e.preventDefault();
-    const eventId=props.eventId;
-    const userId=props._id;
+  const navigate = useNavigate()
+  async function addUser(e) {
+    e.preventDefault()
+    const eventId = props.eventId
+    const userId = props._id
     try {
-        const response = await fetch('http://localhost:3000/events/markAttendance', {
-          method: 'POST',
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_ADDRESS}/events/markAttendance`,
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ eventId, userId }),
-        });
+        }
+      )
 
-        
-        if (response.ok) {
-            // Successful response
-            // Access other response properties as needed
-            const data = await response.json();
-            // Handle the data returned in the response
-            console.log('Data:', data);
-            navigate("/events/userList",{state:{eventId:props.eventId}});
-          } else {
-            // Error response
-            console.log("Unsucess Retry");
-          }
-      } catch (error) {
-        // Handle fetch error
-        console.log('Error occurred during fetch:',error);
+      if (response.ok) {
+        // Successful response
+        // Access other response properties as needed
+        const data = await response.json()
+        // Handle the data returned in the response
+        console.log("Data:", data)
+        navigate("/events/userList", { state: { eventId: props.eventId } })
+      } else {
+        // Error response
+        console.log("Unsucess Retry")
       }
-        
-
+    } catch (error) {
+      // Handle fetch error
+      console.log("Error occurred during fetch:", error)
+    }
   }
-  async function registerUser(e){
-    e.preventDefault();
-    const eventId=props.eventId;
-    const userId=props._id;
-    console.log(eventId+" "+userId);
+  async function registerUser(e) {
+    e.preventDefault()
+    const eventId = props.eventId
+    const userId = props._id
+    console.log(eventId + " " + userId)
     try {
-        const response = await fetch('http://localhost:3000/user/registerForEvent/byAdmin', {
-          method: 'POST',
+      const response = await fetch(
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/registerForEvent/byAdmin`,
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ eventId, userId }),
-        });
+        }
+      )
 
-        
-        if (response.ok) {
-            // Successful response
-            // Access other response properties as needed
-            const data = await response.json();
-            // Handle the data returned in the response
-            console.log('Data:', data);
-            navigate("/events/userList",{state:{eventId:props.eventId}});
-          } else {
-            // Error response
-            console.log("Unsucess Retry");
-          }
-      } catch (error) {
-        // Handle fetch error
-        console.log('Error occurred during fetch:',error);
+      if (response.ok) {
+        // Successful response
+        // Access other response properties as needed
+        const data = await response.json()
+        // Handle the data returned in the response
+        console.log("Data:", data)
+        navigate("/events/userList", { state: { eventId: props.eventId } })
+      } else {
+        // Error response
+        console.log("Unsucess Retry")
       }
-        
-
+    } catch (error) {
+      // Handle fetch error
+      console.log("Error occurred during fetch:", error)
+    }
   }
 
   return (
@@ -80,22 +80,22 @@ function SuggestedUserTableItem(props) {
         </div>
       </td> */}
       {/* <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px"> */}
-        {/* <div className="flex items-center relative"> */}
-          {/* <button> */}
-            {/* <svg className={`w-4 h-4 shrink-0 fill-current ${props.fav ? 'text-amber-500' : 'text-slate-300'}`} viewBox="0 0 16 16">
+      {/* <div className="flex items-center relative"> */}
+      {/* <button> */}
+      {/* <svg className={`w-4 h-4 shrink-0 fill-current ${props.fav ? 'text-amber-500' : 'text-slate-300'}`} viewBox="0 0 16 16">
               <path d="M8 0L6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934h-6L8 0z" />
             </svg> */}
-          {/* </button> */}
-        {/* </div> */}
+      {/* </button> */}
+      {/* </div> */}
       {/* </td> */}
       {/* <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap"> */}
-        {/* <div className="flex items-center"> */}
-          {/* <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
+      {/* <div className="flex items-center"> */}
+      {/* <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
             <img className="rounded-full" src={props.image} width="40" height="40" alt={props.name} />
           </div> */}
-          {/* <div className="font-medium text-slate-800">{props.name}</div> */}
-          
-        {/* </div> */}
+      {/* <div className="font-medium text-slate-800">{props.name}</div> */}
+
+      {/* </div> */}
       {/* </td> */}
       <td className="px-8 py-3">
         <div className="text-left">{props.name}</div>
@@ -109,16 +109,26 @@ function SuggestedUserTableItem(props) {
       <td className="px-8 py-3">
         <div className="text-left">{props.phone}</div>
       </td>
-      {(props.type==="Attend")?
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <button onClick={addUser} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add</button>
-      </td>
-      :
-      <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-        <button onClick={registerUser} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add</button>
-      </td>
-      }
-      
+      {props.type === "Attend" ? (
+        <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <button
+            onClick={addUser}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Add
+          </button>
+        </td>
+      ) : (
+        <td className="px-24 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+          <button
+            onClick={registerUser}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Add
+          </button>
+        </td>
+      )}
+
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
         {/* Menu button */}
         {/* <button className="text-slate-400 hover:text-slate-500 rounded-full">
@@ -131,7 +141,7 @@ function SuggestedUserTableItem(props) {
         </button> */}
       </td>
     </tr>
-  );
+  )
 }
 
-export default SuggestedUserTableItem;
+export default SuggestedUserTableItem

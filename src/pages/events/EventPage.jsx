@@ -19,11 +19,13 @@ export default function EventPost() {
   const didNotAttend = registered - attended
 
   useEffect(() => {
-    fetch(`http://localhost:3000/events/list/${id}`).then((response) => {
-      response.json().then((data) => {
-        setPostInfo(data)
-      })
-    })
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then(
+      (response) => {
+        response.json().then((data) => {
+          setPostInfo(data)
+        })
+      }
+    )
   }, [])
 
   if (!postInfo) return ""

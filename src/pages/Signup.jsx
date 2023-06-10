@@ -43,7 +43,7 @@ function Signup() {
     }
 
     const toastId = toast.loading("Logging in")
-    fetch("http://localhost:3000/user/register/byUser", {
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/user/register/byUser`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -69,7 +69,7 @@ function Signup() {
       })
       .catch((e) => {
         toast.update(toastId, {
-          render: "An unknown error occured",
+          render: "Failed to login",
           type: toast.TYPE.ERROR,
           autoClose: 3000,
           isLoading: false,

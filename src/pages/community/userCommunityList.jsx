@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react"
 
-import EventUserTableItem from './communityItem';
+import EventUserTableItem from "./communityItem"
 
 function EventUsersTable(props) {
-
   // let customers=[];
-  const [selectAll, setSelectAll] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
-  const [list, setList] = useState({});
+  const [selectAll, setSelectAll] = useState(false)
+  const [isCheck, setIsCheck] = useState([])
+  const [list, setList] = useState({})
 
   // props.list !! : "Attend" or "Register"
   // console.log(props.list);
-  
+
   // const handleFilterChange = (event) => {
   //   const selectedFilter = event.target.value;
   //   // Logic to update the list or list2 based on the selected filter
@@ -25,114 +24,82 @@ function EventUsersTable(props) {
   //     setShowList1(false); // Hide list
   //   }
   // };
-  
 
   useEffect(() => {
-        // console.log("Yello",props.eventId);
-      // /registeredList ispe bhi call karke registerList bhi mangwalo !!
-      // also have : only registered and only attended ka funda !! 
-      // have a tag against them !! 
-    
-      async function fetchData() {
-        try {
-          // get all users list !! 
-          const response = await fetch('http://localhost:3000/user/group/community');
-          if (!response.ok) {
-              throw new Error('Request failed with status ' + response.status);
-          }
-          const data = await response.json();
-          const reversedObj = Object.entries(data.result)
-            .reverse()
-            .reduce((acc, [key, value]) => {
-              acc[key] = value;
-              return acc;
-            }, {});
-          setList(reversedObj);
-        } catch (error) {
-          console.log('Error:', error);
+    // console.log("Yello",props.eventId);
+    // /registeredList ispe bhi call karke registerList bhi mangwalo !!
+    // also have : only registered and only attended ka funda !!
+    // have a tag against them !!
+
+    async function fetchData() {
+      try {
+        // get all users list !!
+        const response = await fetch(
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/group/community`
+        )
+        if (!response.ok) {
+          throw new Error("Request failed with status " + response.status)
         }
+        const data = await response.json()
+        const reversedObj = Object.entries(data.result)
+          .reverse()
+          .reduce((acc, [key, value]) => {
+            acc[key] = value
+            return acc
+          }, {})
+        setList(reversedObj)
+      } catch (error) {
+        console.log("Error:", error)
       }
-      
-            fetchData();
+    }
+
+    fetchData()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [])
 
   const searchUserCollections = (f, v) => {
     // Filter the collections based on the search criteria
     const filteredCollections = list.filter((collection) => {
-      const propertyValue = collection.basicDetails[f];
-      return propertyValue === v || propertyValue.startsWith(v);
-    });
-    
-    
+      const propertyValue = collection.basicDetails[f]
+      return propertyValue === v || propertyValue.startsWith(v)
+    })
+
     // Update the state with the new filtered array
-    setList(filteredCollections);
-  };
-
-//   useEffect(() => {
-//     async function fetchData2() {
-//       try {
-//         // get all users list !! 
-//         const response = await fetch('http://localhost:3000/user');
-//         if (!response.ok) {
-//             throw new Error('Request failed with status ' + response.status);
-//         }
-//         const data = await response.json();
-//         setList(data.result);
-//         console.log(list);
-//       } catch (error) {
-//         console.log('Error:', error);
-//       }
-//     }
-//     async function fetchData() {
-//       try {
-//         if(props.factor==="None"){
-//           fetchData2();
-//           return;
-//         }
-
-//         searchUserCollections(props.factor,props.value);
-
-//       } catch (error) {
-//         console.log('Error:', error);
-//       }
-//     }
-
-//       fetchData();
-//   // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, [props.factor]);
+    setList(filteredCollections)
+  }
 
   const handleSelectAll = () => {
-    setSelectAll(!selectAll);
-    setIsCheck(list.map(li => li.id));
+    setSelectAll(!selectAll)
+    setIsCheck(list.map((li) => li.id))
     if (selectAll) {
-      setIsCheck([]);
+      setIsCheck([])
     }
-  };
+  }
 
-  const handleClick = e => {
-    const { id, checked } = e.target;
-    setSelectAll(false);
-    setIsCheck([...isCheck, id]);
+  const handleClick = (e) => {
+    const { id, checked } = e.target
+    setSelectAll(false)
+    setIsCheck([...isCheck, id])
     if (!checked) {
-      setIsCheck(isCheck.filter(item => item !== id));
+      setIsCheck(isCheck.filter((item) => item !== id))
     }
-  };
+  }
 
   useEffect(() => {
-    props.selectedItems(isCheck);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCheck]);
+    props.selectedItems(isCheck)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isCheck])
 
   return (
     <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
       <header className="px-5 py-4">
-        <h2 className="font-semibold text-slate-800">All Community<span className="text-slate-400 font-medium">{list.length}</span></h2>
+        <h2 className="font-semibold text-slate-800">
+          All Community
+          <span className="text-slate-400 font-medium">{list.length}</span>
+        </h2>
       </header>
       <div>
-
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
@@ -157,18 +124,17 @@ function EventUsersTable(props) {
               </tr>
             </thead>
             {/* Table body */}
-                 {/* key , data[key] */}
-                 <tbody className="text-sm divide-y divide-slate-200">
-                    {Object.keys(list).map(key => (
-                        <EventUserTableItem community={key} count={list[key].length} />
-                    ))}
-                </tbody>
+            {/* key , data[key] */}
+            <tbody className="text-sm divide-y divide-slate-200">
+              {Object.keys(list).map((key) => (
+                <EventUserTableItem community={key} count={list[key].length} />
+              ))}
+            </tbody>
           </table>
-
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default EventUsersTable;
+export default EventUsersTable
