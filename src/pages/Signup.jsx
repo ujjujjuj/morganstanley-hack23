@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
 import AuthImage from "../images/auth-image.webp"
@@ -18,9 +18,11 @@ function Signup() {
   const { user, loginUser } = useUser()
   const navigate = useNavigate()
 
-  if (user.isLoggedIn) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/")
+    }
+  }, [user])
 
   const formSubmit = (e) => {
     e.preventDefault()
@@ -56,8 +58,17 @@ function Signup() {
         },
       }),
     })
-      .then((res) => res.json())
-      .then((data) => {
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.message === 'Phone number already exists.') {
+        toast.error("Phone number already exists.")
+        toast.update(toastId, {
+          render: "Failed to register",
+          type: toast.TYPE.ERROR,
+          autoClose: 3000,
+          isLoading: false,
+        })
+      } else {
         console.log(data)
         toast.update(toastId, {
           render: "Logged In",
@@ -66,16 +77,18 @@ function Signup() {
           isLoading: false,
         })
         loginUser(data)
+      }
+    })
+    .catch((e) => {
+      toast.update(toastId, {
+        render: "Failed to login",
+        type: toast.TYPE.ERROR,
+        autoClose: 3000,
+        isLoading: false,
       })
-      .catch((e) => {
-        toast.update(toastId, {
-          render: "Failed to login",
-          type: toast.TYPE.ERROR,
-          autoClose: 3000,
-          isLoading: false,
-        })
-        console.log(e)
-      })
+      console.log(e)
+    })
+    
   }
 
   return (
@@ -142,6 +155,7 @@ function Signup() {
                       className="w-full form-select"
                       name="community"
                     >
+                      <option value="">Select Community</option>
                       <option>Maratha</option> <option>Brahmin</option>{" "}
                       <option>Kunbi</option> <option>Dhangar</option>{" "}
                       <option>Chambhar</option> <option>Mahadev Koli</option>{" "}
@@ -208,8 +222,8 @@ function Signup() {
             </div>
           </div>
         </div>
-        
-        <div className="pos mt-auto text-white ml-1rem lang">
+
+        <div className="mt-auto text-white pos ml-1rem lang">
           <div className="flex flex-row items-start gap">
             {languages.map((language) => (
               <span

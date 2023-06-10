@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -15,13 +15,16 @@ const languages = [
 ]
 const Signin = () => {
   const { t, i18n } = useTranslation()
-
+  console.log("HI???")
   const { user, loginUser } = useUser()
   const navigate = useNavigate()
 
-  if (user.isLoggedIn) {
-    navigate("/")
-  }
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/")
+    }
+  }, [user])
+
   const formSubmit = (e) => {
     e.preventDefault()
 
