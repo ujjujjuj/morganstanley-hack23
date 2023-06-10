@@ -12,7 +12,7 @@ function Tasks({ task }) {
   const markUserFollowedUp = async () => {
     try {
       const response = await axios.post(
-        "http://15.206.18.143:3000/user/markUserFollowedUp",
+        `${import.meta.env.VITE_SERVER_ADDRESS}/user/markUserFollowedUp`,
         {
           eventId: task._id,
           userId: userID,

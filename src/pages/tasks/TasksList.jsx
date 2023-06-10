@@ -18,7 +18,7 @@ function TasksList() {
 
   useEffect(() => {
     axios
-      .get(`http://15.206.18.143:3000/user/getFollowUpPending/${userID}`)
+      .get(`${import.meta.env.VITE_SERVER_ADDRESS}/user/getFollowUpPending/${userID}`)
       .then((response) => {
         setTasks(response.data);
       })
@@ -27,7 +27,7 @@ function TasksList() {
       });
 
     axios
-      .get(`http://15.206.18.143:3000/user/getFollowUpDone/${userID}`)
+      .get(`${import.meta.env.VITE_SERVER_ADDRESS}/user/getFollowUpDone/${userID}`)
       .then((response) => {
         setFollowUps(response.data);
       })
