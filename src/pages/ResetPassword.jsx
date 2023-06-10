@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link, useNavigate } from "react-router-dom"
 
-import AuthImage from "../images/auth-image.webp";
-import TinyMiraclesLogo from "../images/tinymiracles.webp";
-import { useTranslation } from "react-i18next";
+import AuthImage from "../images/auth-image.webp"
+import TinyMiraclesLogo from "../images/tinymiracles.webp"
+import { useTranslation } from "react-i18next"
+
+const languages = [
+  { name: "English", code: "en" },
+  { name: "हिन्दी", code: "hi" },
+  { name: "मराठी", code: "mr" },
+]
 
 function ResetPassword() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
 
   return (
     <main className="bg-white">
@@ -24,8 +31,14 @@ function ResetPassword() {
             </div>
 
             <div className="px-8 py-8 mx-auto w-full max-w-lg">
+              <div
+                className="w-8 h-8 bg-[#6366f1] rounded-md flex items-center justify-center text-white font-black text-lg cursor-pointer -translate-y-6"
+                onClick={() => navigate(-1)}
+              >
+                &lt;
+              </div>
               <h1 className="mb-6 text-3xl font-bold text-slate-800">
-                {t('resetPassword')}&nbsp;✨
+                {t("resetPassword")}&nbsp;✨
               </h1>
               {/* Form */}
               <form>
@@ -33,21 +46,21 @@ function ResetPassword() {
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
-                      htmlFor="email"
+                      htmlFor="number"
                     >
-                      {t("email")}
+                      {t("number")}
                       <span className="text-rose-500">*</span>
                     </label>
                     <input
-                      id="email"
+                      id="number"
                       className="w-full form-input"
-                      type="email"
+                      type="number"
                     />
                   </div>
                 </div>
                 <div className="flex justify-end mt-6">
                   <button className="text-white whitespace-nowrap bg-indigo-500 btn hover:bg-indigo-600">
-                    {t('sendResetLink')}
+                    {t("sendResetLink")}
                   </button>
                 </div>
               </form>
@@ -69,8 +82,25 @@ function ResetPassword() {
           />
         </div>
       </div>
+      <div className="mt-auto ml-1rem text-white fixed lang">
+        <div className="flex flex-row gap items-start">
+          {languages.map((language) => (
+            <span
+              key={language.code}
+              className={`transition-transform cursor-pointer hover:scale-110 font-semibold ${
+                i18n.language === language.code
+                  ? "text-blue-400"
+                  : "text-gray-400"
+              }`}
+              onClick={() => i18n.changeLanguage(language.code)}
+            >
+              {language.name}
+            </span>
+          ))}
+        </div>
+      </div>
     </main>
-  );
+  )
 }
 
-export default ResetPassword;
+export default ResetPassword

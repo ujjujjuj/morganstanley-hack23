@@ -4,6 +4,8 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import "./css/style.css"
 
 import "./charts/ChartjsConfig"
+import "react-toastify/dist/ReactToastify.css"
+import { ToastContainer } from "react-toastify"
 
 // Import pages
 import Dashboard from "./pages/Dashboard"
@@ -91,6 +93,7 @@ function App() {
         <Route path="/community/Mali" element={<Mali />} />
         <Route path="/community/Maratha" element={<Maratha />} />
       </Routes>
+      <ToastContainer />
     </UserProvider>
   )
 }

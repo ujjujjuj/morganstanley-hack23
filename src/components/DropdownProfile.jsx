@@ -3,9 +3,11 @@ import { Link } from "react-router-dom"
 import Transition from "../utils/Transition"
 
 import UserAvatar from "../images/user-avatar-32.png"
+import useUser from "../../hooks/useUser"
 
 function DropdownProfile({ align }) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const { logoutUser, user } = useUser()
 
   const trigger = useRef(null)
   const dropdown = useRef(null)
@@ -54,7 +56,7 @@ function DropdownProfile({ align }) {
         />
         <div className="flex items-center truncate">
           <span className="truncate ml-2 text-sm font-medium group-hover:text-slate-800">
-            Admin
+            {user.name}
           </span>
           <svg
             className="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400"
@@ -90,8 +92,10 @@ function DropdownProfile({ align }) {
             <li>
               <Link
                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                to="/signin"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => {
+                  setDropdownOpen(!dropdownOpen)
+                  logoutUser()
+                }}
               >
                 Sign Out
               </Link>

@@ -1,9 +1,12 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import React from "react"
+import { useTranslation } from "react-i18next"
+import { Link, useNavigate } from "react-router-dom"
 
-import TinyMiraclesLogo from "../images/tinymiracles.webp";
-import AuthImage from "../images/auth-image.webp";
+import TinyMiraclesLogo from "../images/tinymiracles.webp"
+import AuthImage from "../images/auth-image.webp"
+import { toast } from "react-toastify"
+import { DateLocalizer } from "react-big-calendar"
+import useUser from "../../hooks/useUser"
 
 const languages = [
   { name: "English", code: "en" },
@@ -11,9 +14,60 @@ const languages = [
   { name: "मराठी", code: "mr" },
 ]
 const Signin = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation()
 
-  const { i18n } = useTranslation()
+  const { user, loginUser } = useUser()
+  const navigate = useNavigate()
+
+  if (user.isLoggedIn) {
+    navigate("/")
+  }
+
+  const formSubmit = (e) => {
+    e.preventDefault()
+
+    const { number, password } = Object.fromEntries(new FormData(e.target))
+
+    if (!number || !password) {
+      toast.error("Please provide all the details")
+      return
+    } else if (number.length !== 10) {
+      toast.error("Please provide a valid phone number")
+      return
+    } else if (password.length < 6) {
+      toast.error("Password length should be greater than 6")
+      return
+    }
+
+    const toastId = toast.loading("Logging in")
+    fetch("http://localhost:3000/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ PhoneNumber: number, pwd: password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (!data._id) throw "Invalid"
+        toast.update(toastId, {
+          render: "Logged In",
+          type: toast.TYPE.SUCCESS,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        loginUser(data)
+      })
+      .catch((e) => {
+        toast.update(toastId, {
+          render: "An unknown error occured",
+          type: toast.TYPE.ERROR,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        console.log(e)
+      })
+  }
+
   return (
     <main className="bg-white">
       <div className="relative md:flex">
@@ -33,19 +87,20 @@ const Signin = () => {
                 {t("login")} ✨
               </h1>
               {/* Form */}
-              <form>
+              <form onSubmit={formSubmit}>
                 <div className="space-y-4">
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
-                      htmlFor="email"
+                      htmlFor="number"
                     >
-                      {t("email")}
+                      {t("number")}
                     </label>
                     <input
-                      id="email"
+                      id="number"
                       className="w-full form-input"
-                      type="email"
+                      type="number"
+                      name="number"
                     />
                   </div>
                   <div>
@@ -59,6 +114,7 @@ const Signin = () => {
                       id="password"
                       className="w-full form-input"
                       type="password"
+                      name="password"
                       autoComplete="on"
                     />
                   </div>
@@ -72,12 +128,11 @@ const Signin = () => {
                       {t("forgotPassword")}
                     </Link>
                   </div>
-                  <Link
+                  <input
                     className="ml-3 text-white bg-indigo-500 btn hover:bg-indigo-600"
-                    to="/"
-                  >
-                    {t("login")}
-                  </Link>
+                    type="submit"
+                    value={t("login")}
+                  />
                 </div>
               </form>
               {/* Footer */}
@@ -96,7 +151,7 @@ const Signin = () => {
           </div>
         </div>
         <div className="mt-auto ml-1rem text-white fixed lang">
-            <div className="flex flex-row gap items-start">
+          <div className="flex flex-row gap items-start">
             {languages.map((language) => (
               <span
                 key={language.code}
@@ -124,11 +179,10 @@ const Signin = () => {
             height="1024"
             alt="Authentication"
           />
-          
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Signin;
+export default Signin

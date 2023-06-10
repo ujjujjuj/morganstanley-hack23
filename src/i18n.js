@@ -1,12 +1,12 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import i18n from "i18next"
+import { initReactI18next } from "react-i18next"
 
 const resources = {
   en: {
     translation: {
       // sign in
       login: "Log In",
-      email: "Email",
+      number: "Phone Number",
       password: "Password",
       forgotPassword: "Forgot Password?",
       dontHaveAnAccount: "Dont have an account?",
@@ -21,7 +21,7 @@ const resources = {
   hi: {
     translation: {
       login: "लॉग इन",
-      email: "ईमेल",
+      number: "फ़ोन नंबर",
       password: "पासवर्ड",
       forgotPassword: "पासवर्ड भूल गए?",
       dontHaveAnAccount: "खाता नहीं है?",
@@ -34,7 +34,7 @@ const resources = {
   mr: {
     translation: {
       login: "लॉगिन",
-      email: "ईमेल",
+      number: "फोन नंबर",
       password: "पासवर्ड",
       forgotPassword: "पासवर्ड विसरलात?",
       dontHaveAnAccount: "खाते नाही?",
@@ -44,13 +44,13 @@ const resources = {
       createAccount: "तुमचे खाते तयार करा",
     },
   },
-};
+}
 
 i18n.use(initReactI18next).init({
   resources,
   fallbackLng: "en",
   supportedLngs: ["en", "hi", "mr"],
   debug: process.env.NODE_ENV === "development",
-});
+})
 
-export default i18n;
+export default i18n

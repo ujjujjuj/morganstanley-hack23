@@ -1,9 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from "react"
+import { Link, useNavigate } from "react-router-dom"
 
-import AuthImage from "../images/auth-image.webp";
-import TinyMiraclesLogo from "../images/tinymiracles.webp";
-import { useTranslation } from "react-i18next";
+import AuthImage from "../images/auth-image.webp"
+import TinyMiraclesLogo from "../images/tinymiracles.webp"
+import { useTranslation } from "react-i18next"
+import { toast } from "react-toastify"
+import useUser from "../../hooks/useUser"
 
 const languages = [
   { name: "English", code: "en" },
@@ -11,8 +13,62 @@ const languages = [
   { name: "मराठी", code: "mr" },
 ]
 function Signup() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const { i18n } = useTranslation()
+  const { user, loginUser } = useUser()
+  const navigate = useNavigate()
+
+  if (user.isLoggedIn) {
+    navigate("/")
+  }
+
+  const formSubmit = (e) => {
+    e.preventDefault()
+    const { name, number, password } = Object.fromEntries(
+      new FormData(e.target)
+    )
+    if (!name || !number || !password) {
+      toast.error("Please provide all the details")
+      return
+    } else if (name.length < 2) {
+      toast.error("Please provide a valid name")
+      return
+    } else if (number.length !== 10) {
+      toast.error("Please provide a valid phone number")
+      return
+    } else if (password.length < 6) {
+      toast.error("Password length should be greater than 6")
+      return
+    }
+
+    const toastId = toast.loading("Logging in")
+    fetch("http://localhost:3000/user/register/admin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, number, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        toast.update(toastId, {
+          render: "Logged In",
+          type: toast.TYPE.SUCCESS,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        loginUser(data)
+      })
+      .catch((e) => {
+        toast.update(toastId, {
+          render: "An unknown error occured",
+          type: toast.TYPE.ERROR,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        console.log(e)
+      })
+  }
+
   return (
     <main className="bg-white">
       <div className="relative md:flex">
@@ -35,77 +91,58 @@ function Signup() {
                 {t("createAccount")} ✨
               </h1>
               {/* Form */}
-              <form>
+              <form onSubmit={formSubmit}>
                 <div className="space-y-4">
-                  <div>
-                    <label
-                      className="block mb-1 text-sm font-medium"
-                      htmlFor="email"
-                    >
-                      Email Address <span className="text-rose-500">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      className="w-full form-input"
-                      type="email"
-                    />
-                  </div>
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
                       htmlFor="name"
                     >
-                      Full Name <span className="text-rose-500">*</span>
+                      Name <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="name"
                       className="w-full form-input"
-                      type="text"
+                      type="name"
+                      name="name"
                     />
                   </div>
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
-                      htmlFor="role"
+                      htmlFor="phone"
                     >
-                      Your Role <span className="text-rose-500">*</span>
+                      Phone <span className="text-rose-500">*</span>
                     </label>
-                    <select id="role" className="w-full form-select">
-                      <option>Designer</option>
-                      <option>Developer</option>
-                      <option>Accountant</option>
-                    </select>
+                    <input
+                      type="number"
+                      id="phone"
+                      className="w-full form-input"
+                      name="number"
+                    />
                   </div>
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"
                       htmlFor="password"
                     >
-                      Password
+                      Password <span className="text-rose-500">*</span>
                     </label>
                     <input
                       id="password"
                       className="w-full form-input"
                       type="password"
+                      name="password"
                       autoComplete="on"
                     />
                   </div>
                 </div>
                 <div className="flex justify-between items-center mt-6">
-                  <div className="mr-1">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="form-checkbox" />
-                      <span className="ml-2 text-sm">
-                        Email me about product news.
-                      </span>
-                    </label>
-                  </div>
-                  <Link
+                  <input
+                    type="submit"
                     className="ml-3 text-white whitespace-nowrap bg-indigo-500 btn hover:bg-indigo-600"
-                    to="/"
-                  >
-                    Sign Up
-                  </Link>
+                    value="Sign Up"
+                  />
                 </div>
               </form>
               {/* Footer */}
@@ -124,7 +161,7 @@ function Signup() {
           </div>
         </div>
         <div className="mt-auto ml-1rem text-white fixed lang">
-            <div className="flex flex-row gap items-start">
+          <div className="flex flex-row gap items-start">
             {languages.map((language) => (
               <span
                 key={language.code}
@@ -155,7 +192,7 @@ function Signup() {
         </div>
       </div>
     </main>
-  );
+  )
 }
 
-export default Signup;
+export default Signup

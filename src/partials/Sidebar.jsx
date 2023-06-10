@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import { NavLink, useLocation } from "react-router-dom"
+import { NavLink, redirect, useLocation, useNavigate } from "react-router-dom"
+import useUser from "../../hooks/useUser"
 import TinyMiraclesLogo from "../images/tinymiracleswhite.webp"
 
 import SidebarLinkGroup from "./SidebarLinkGroup"
@@ -18,10 +19,17 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const trigger = useRef(null)
   const sidebar = useRef(null)
 
+  const { user } = useUser()
+  const navigate = useNavigate()
+
   const storedSidebarExpanded = localStorage.getItem("sidebar-expanded")
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
   )
+
+  if (!user.isLoggedIn) {
+    navigate("/signin")
+  }
 
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -421,7 +429,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
               {/* Tasks */}
 
-             
               {/* Inbox */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
@@ -502,8 +509,8 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
-               {/* Messages */}
-               <li
+              {/* Messages */}
+              <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname.includes("messages") && "bg-slate-900"
                 }`}
@@ -538,12 +545,10 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                         />
                       </svg>
                       <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      Support Responses
-
+                        Support Responses
                       </span>
                     </div>
                     {/* Badge */}
-                  
                   </div>
                 </NavLink>
               </li>
