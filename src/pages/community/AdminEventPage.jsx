@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import React from "react"
 import EventDisplay from "./DateFormat"
-import axios from "axios"
 import DialogflowMessenger from "../../utils/DialogflowMessenger"
+import QRCode from "react-qr-code"
 
 import Sidebar from "../../partials/Sidebar"
 import Header from "../../partials/Header"
@@ -16,7 +16,6 @@ export default function EventPost() {
   const [postInfo, setPostInfo] = useState(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { id } = useParams()
-  const [isRegistered, setIsRegistered] = useState(false)
 
   const { user } = useUser()
 
@@ -29,34 +28,6 @@ export default function EventPost() {
       }
     )
   }, [])
-
-  const registerForEvent = async () => {
-    if (postInfo) {
-      try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_SERVER_ADDRESS}/user/registerForAnEvent`,
-          {
-            eventId: postInfo._id,
-            userId: user._id,
-          }
-        )
-
-        if (response.data.message === "Success !!") {
-          setIsRegistered(true)
-        } else {
-          alert("Error: " + response.data.message)
-        }
-      } catch (error) {
-        console.error("An error occurred:", error)
-        if (error.response && error.response.data.message === "repeat") {
-          alert("You are already registered for this event.")
-          setIsRegistered(true)
-        } else {
-          alert("An error occurred. Please try again.")
-        }
-      }
-    }
-  }
 
   if (!postInfo) return ""
 
@@ -147,7 +118,14 @@ export default function EventPost() {
                 {/* 1st block */}
 
                 {/* 2nd block */}
-
+                <div className="flex flex-col justify-between items-center p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
+                  <div className="mb-4 text-lg text-center">
+                    Attendance QR Code
+                  </div>
+                  <div className="flex justify-center items-center w-full max-w-xs">
+                    <QRCode value={id} />
+                  </div>
+                </div>
                 <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
                   <div className="">
                     Registered Users ({postInfo.registered.length})

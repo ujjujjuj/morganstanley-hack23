@@ -1,6 +1,7 @@
 import React from "react"
 
 import UserMenu from "../components/DropdownProfileUser"
+import QrScanner from "../components/QrScanner"
 
 function Header({ sidebarOpen, setSidebarOpen }) {
   return (
@@ -34,6 +35,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
 
           {/* Header: Right side */}
           <div className="flex items-center space-x-3">
+            <QrScanner />
             <UserMenu align="right" />
           </div>
         </div>
