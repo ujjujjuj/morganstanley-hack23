@@ -69,7 +69,7 @@ function Signup() {
       })
       .catch((e) => {
         toast.update(toastId, {
-          render: "An unknown error occured",
+          render: "Failed to login",
           type: toast.TYPE.ERROR,
           autoClose: 3000,
           isLoading: false,
