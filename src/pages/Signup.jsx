@@ -208,7 +208,8 @@ function Signup() {
             </div>
           </div>
         </div>
-        <div className="fixed mt-auto text-white ml-1rem lang">
+        
+        <div className="pos mt-auto text-white ml-1rem lang">
           <div className="flex flex-row items-start gap">
             {languages.map((language) => (
               <span
