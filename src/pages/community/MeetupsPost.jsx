@@ -22,16 +22,16 @@ function MeetupsPosts({
 
   return (
     <>
-      <article className="flex overflow-hidden bg-white rounded-sm border shadow-lg border-slate-200">
+      <article className="flex overflow-hidden flex-col bg-white rounded-sm border shadow-lg md:flex-row border-slate-200">
         <Link
-          className="block relative w-20 sm:w-56 xl:sidebar-expanded:w-40 2xl:sidebar-expanded:w-56 shrink-0"
+          className="block relative w-full h-48 md:h-auto md:w-20 2xl:sidebar-expanded:w-56 shrink-0"
           to={`/user/event/${_id}`}
         >
           <img
             className="object-cover object-center absolute w-full h-full"
             src={imageUrl}
-            width="220"
-            height="236"
+            // width="220"
+            // height="236"
             alt="Meetup 01"
           />
         </Link>
@@ -53,7 +53,7 @@ function MeetupsPosts({
           </div>{" "}
           <div className="flex justify-between mt-3">
             <div className="text-xs inline-flex items-center font-medium bg-slate-100 text-slate-600 rounded-full text-center px-2.5 py-1">
-              <span>{category}</span> 
+              <span>{category}</span>
             </div>
           </div>
         </div>

@@ -47,7 +47,7 @@ function MeetupsPosts({
           <div className="text-sm">{truncateString(eventDetails, 180)}</div>
           <div className="flex justify-between mt-3">
             <div className="text-xs inline-flex items-center font-medium bg-slate-100 text-slate-600 rounded-full text-center px-2.5 py-1">
-              <span>{category}</span> 
+              <span>{category}</span>
             </div>
           </div>
         </div>

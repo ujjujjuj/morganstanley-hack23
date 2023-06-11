@@ -18,8 +18,8 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico"],
       manifest: {
-        name: "Miracle Box",
-        short_name: "Miracle Box",
+        name: "Upkkar Setu",
+        short_name: "Upkaar Setu",
         description: "Data collection app for Tiny Miracles",
         icons: [
           { src: "favicon.png", sizes: "128x128", type: "image/png" },

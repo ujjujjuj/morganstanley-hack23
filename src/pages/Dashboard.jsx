@@ -8,7 +8,7 @@ function Analytics() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="flex overflow-hidden h-screen">\
+    <div className="flex overflow-hidden h-screen">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
