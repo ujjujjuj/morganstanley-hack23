@@ -32,9 +32,6 @@ export default defineConfig({
         start_url: "/",
         orientation: "portrait",
       },
-
-      srcDir: path.resolve(__dirname, "public"),
-      filename: "sw.js",
       strategies: "injectManifest",
       devOptions: { enabled: true },
     }),
