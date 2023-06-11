@@ -39,7 +39,7 @@ import UserEditPage from "./pages/UsersSection/Account"
 
 import "./i18n"
 
-import { UserProvider } from "../hooks/useUser"
+import useUser, { UserProvider } from "../hooks/useUser"
 import UsersCommunity from "./pages/community/userCommunities"
 import AddCommunityForm from "./pages/community/addCommunityForm"
 import AddCommunity from "./pages/community/addCommunity"
@@ -77,6 +77,7 @@ function App() {
 
   return (
     <UserProvider>
+      <SWHandler />
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
         {/* <Route path="/community/meetups" element={<Meetups />} />
@@ -109,10 +110,11 @@ function App() {
         <Route path="/community/Dhangar" element={<Dhangar />} />
         <Route path="/community/Mali" element={<Mali />} />
         <Route path="/community/allCommunities/Maratha" element={<Maratha />} />
-        <Route path="/community/allCommunities/Leva Patil" element={<LevaPatil />} />
+        <Route
+          path="/community/allCommunities/Leva Patil"
+          element={<LevaPatil />}
+        />
         <Route path="/community/allCommunities/:id" element={<Common />} />
-
-
 
         {/* User side Routes */}
         <Route path="/user/" element={<Meetups />} />
@@ -145,6 +147,49 @@ function App() {
       <ToastContainer />
     </UserProvider>
   )
+}
+
+const SWHandler = () => {
+  const { user } = useUser()
+
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) {
+      return
+    }
+
+    if (!("PushManager" in window)) {
+      return
+    }
+
+    const createSub = async () => {
+      try {
+        let sw = await navigator.serviceWorker.ready
+        console.log(import.meta.env.VITE_VAPID_PUBLIC_KEY)
+
+        const sub = await sw.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: import.meta.env.VITE_VAPID_PUBLIC_KEY,
+        })
+        console.log(JSON.stringify(sub))
+
+        const res = await fetch(
+          `${import.meta.env.VITE_SERVER_ADDRESS}/user/addSub/`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ userId: user._id, sub }),
+          }
+        ).then((res) => res.json())
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    if (user.isLoggedIn) {
+      createSub()
+    }
+  }, [user])
+
+  return null
 }
 
 export default App

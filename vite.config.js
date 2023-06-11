@@ -1,3 +1,4 @@
+import path from "path"
 import { defineConfig } from "vite"
 import postcss from "./postcss.config.js"
 import react from "@vitejs/plugin-react"
@@ -31,6 +32,11 @@ export default defineConfig({
         start_url: "/",
         orientation: "portrait",
       },
+
+      srcDir: path.resolve(__dirname, "public"),
+      filename: "sw.js",
+      strategies: "injectManifest",
+      devOptions: { enabled: true },
     }),
   ],
   resolve: {
