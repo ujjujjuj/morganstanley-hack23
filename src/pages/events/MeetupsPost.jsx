@@ -7,7 +7,7 @@ function MeetupsPosts({
   _id,
   eventName,
   category,
-  location,
+  eventLocation,
   eventDuration,
   eventStartTime,
   eventDetails,

@@ -50,6 +50,8 @@ import MahadevKoli from "./pages/community/View/Mahadev Koli"
 import Dhangar from "./pages/community/View/Dhangar"
 import Mali from "./pages/community/View/Mali"
 import Maratha from "./pages/community/View/Maratha"
+import LevaPatil from "./pages/community/View/LevaPatil"
+import Common from "./pages/community/View/Common"
 import Meetups from "./pages/community/ Meetups"
 import RegisteredEventsList from "./pages/registered/RegisteredEvents"
 import RegisteredEventPost from "./pages/registered/EventPage"
@@ -106,7 +108,11 @@ function App() {
         <Route path="/community/MahadevKoli" element={<MahadevKoli />} />
         <Route path="/community/Dhangar" element={<Dhangar />} />
         <Route path="/community/Mali" element={<Mali />} />
-        <Route path="/community/Maratha" element={<Maratha />} />
+        <Route path="/community/allCommunities/Maratha" element={<Maratha />} />
+        <Route path="/community/allCommunities/Leva Patil" element={<LevaPatil />} />
+        <Route path="/community/allCommunities/:id" element={<Common />} />
+
+
 
         {/* User side Routes */}
         <Route path="/user/" element={<Meetups />} />

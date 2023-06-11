@@ -86,7 +86,7 @@ export default function EventPost() {
                       <span>{postInfo.category}</span>
                     </div>
                     <div className="text-xs inline-flex font-medium uppercase bg-emerald-100 text-emerald-600 rounded-full text-center px-2.5 py-1">
-                      {postInfo.location}
+                    {postInfo.eventLocation}
                     </div>
                   </div>
                 </div>
