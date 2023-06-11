@@ -33,7 +33,7 @@ function Analytics() {
               <div className="flex flex-col gap-4 space-between xl:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=648056d4-b1b7-41ea-8cc7-8619fa588a67&maxDataAge=300&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=648056d4-b1b7-41ea-8cc7-8619fa588a67&maxDataAge=60&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] xl:flex-1"
@@ -61,7 +61,7 @@ function Analytics() {
               <div className="flex flex-col gap-4 space-between lg:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] lg:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64821d11-1450-4ec6-81d4-04d8efa8d4dd&maxDataAge=300&theme=light&autoRefresh=true"
+                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=64821d11-1450-4ec6-81d4-04d8efa8d4dd&maxDataAge=60&theme=light&autoRefresh=true"
                 ></iframe>
                 <iframe
                   className="bg-white border-none rounded-sm h-[480px] lg:flex-1"
