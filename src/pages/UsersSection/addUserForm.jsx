@@ -166,7 +166,7 @@ export default function UserForm() {
                   onChange={(event) => {
                     setPwd(event.target.value)
                   }}
-                  type="text"
+                  type="password"
                   name="first-name"
                   value={pwd}
                   id="first-name"
