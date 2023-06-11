@@ -9,6 +9,7 @@ import Sidebar from "../../partials/UserSidebar"
 import Header from "../../partials/UserHeader"
 import { Link } from "react-router-dom"
 import useUser from "../../../hooks/useUser"
+import { toast } from "react-toastify"
 
 export default function EventPost() {
   const [postInfo, setPostInfo] = useState(null)
@@ -40,17 +41,18 @@ export default function EventPost() {
         )
 
         if (response.data.message === "Success !!") {
+          toast.success("You have successfully registered for this event.")
           setIsRegistered(true)
         } else {
-          alert("Error: " + response.data.message)
+          toast.error("Error: " + response.data.message)
         }
       } catch (error) {
         console.error("An error occurred:", error)
         if (error.response && error.response.data.message === "repeat") {
-          alert("You are already registered for this event.")
+          toast.warn("You are already registered for this event.")
           setIsRegistered(true)
         } else {
-          alert("An error occurred. Please try again.")
+          toast.error("An error occurred. Please try again.")
         }
       }
     }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
+import SearchForm from '../partials/actions/SearchForm';
+import FilterButton from '../components/DropdownFilter';
 import CampaignsCard from '../partials/campaigns/CampaignsCard';
 import axios from 'axios';
 

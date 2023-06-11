@@ -11,9 +11,9 @@ function RegisteredEventsList() {
   return (
     <div className="flex overflow-hidden h-screen">
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <DialogflowMessenger />
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <DialogflowMessenger />
         <main>
           <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
             <EventsPosts />

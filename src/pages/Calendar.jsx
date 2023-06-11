@@ -68,21 +68,21 @@ function MyCalendar() {
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <main className="p-10">
+
+        <main className="p-2 sm:p-10">
           <div className="mb-8 sm:flex sm:justify-between sm:items-center">
-            <div className="mb-4 sm:mb-0">
+            <div className="mb-1  mt-4 sm:mt-0 ml-3 sm:mb-0">
               <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
                 Event Calender
               </h1>
             </div>
           </div>
-          <div style={{ height: "500px" }}>
+          <div className=" h-[30rem] sm:h-[35rem] ">
             <Calendar
               localizer={localizer}
               defaultDate={new Date()}
               defaultView="month"
               events={events}
-              style={{ height: 600 }}
               onSelectEvent={handleEventSelect}
               eventPropGetter={eventStyleGetter}
             />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios" 
+import { toast } from "react-toastify"
 
 function MedicalStatus(props) {
   const [hospitalizationRecords, setHospitalizationRecords] = useState("")
@@ -53,10 +54,10 @@ function MedicalStatus(props) {
         }
       )
       console.log(response.data)
-      alert("Profile updated successfully.")
+      toast.success("Profile updated successfully.")
     } catch (error) {
       console.error("Failed to update profile.", error)
-      alert("Failed to update profile.")
+      toast.error("Failed to update profile.")
     }
   }
   return (

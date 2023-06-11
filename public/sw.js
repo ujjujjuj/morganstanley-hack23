@@ -1,3 +1,7 @@
+import { precacheAndRoute } from 'workbox-precaching'
+
+precacheAndRoute(self.__WB_MANIFEST)
+
 self.addEventListener("push", (e) => {
   const { title, body } = e.data.json()
   const options = {
