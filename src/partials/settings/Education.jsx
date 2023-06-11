@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 import { useTranslation } from "react-i18next"
 import useUser from "../../../hooks/useUser"
 
 function EducationStatus() {
-  const [currentEducationLevel, setCurrentEducationLevel] = useState("") // state variable for currentEmployment
-  const [ongoingEducation, setOngoingEducation] = useState("") // state variable for previousEmployment
-  const [furtherStudyInterest, setFurtherStudyInterest] = useState("") // state variable for jobTraining
+  const [currentEducationLevel, setCurrentEducationLevel] = useState("") 
+  const [ongoingEducation, setOngoingEducation] = useState("") 
+  const [furtherStudyInterest, setFurtherStudyInterest] = useState("")
   const { i18n } = useTranslation()
   const { t } = useTranslation()
   const { user } = useUser()

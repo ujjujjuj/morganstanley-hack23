@@ -14,7 +14,6 @@ function Feedback({ followUp }) {
 
   const handleFeedbackSubmit = () => {
     alert("Feedback submitted!");
-    //refresh window
     window.location.reload();
     console.log(feedbackText);
   };
@@ -25,12 +24,10 @@ function Feedback({ followUp }) {
         <div className="flex items-center">
           <label className="flex items-center">
             <span className="font-medium text-slate-800 text-base ml-2 mb-4">
-              {followUp.eventName} {/* Display the event name here */}
+              {followUp.eventName}
             </span>
           </label>
         </div>
-
-        {/* Expanded area with textarea for feedback */}
         {isExpanded && (
           <div>
             <textarea

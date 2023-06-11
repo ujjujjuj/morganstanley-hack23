@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 
 function AccountPanel(props) {
   const [kids, setKids] = useState(0)
   const [dependents, setDependents] = useState(0)
-  const [name, setName] = useState("") // state variable for name
-  const [age, setAge] = useState("") // state variable for age
-  const [gender, setGender] = useState("") // state variable for gender
-  const [phoneNumber, setPhoneNumber] = useState("") // state variable for phone number
-  const [primaryLanguage, setPrimaryLanguage] = useState("") // state variable for primary language
-  const [zip, setZip] = useState("") // state variable for zip code
-  const [city, setCity] = useState("") // state variable for city
-  const [state, setState] = useState("") // state variable for state
-  const [address1, setAddress] = useState("") // state variable for address
-  const [maritalStatus, setMaritalStatus] = useState("") // state variable for marital status
-  const [familyIncome, setFamilyIncome] = useState("") // state variable for family income
-  const [community, setCommunityStatus] = useState("") // state variable for marital status
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
+  const [name, setName] = useState("")
+  const [age, setAge] = useState("") 
+  const [gender, setGender] = useState("") 
+  const [phoneNumber, setPhoneNumber] = useState("") 
+  const [primaryLanguage, setPrimaryLanguage] = useState("") 
+  const [zip, setZip] = useState("") 
+  const [city, setCity] = useState("")
+  const [state, setState] = useState("") 
+  const [address1, setAddress] = useState("") 
+  const [maritalStatus, setMaritalStatus] = useState("") 
+  const [familyIncome, setFamilyIncome] = useState("") 
+  const [community, setCommunityStatus] = useState("") 
+  
   const id = props.id
   const [communityList, setCommunityList] = useState({})
 
@@ -33,7 +33,6 @@ function AccountPanel(props) {
         )
         if (response.ok) {
           const data = await response.json()
-          // console.log(data); // Process the response data
           setCommunityList(data.result)
           console.log(data.result)
         } else {
@@ -197,26 +196,6 @@ function AccountPanel(props) {
               Communication
             </h2>
             <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 ">
-              {/* Community */}
-              {/* Old community */}
-              {/* <div className="sm:w-1/3">
-                <label
-                  className="block text-sm font-medium mb-1"
-                  htmlFor="Community"
-                >
-                  Community <span className="text-rose-500">*</span>
-                </label>
-                <input
-                  id="Community"
-                  className="form-input w-full"
-                  type="text"
-                  value={community}
-                  onChange={(e) => setCommunityStatus(e.target.value)}
-                  required
-                /> */}
-              {/* your other fields go here */}
-              {/* </div> */}
-
               <div className="sm:w-1/3">
                 <label
                   className="block text-sm font-medium mb-1"
@@ -238,10 +217,7 @@ function AccountPanel(props) {
                     </option>
                   ))}
                 </select>
-                {/* Your other fields go here */}
               </div>
-
-              {/* phone no,*/}
               <div className="sm:w-1/3">
                 <label
                   className="block text-sm font-medium mb-1"
@@ -487,64 +463,6 @@ function AccountPanel(props) {
               </div>
             </div>
           </section>
-
-          {/* Email */}
-          {/* 
-          <section>
-            <h2 className="text-xl leading-snug text-slate-800 font-bold mb-1 ">
-              Email
-            </h2>
-            <div className="text-sm">
-              You can Change your email address here.
-            </div>
-            <div className="flex flex-wrap mt-5">
-              <div className="mr-2">
-                <label className="sr-only  " htmlFor="email">
-                  Business email
-                </label>
-                <input
-                  id="email"
-                  className="form-input "
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <button
-                className="btn border-slate-200 hover:border-slate-300 shadow-sm text-indigo-500"
-                onClick={handleEmailChange}
-              >
-                Change
-              </button>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl leading-snug text-slate-800 font-bold mb-1 ">
-              Password
-            </h2>
-            <div className="text-sm">You can Change your password here.</div>
-            <div className="flex flex-wrap mt-5">
-              <div className="mr-2">
-                <label className="sr-only  " htmlFor="password">
-                  New Password
-                </label>
-                <input
-                  id="password"
-                  className="form-input "
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button
-                className="btn border-slate-200 hover:border-slate-300 shadow-sm text-indigo-500"
-                onClick={handlePasswordChange}
-              >
-                Change
-              </button>
-            </div>
-          </section> */}
         </div>
 
         {/* Panel footer */}

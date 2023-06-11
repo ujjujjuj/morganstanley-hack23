@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 import { useTranslation } from "react-i18next"
 import useUser from "../../../hooks/useUser"
 
 function GovtID() {
-  const [aadharcard, setAadharCard] = useState("") // state variable for aadharcard
-  const [rationcard, setRationCard] = useState("") // state variable for rationcard
-  const [esharamcard, setEsharamCard] = useState("") // state variable for esharamCard
-  const [voterID, setVoterID] = useState("") // state variable for voterID
-  const [pancard, setPancard] = useState("") // state variable for pancard
+  const [aadharcard, setAadharCard] = useState("") 
+  const [rationcard, setRationCard] = useState("") 
+  const [esharamcard, setEsharamCard] = useState("")
+  const [voterID, setVoterID] = useState("") 
+  const [pancard, setPancard] = useState("") 
   const { i18n } = useTranslation()
   const { t } = useTranslation()
   const { user } = useUser()

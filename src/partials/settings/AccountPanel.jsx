@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios"
 import useUser from "../../../hooks/useUser"
 
 function AccountPanel() {
   const [kids, setKids] = useState(0)
   const [dependents, setDependents] = useState(0)
-  const [name, setName] = useState("") // state variable for name
-  const [age, setAge] = useState("") // state variable for age
-  const [gender, setGender] = useState("") // state variable for gender
-  const [phoneNumber, setPhoneNumber] = useState("") // state variable for phone number
-  const [primaryLanguage, setPrimaryLanguage] = useState("") // state variable for primary language
-  const [zip, setZip] = useState("") // state variable for zip code
-  const [city, setCity] = useState("") // state variable for city
-  const [state, setState] = useState("") // state variable for state
-  const [address1, setAddress] = useState("") // state variable for address
-  const [maritalStatus, setMaritalStatus] = useState("") // state variable for marital status
-  const [familyIncome, setFamilyIncome] = useState("") // state variable for family income
-  const [community, setCommunityStatus] = useState("") // state variable for marital status
+  const [name, setName] = useState("")
+  const [age, setAge] = useState("") 
+  const [gender, setGender] = useState("") 
+  const [phoneNumber, setPhoneNumber] = useState("") 
+  const [primaryLanguage, setPrimaryLanguage] = useState("") 
+  const [zip, setZip] = useState("") 
+  const [city, setCity] = useState("")
+  const [state, setState] = useState("") 
+  const [address1, setAddress] = useState("") 
+  const [maritalStatus, setMaritalStatus] = useState("") 
+  const [familyIncome, setFamilyIncome] = useState("")
+  const [community, setCommunityStatus] = useState("") 
   const { user } = useUser()
-  const id = user._id // Constant user ID for now
+  const id = user._id 
 
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -89,11 +89,9 @@ function AccountPanel() {
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="grow">
-        {/* Panel body */}
         <div className="p-6 space-y-6">
           <h2 className="mb-5 text-2xl font-bold text-slate-800">My Account</h2>
 
-          {/* section 1 - My Profile           */}
           <section>
             <div className="mt-2 space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
               <div className="sm:w-1/3">
@@ -111,7 +109,6 @@ function AccountPanel() {
                   onChange={(e) => setName(e.target.value)}
                   required
                 />
-                {/* your other fields go here */}
               </div>
 
               {/* age */}
@@ -304,8 +301,6 @@ function AccountPanel() {
                   onChange={(e) => setCity(e.target.value)}
                 />
               </div>
-
-              {/* State */}
               <div className="sm:w-1/3">
                 <label
                   className="block mb-1 text-sm font-medium"
@@ -363,8 +358,6 @@ function AccountPanel() {
               </div>
             </div>
           </section>
-
-          {/* Marital Status */}
           <section>
             <h2 className="mb-2 text-xl font-bold leading-snug text-slate-800">
               Family & Occupation Details
@@ -389,7 +382,6 @@ function AccountPanel() {
                   <option value="Widowed">Widowed</option>
                 </select>
               </div>
-              {/* Number of Dependents */}
               <div className="sm:w-1/3">
                 <label
                   className="block mb-1 text-sm font-medium"
@@ -407,8 +399,6 @@ function AccountPanel() {
                   required
                 />
               </div>
-
-              {/* Family Details */}
               <div className="sm:w-1/3">
                 <label
                   className="block mb-1 text-sm font-medium"
@@ -430,7 +420,6 @@ function AccountPanel() {
 
           <section>
             <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
-              {/* Family Income */}
               <div className="sm:w-[32%]">
                 <label
                   className="block mb-1 text-sm font-medium"
@@ -449,67 +438,7 @@ function AccountPanel() {
               </div>
             </div>
           </section>
-
-          {/* Email */}
-          {/* 
-          <section>
-            <h2 className="mb-1 text-xl font-bold leading-snug text-slate-800">
-              Email
-            </h2>
-            <div className="text-sm">
-              You can Change your email address here.
-            </div>
-            <div className="flex flex-wrap mt-5">
-              <div className="mr-2">
-                <label className="sr-only" htmlFor="email">
-                  Business email
-                </label>
-                <input
-                  id="email"
-                  className="form-input"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <button
-                className="text-indigo-500 shadow-sm btn border-slate-200 hover:border-slate-300"
-                onClick={handleEmailChange}
-              >
-                Change
-              </button>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-1 text-xl font-bold leading-snug text-slate-800">
-              Password
-            </h2>
-            <div className="text-sm">You can Change your password here.</div>
-            <div className="flex flex-wrap mt-5">
-              <div className="mr-2">
-                <label className="sr-only" htmlFor="password">
-                  New Password
-                </label>
-                <input
-                  id="password"
-                  className="form-input"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <button
-                className="text-indigo-500 shadow-sm btn border-slate-200 hover:border-slate-300"
-                onClick={handlePasswordChange}
-              >
-                Change
-              </button>
-            </div>
-          </section> */}
         </div>
-
-        {/* Panel footer */}
         <footer>
           <div className="flex flex-col px-6 py-5 border-t border-slate-200">
             <div className="flex self-end">

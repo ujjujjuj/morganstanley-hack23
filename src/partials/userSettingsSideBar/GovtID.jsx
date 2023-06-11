@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 
 function GovtID(props) {
-  const [aadharcard, setAadharCard] = useState("") // state variable for aadharcard
-  const [rationcard, setRationCard] = useState("") // state variable for rationcard
-  const [esharamcard, setEsharamCard] = useState("") // state variable for esharamCard
-  const [voterID, setVoterID] = useState("") // state variable for voterID
-  const [pancard, setPancard] = useState("") // state variable for pancard
-
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
+  const [aadharcard, setAadharCard] = useState("") 
+  const [rationcard, setRationCard] = useState("") 
+  const [esharamcard, setEsharamCard] = useState("") 
+  const [voterID, setVoterID] = useState("") 
+  const [pancard, setPancard] = useState("") 
   const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -154,7 +152,6 @@ function GovtID(props) {
                   value={voterID}
                   onChange={(e) => setVoterID(e.target.value)}
                 />
-                {/* your other fields go here */}
               </div>
             </div>
           </section>

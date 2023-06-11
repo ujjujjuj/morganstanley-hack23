@@ -5,19 +5,6 @@ import SidebarLinkGroup from "./SidebarLinkGroup"
 import useUser from "../../hooks/useUser"
 import TinyMiraclesLogo from "../images/tinymiracleswhite.webp"
 
-// const translations = {
-//   Dashboard: {
-//     en: "Dashboard",
-//     hi: "डैशबोर्ड",
-//     mr: "डॅशबोर्ड",
-//   },
-//   Events: {
-//     en: "Events",
-//     hi: "आयोजन",
-//     mr: "आयोजन",
-//   },
-// }
-
 const languages = [
   { name: "English", code: "en" },
   { name: "हिन्दी", code: "hi" },
@@ -63,7 +50,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     return () => document.removeEventListener("click", clickHandler)
   })
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
       if (!sidebarOpen || keyCode !== 27) return
@@ -84,7 +70,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   return (
     <div>
-      {/* Sidebar backdrop (mobile only) */}
       <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -92,7 +77,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         aria-hidden="true"
       ></div>
 
-      {/* Sidebar */}
       <div
         id="sidebar"
         ref={sidebar}
@@ -100,9 +84,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
-        {/* Sidebar header */}
         <div className="flex justify-between pr-3 mb-10 sm:px-2">
-          {/* Close button */}
           <button
             ref={trigger}
             className="lg:hidden text-slate-500 hover:text-slate-400"
@@ -119,7 +101,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
           </button>
-          {/* Logo */}
           <NavLink end to="/user/" className="block">
             <div className="flex justify-between items-center mr-auto w-32">
               <img
@@ -147,9 +128,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </span>
             </h3>
             <ul className="mt-3">
-              {/* Dashboard */}
 
-              {/* All events */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname === "/user/" && "bg-slate-900"
@@ -559,72 +538,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
-
-              {/* FAQ */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("faqs") && "bg-slate-900"
-                }`}
-              >
-                <NavLink
-                  end
-                  to="/user/faqs"
-                  className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("faqs")
-                      ? "hover:text-slate-200"
-                      : "hover:text-white"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
-                      <circle
-                        className={`fill-current ${
-                          pathname.includes("faqs")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        cx="18.5"
-                        cy="5.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${
-                          pathname.includes("faqs")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        cx="5.5"
-                        cy="5.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${
-                          pathname.includes("faqs")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        cx="18.5"
-                        cy="18.5"
-                        r="4.5"
-                      />
-                      <circle
-                        className={`fill-current ${
-                          pathname.includes("faqs")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        cx="5.5"
-                        cy="18.5"
-                        r="4.5"
-                      />
-                    </svg>
-                    <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      {t("FAQ")}
-                    </span>
-                  </div>
-                </NavLink>
-              </li>
-            </ul>
+            </ul> 
           </div>
         </div>
 

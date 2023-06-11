@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
 import useUser from "../../../hooks/useUser"
 import { useTranslation } from "react-i18next"
 
@@ -9,7 +8,6 @@ function WelcomeBanner() {
   const { t } = useTranslation()
   return (
     <div className="overflow-hidden relative p-4 mb-8 bg-indigo-200 rounded-sm sm:p-6">
-      {/* Background illustration */}
       <div
         className="hidden absolute top-0 right-0 -mt-4 mr-16 pointer-events-none xl:block"
         aria-hidden="true"
@@ -71,8 +69,6 @@ function WelcomeBanner() {
           </g>
         </svg>
       </div>
-
-      {/* Content */}
       <div className="relative">
         <h1 className="mb-1 text-2xl font-bold md:text-3xl text-slate-800">
           {t("Goodafternoon")} , {user.name}. 👋

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import Sidebar from "../../partials/Sidebar";
 import Header from "../../partials/Header";
-import SettingsSidebar from "../../partials/settings/SettingsSidebar";
 import AccountPanel from "../../partials/userSettingsSideBar/AccountPanel";
 import { useLocation, useNavigate } from "react-router-dom";
 import Education from "../../partials/userSettingsSideBar/Education";
@@ -23,7 +22,6 @@ const PageDivider = () => {
     </div>
   );
 };
-// location.state.id
 function UserEditPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location=useLocation();
@@ -33,26 +31,18 @@ function UserEditPage() {
   console.log(location.state.id);
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Content area */}
       <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-        {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <main>
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
-            {/* Page header */}
             <div className="mb-8 flex">
-  {/* Title */}
-  <h1 className="text-2xl ml-2 sm:ml-0 mt-6 md:text-3xl text-slate-800 font-bold whitespace-nowrap">
-  User's Profile&nbsp;✨
-</h1>
-    
-  <EditFilterComponent setFactor={setFactor} id={location.state.id} />
-</div>
-            
-            {/* Content */}
+              <h1 className="text-2xl ml-2 sm:ml-0 mt-6 md:text-3xl text-slate-800 font-bold whitespace-nowrap">
+              User's Profile&nbsp;✨
+            </h1>
+                
+              <EditFilterComponent setFactor={setFactor} id={location.state.id} />
+            </div>
             <div className="bg-white flex-col  shadow-lg rounded-sm mb-8">
             {factor==="View"?<div className="">
                 <AccountPanel showSave="No" id={location.state.id}/>
@@ -108,14 +98,7 @@ function UserEditPage() {
                   Go Back
                 </button> </div>
               </div>}
-
-
-
-
             </div>
-
-
-
           </div>
         </main>
       </div>

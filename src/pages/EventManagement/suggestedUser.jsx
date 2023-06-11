@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import SuggestedUserTableItem from "./suggestedUserTableItem"
 
 function SuggestedUser(props) {
-  // let customers=[];
   const [list, setList] = useState([])
   useEffect(() => {
     console.log(props.eventId)
@@ -14,13 +13,11 @@ function SuggestedUser(props) {
           }`
         )
         const data = await response.json()
-        // console.log(data);
         if (data.hasOwnProperty("result")) {
           setList(data.result)
         } else {
           setList([])
         }
-        // console.log(list);
       } catch (error) {
         console.log("No user Found !!")
       }
@@ -29,8 +26,6 @@ function SuggestedUser(props) {
     if (props.name) {
       fetchData()
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.name])
 
   return (
@@ -42,10 +37,8 @@ function SuggestedUser(props) {
         </h2>
       </header>
       <div>
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
-            {/* Table header */}
             <thead>
               <tr>
                 <th className="px-8 py-3">
@@ -62,7 +55,6 @@ function SuggestedUser(props) {
                 </th>
               </tr>
             </thead>
-            {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-200">
               {list.length > 0 &&
                 list.map((participant) => {

@@ -21,20 +21,16 @@ function Messages() {
 
   return (
     <div className="flex overflow-hidden h-screen">
-      {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      {/* Content area */}
       <div
         className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1"
         ref={contentArea}
       >
-        {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <main>
           <div className="px-4 py-8 mx-auto w-full sm:px-6 lg:px-8 max-w-9xl">
             <div className="mb-8 sm:flex sm:justify-between sm:items-center">
-              {/* Left: Title */}
               <div className="mb-4 sm:mb-0">
                 <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
                   Support Responses

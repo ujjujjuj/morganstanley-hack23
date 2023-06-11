@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function EventsTableItem(props) {
   const navigate = useNavigate();
   let showUserList=()=>{
-    // based on sessionId basically just show the participants array !! 
-    // console.log(props._id);
     navigate('/events/userList',{state:{eventId:props._id}});
   }
 
@@ -24,12 +22,6 @@ function EventsTableItem(props) {
       imageUrl:props.imageUrl    
     }});
   }
-  // basically : edit pe basically : events/addEvent me pahunch jaoge 
-  // navigate("/events/createEvent") , {state:{eventId:props.eventId}}
-  // basically : useEffect rakhlo fir usme : mangwalo saare properties 
-  // if type="Edit"
-  // and normal wale me pass : type="Add" and eventId as any uuvid();
-
   return (
     <tr>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -43,17 +35,11 @@ function EventsTableItem(props) {
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
         <div className="flex items-center relative">
           <button>
-            {/* <svg className={`w-4 h-4 shrink-0 fill-current ${props.fav ? 'text-amber-500' : 'text-slate-300'}`} viewBox="0 0 16 16">
-              <path d="M8 0L6 5.934H0l4.89 3.954L2.968 16 8 12.223 13.032 16 11.11 9.888 16 5.934h-6L8 0z" />
-            </svg> */}
           </button>
         </div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
         <div className="flex items-center">
-          {/* <div className="w-10 h-10 shrink-0 mr-2 sm:mr-3">
-            <img className="rounded-full" src={props.image} width="40" height="40" alt={props.name} />
-          </div> */}
           <div onClick={editEvent} style={{ cursor: 'pointer' }} className="font-medium text-slate-800">{props.eventName}</div>
           
         </div>
@@ -71,7 +57,6 @@ function EventsTableItem(props) {
         <div className="text-left">{props.feedbacksCount}</div>
       </td>
       <td className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-        {/* Menu button */}
         <button onClick={showUserList} className="text-slate-400 hover:text-slate-500 rounded-full">
           <span className="sr-only">Menu</span>
           <svg className="w-8 h-8 fill-current" viewBox="0 0 32 32">

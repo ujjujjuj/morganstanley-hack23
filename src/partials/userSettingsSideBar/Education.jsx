@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 
 function EducationStatus(props) {
-  const [currentEducationLevel, setCurrentEducationLevel] = useState("") // state variable for currentEmployment
-  const [ongoingEducation, setOngoingEducation] = useState("") // state variable for previousEmployment
-  const [furtherStudyInterest, setFurtherStudyInterest] = useState("") // state variable for jobTraining
-
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
+  const [currentEducationLevel, setCurrentEducationLevel] = useState("") 
+  const [ongoingEducation, setOngoingEducation] = useState("") 
+  const [furtherStudyInterest, setFurtherStudyInterest] = useState("") 
   const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -61,7 +59,6 @@ function EducationStatus(props) {
           {/* section 1*/}
           <section>
             <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 ">
-              {/* Current Education Status,*/}
               <div className="sm:w-1/3">
                 <label
                   className="block text-sm font-medium mb-1"

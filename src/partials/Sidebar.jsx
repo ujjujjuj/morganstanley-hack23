@@ -51,7 +51,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
     return () => document.removeEventListener("click", clickHandler)
   })
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
       if (!sidebarOpen || keyCode !== 27) return
@@ -72,7 +71,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
 
   return (
     <div>
-      {/* Sidebar backdrop (mobile only) */}
       <div
         className={`fixed inset-0 bg-slate-900 bg-opacity-30 z-40 lg:hidden lg:z-auto transition-opacity duration-200 ${
           sidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -80,7 +78,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
         aria-hidden="true"
       ></div>
 
-      {/* Sidebar */}
       <div
         id="sidebar"
         ref={sidebar}
@@ -88,9 +85,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           sidebarOpen ? "translate-x-0" : "-translate-x-64"
         }`}
       >
-        {/* Sidebar header */}
         <div className="flex justify-between pr-3 mb-6 sm:px-2">
-          {/* Close button */}
           <button
             ref={trigger}
             className="lg:hidden text-slate-500 hover:text-slate-400"
@@ -107,7 +102,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
             </svg>
           </button>
-          {/* Logo */}
           <NavLink end to="/" className="block">
             <div className="flex justify-between items-center mr-auto w-32">
               <img
@@ -119,9 +113,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           </NavLink>
         </div>
 
-        {/* Links */}
         <div className="space-y-8">
-          {/* Pages group */}
           <div>
             <h3 className="pl-3 text-xs font-semibold uppercase text-slate-500">
               <span
@@ -135,7 +127,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
               </span>
             </h3>
             <ul className="mt-3">
-              {/* Dashboard */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
                   pathname === "/" && "bg-slate-900"
@@ -183,7 +174,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
-              {/* E-Commerce */}
               <SidebarLinkGroup activecondition={pathname.includes("events")}>
                 {(handleClick, open) => {
                   return (
@@ -236,7 +226,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                               {t("events")}
                             </span>
                           </div>
-                          {/* Icon */}
                           <div className="flex ml-2 shrink-0">
                             <svg
                               className={`w-3 h-3 shrink-0 ml-1 fill-current text-slate-400 ${
@@ -330,7 +319,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   </div>
                 </NavLink>
               </li>
-              {/* Community */}
               <SidebarLinkGroup
                 activecondition={pathname.includes("community")}
               >
@@ -430,50 +418,6 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
                   )
                 }}
               </SidebarLinkGroup>
-              {/* Finance */}
-
-              {/* Tasks */}
-
-              {/* Inbox */}
-              <li
-                className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${
-                  pathname.includes("inbox") && "bg-slate-900"
-                }`}
-              >
-                <NavLink
-                  end
-                  to="/inbox"
-                  className={`block text-slate-200 truncate transition duration-150 ${
-                    pathname.includes("inbox")
-                      ? "hover:text-slate-200"
-                      : "hover:text-white"
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24">
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-500"
-                            : "text-slate-600"
-                        }`}
-                        d="M16 13v4H8v-4H0l3-9h18l3 9h-8Z"
-                      />
-                      <path
-                        className={`fill-current ${
-                          pathname.includes("inbox")
-                            ? "text-indigo-300"
-                            : "text-slate-400"
-                        }`}
-                        d="m23.72 12 .229.686A.984.984 0 0 1 24 13v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1v-8c0-.107.017-.213.051-.314L.28 12H8v4h8v-4H23.72ZM13 0v7h3l-4 5-4-5h3V0h2Z"
-                      />
-                    </svg>
-                    <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                      {t("inbox")}
-                    </span>
-                  </div>
-                </NavLink>
-              </li>
               {/* Calendar */}
               <li
                 className={`px-3 py-2 rounded-sm mb-0.5 last:mb-0 ${

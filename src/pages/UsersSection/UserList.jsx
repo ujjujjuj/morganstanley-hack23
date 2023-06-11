@@ -3,36 +3,13 @@ import React, { useState, useEffect } from "react"
 import EventUserTableItem from "./UserTableItem"
 
 function EventUsersTable(props) {
-  // let customers=[];
   const [selectAll, setSelectAll] = useState(false)
   const [isCheck, setIsCheck] = useState([])
   const [list, setList] = useState([])
 
-  // props.list !! : "Attend" or "Register"
-  // console.log(props.list);
-
-  // const handleFilterChange = (event) => {
-  //   const selectedFilter = event.target.value;
-  //   // Logic to update the list or list2 based on the selected filter
-
-  //   // Example logic:
-  //   if (selectedFilter === 'filter1') {
-  //     setList([...]); // Update list based on filter1
-  //     setShowList1(true); // Show list
-  //   } else if (selectedFilter === 'filter2') {
-  //     setList2([...]); // Update list2 based on filter2
-  //     setShowList1(false); // Hide list
-  //   }
-  // };
-
   useEffect(() => {
-    // console.log("Yello",props.eventId);
-    // /registeredList ispe bhi call karke registerList bhi mangwalo !!
-    // also have : only registered and only attended ka funda !!
-    // have a tag against them !!
     async function fetchData() {
       try {
-        // get all users list !!
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_ADDRESS}/user`
         )
@@ -49,25 +26,19 @@ function EventUsersTable(props) {
     }
 
     fetchData()
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const searchUserCollections = (f, v) => {
-    // Filter the collections based on the search criteria
     const filteredCollections = list.filter((collection) => {
       const propertyValue = collection.basicDetails[f]
       return propertyValue === v || propertyValue.startsWith(v)
     })
-
-    // Update the state with the new filtered array
     setList(filteredCollections)
   }
 
   useEffect(() => {
     async function fetchData2() {
       try {
-        // get all users list !!
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_ADDRESS}/user`
         )
@@ -76,14 +47,11 @@ function EventUsersTable(props) {
         }
         const data = await response.json()
         const result = data.result
-        // DoesNotExist
         const filteredData = result.filter(
           (user) => !/^DoesNotExist/.test(user.pwd)
         )
         const ans = [...filteredData].reverse()
         setList(ans)
-        //       console.log(ans);
-        // setList(filteredData);
       } catch (error) {
         console.log("Error:", error)
       }
@@ -102,29 +70,11 @@ function EventUsersTable(props) {
     }
 
     fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.factor])
 
-  const handleSelectAll = () => {
-    setSelectAll(!selectAll)
-    setIsCheck(list.map((li) => li.id))
-    if (selectAll) {
-      setIsCheck([])
-    }
-  }
-
-  const handleClick = (e) => {
-    const { id, checked } = e.target
-    setSelectAll(false)
-    setIsCheck([...isCheck, id])
-    if (!checked) {
-      setIsCheck(isCheck.filter((item) => item !== id))
-    }
-  }
 
   useEffect(() => {
     props.selectedItems(isCheck)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheck])
 
   return (
@@ -136,10 +86,8 @@ function EventUsersTable(props) {
         </h2>
       </header>
       <div>
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
-            {/* Table header */}
             <thead>
               <tr>
                 <th className="px-8 py-3">

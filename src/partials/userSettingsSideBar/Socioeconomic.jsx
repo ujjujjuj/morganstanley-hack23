@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios"
 
 function Socioeconomic(props) {
-  const [cleanWaterAccess, setCleanWaterAccess] = useState("") // state variable for currentEmployment
-  const [electricityAccess, setElectricityAccess] = useState("") // state variable for previousEmployment
-  const [housingType, setHousingType] = useState("") // state variable for jobTraining
-  const [transportationAccess, setTransportationAccess] = useState("") // state variable for workNature
-
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
+  const [cleanWaterAccess, setCleanWaterAccess] = useState("") 
+  const [electricityAccess, setElectricityAccess] = useState("")
+  const [housingType, setHousingType] = useState("")
+  const [transportationAccess, setTransportationAccess] = useState("")
   const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {

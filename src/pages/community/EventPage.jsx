@@ -7,8 +7,6 @@ import DialogflowMessenger from "../../utils/DialogflowMessenger"
 
 import Sidebar from "../../partials/UserSidebar"
 import Header from "../../partials/UserHeader"
-
-// import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom"
 import useUser from "../../../hooks/useUser"
 
@@ -62,20 +60,13 @@ export default function EventPost() {
 
   return (
     <div className="flex overflow-hidden h-screen">
-      {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
-      {/* Content area */}
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
-        {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <DialogflowMessenger />
-
         <main>
           <div className="px-4 py-8 w-full sm:px-6 lg:px-8">
-            {/* Page content */}
             <div className="flex flex-col mx-auto max-w-5xl lg:flex-row lg:space-x-8 xl:space-x-16">
-              {/* Content */}
               <div>
                 <div className="mb-6">
                   <Link
@@ -100,19 +91,12 @@ export default function EventPost() {
                   />
                 </div>
                 <header className="mb-4">
-                  {/* Title */}
                   <h1 className="mb-2 text-2xl font-bold md:text-3xl text-slate-800">
                     {postInfo.eventName}
                   </h1>
                 </header>
-
-                {/* Meta */}
                 <div className="mb-6 space-y-3 sm:flex sm:items-center sm:justify-between sm:space-y-0">
-                  {/* Author */}
-
-                  {/* Right side */}
                   <div className="flex flex-wrap items-center space-x-2 sm:justify-end">
-                    {/* Tags */}
                     <div className="text-xs inline-flex items-center font-medium bg-white text-slate-600 rounded-full text-center px-2.5 py-1">
                       <span>{postInfo.category}</span>
                     </div>
@@ -121,8 +105,6 @@ export default function EventPost() {
                     </div>
                   </div>
                 </div>
-
-                {/* Image */}
                 <figure className="mb-6">
                   <img
                     className="w-full rounded-sm"
@@ -132,8 +114,6 @@ export default function EventPost() {
                     alt="Meetup"
                   />
                 </figure>
-
-                {/* Post content */}
                 <div>
                   <h2 className="mb-2 text-xl font-bold leading-snug text-slate-800">
                     Session Details
@@ -142,9 +122,7 @@ export default function EventPost() {
                 </div>
               </div>
 
-              {/* Sidebar */}
               <div className="space-y-4">
-                {/* 1st block */}
                 <div className="p-5 bg-white rounded-sm border shadow-lg border-slate-200 lg:w-72 xl:w-80">
                   <div className="space-y-2">
                     <button
@@ -168,8 +146,6 @@ export default function EventPost() {
                     </button>
                   </div>
                 </div>
-
-                {/* 2nd block */}
 
                 <div className="flex justify-between p-5 mb-0 space-x-1 text-sm font-semibold bg-white rounded-sm border shadow-lg border-slate-200 text-slate-800 lg:w-72 xl:w-80">
                   <div className="">

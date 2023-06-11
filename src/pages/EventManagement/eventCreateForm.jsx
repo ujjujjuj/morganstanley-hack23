@@ -8,14 +8,7 @@ export default function EventForm() {
   const [category, setEventCategory] = useState("")
   const [eventDuration, setEvenDuration] = useState(0)
   const [eventDetails, setEventDetails] = useState("")
-  const [eventStartTime, seteventStartTime] = useState("") // Add this line
-  // duration details
-
-  // duration details
-  // const [expanded, setExpanded] = useState(false);
-  // const toggleExpand = () => {
-  //   setExpanded(!expanded);
-  // };
+  const [eventStartTime, seteventStartTime] = useState("") 
   useEffect(() => {
     console.log("Both")
     if (location1.state.type === "Edit") {
@@ -27,22 +20,6 @@ export default function EventForm() {
       setLocation(location1.state.location)
       setEventDetails(location1.state.details)
       seteventStartTime(location1.state.eventStartTime)
-
-      // Convert the fetched dateTime to the required format
-      // if (location1.state.eventStartTime) {
-      //   let dt = new Date(location1.state.eventStartTime);
-      //   let year = dt.getUTCFullYear();
-      //   let month = ("0" + (dt.getUTCMonth() + 1)).slice(-2);
-      //   let date = ("0" + dt.getUTCDate()).slice(-2);
-      //   let hours = ("0" + dt.getUTCHours()).slice(-2);
-      //   let minutes = ("0" + dt.getUTCMinutes()).slice(-2);
-
-      //   let newDateTime = `${year}-${month}-${date}T${hours}:${minutes}`;
-      //   seteventStartTime(newDateTime);
-
-      //    // Here is the console.log statement
-      //    console.log("Converted event date and time: ", newDateTime);
-      // }
     }
   }, [])
 
@@ -75,7 +52,6 @@ export default function EventForm() {
     e.preventDefault()
 
     if (location1.state.type === "Edit") {
-      // put karo rather then post !!
       const eventId = location1.state.eventId
       console.log(eventId)
       const body = {
@@ -90,7 +66,7 @@ export default function EventForm() {
         followedUp: location1.state.followUp,
         feedback: location1.state.feedback,
         imageUrl: location1.state.imageUrl,
-        eventStartTime: eventStartTime, // Add this line
+        eventStartTime: eventStartTime,
       }
       console.log(body)
       const requestOptions = {
@@ -109,12 +85,9 @@ export default function EventForm() {
         } else {
           throw new Error("Failed to update event")
         }
-
-        // just navigate !!
         navigate("/events/AllEvents")
       } catch (error) {
         console.error("Error updating event:", error)
-        // just navigate !!
         navigate("/events/AllEvents")
       }
     } else {
@@ -126,8 +99,6 @@ export default function EventForm() {
         eventDuration,
         eventStartTime,
       })
-
-      // just navigate !!
       navigate("/events/AllEvents")
     }
   }
@@ -145,8 +116,6 @@ export default function EventForm() {
           <p className="mt-1 text-sm leading-6 text-gray-600">
             Add the details Carefully !
           </p>
-
-          {/* Event name  */}
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label
@@ -191,8 +160,6 @@ export default function EventForm() {
                 />
               </div>
             </div>
-
-            {/* Event details */}
             <div className="sm:col-span-6">
               <label
                 htmlFor="event-details"
@@ -214,8 +181,6 @@ export default function EventForm() {
                 />
               </div>
             </div>
-
-            {/* Event duration */}
             <div className="sm:col-span-3">
               <label
                 htmlFor="first-name"
@@ -237,9 +202,6 @@ export default function EventForm() {
                 />
               </div>
             </div>
-
-            {/* Event category */}
-            {/* Event category */}
             <div className="sm:col-span-3">
               <label
                 htmlFor="event-category"
@@ -273,8 +235,6 @@ export default function EventForm() {
                 </select>
               </div>
             </div>
-
-            {/* Location */}
             <div className="sm:col-span-3">
               <label
                 htmlFor="country"

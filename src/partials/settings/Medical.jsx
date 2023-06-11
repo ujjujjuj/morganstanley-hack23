@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios"
 import { useTranslation } from "react-i18next"
 import useUser from "../../../hooks/useUser"
 
 function MedicalStatus() {
-  const [hospitalizationRecords, setHospitalizationRecords] = useState("") // state variable for hospitalizationRecords
-  const [chronicIllnesses, setChronicIllnesses] = useState("") // state variable for chronicIllnesses
-  const [currentMedications, setCurrentMedications] = useState("") // state variable for currentMedications
-  const [bloodGroup, setBloodGroup] = useState("") // state variable bloodGroup
-  const [allergies, setAllergies] = useState("") // state variable allergies
-  const [vaccinationRecords, setVaccinationRecords] = useState("") // state variable vaccinationRecords
-  const [healthInsurance, setHealthInsurance] = useState("") // state variable healthInsurance
+  const [hospitalizationRecords, setHospitalizationRecords] = useState("") 
+  const [chronicIllnesses, setChronicIllnesses] = useState("") 
+  const [currentMedications, setCurrentMedications] = useState("")
+  const [bloodGroup, setBloodGroup] = useState("") 
+  const [allergies, setAllergies] = useState("") 
+  const [vaccinationRecords, setVaccinationRecords] = useState("") 
+  const [healthInsurance, setHealthInsurance] = useState("") 
   const { i18n } = useTranslation()
   const { t } = useTranslation()
   const { user } = useUser()
@@ -67,17 +67,13 @@ function MedicalStatus() {
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="grow">
-        {/* Panel body */}
         <div className="p-6 space-y-6">
           <h2 className="mb-5 text-2xl font-bold text-slate-800">
             {t("MedicalStatus")}
           </h2>
 
-          {/* section 1  - Communication */}
-
           <section>
             <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
-              {/* setHospitalizationRecords,*/}
               <div className="sm:w-1/3">
                 <label
                   className="block mb-1 text-sm font-medium"
@@ -94,7 +90,6 @@ function MedicalStatus() {
                   onChange={(e) => setHospitalizationRecords(e.target.value)}
                 ></textarea>
               </div>
-              {/* chronicIllnesses,*/}
               <div className="sm:w-1/3">
                 <label
                   className="block mb-1 text-sm font-medium"

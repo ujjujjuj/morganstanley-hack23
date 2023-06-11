@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Transition from "../utils/Transition"
-
 import UserAvatar from "../images/user-avatar-32.png"
 import useUser from "../../hooks/useUser"
 
@@ -12,7 +11,6 @@ function DropdownProfile({ align }) {
   const trigger = useRef(null)
   const dropdown = useRef(null)
 
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
       if (!dropdown.current) return
@@ -28,7 +26,6 @@ function DropdownProfile({ align }) {
     return () => document.removeEventListener("click", clickHandler)
   })
 
-  // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
       if (!dropdownOpen || keyCode !== 27) return

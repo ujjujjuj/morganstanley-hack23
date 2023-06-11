@@ -16,11 +16,9 @@ function MyCalendar() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [events, setEvents] = useState([])
   const navigate = useNavigate()
-
-  // Map each category to a color
+ 
   const categoryColors = {
     "Child Education and Enrichment": "#f39c12", // orange
-    // blue
     "Women's Rights": "#9b59b6", // purple
     "Financial Literacy": "#2ecc71", // green
     "Health and Wellbeing": "#e74c3c", // red
@@ -36,8 +34,7 @@ function MyCalendar() {
           title: event.eventName,
           start: new Date(event.eventStartTime),
           end: new Date(event.eventStartTime),
-          id: event._id, // Ensure this field exists in your API response
-          // Use the category to determine the color of the event
+          id: event._id, 
           category: event.category,
         }))
         setEvents(fetchedEvents)
@@ -54,13 +51,13 @@ function MyCalendar() {
     var backgroundColor = categoryColors[event.category]
     var style = {
       backgroundColor: backgroundColor,
-      borderRadius: "5px", // rounded corners
+      borderRadius: "5px", 
       opacity: 0.8,
-      color: "white", // change text color to white for better contrast
+      color: "white", 
       border: "0px",
       display: "block",
-      fontWeight: "bold", // bold text
-      padding: "5px", // space around the text
+      fontWeight: "bold",
+      padding: "5px", 
     }
     return {
       style: style,
@@ -68,18 +65,11 @@ function MyCalendar() {
   }
   return (
     <div className="flex overflow-hidden h-screen">
-      {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      {/* <DialogflowMessenger /> */}
-
-      {/* Content area */}
       <div className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1">
-        {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
         <main className="p-10">
           <div className="mb-8 sm:flex sm:justify-between sm:items-center">
-            {/* Left: Title */}
             <div className="mb-4 sm:mb-0">
               <h1 className="text-2xl font-bold md:text-3xl text-slate-800">
                 Event Calender

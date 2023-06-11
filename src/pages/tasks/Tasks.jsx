@@ -1,11 +1,9 @@
 import React from "react";
-import axios from "axios"; // You need to install axios via npm if it's not installed yet
+import axios from "axios";
 import useUser from "../../../hooks/useUser"
 
 
 function Tasks({ task }) {
-  // Get token from local storage
-  // Get token from local storage
   const { user } = useUser()
   const userID = user._id
 
@@ -19,8 +17,8 @@ function Tasks({ task }) {
         }
       );
       if (response.data) {
-        alert("Successfully submitted"); // Alert the message "Successfully submitted"
-        window.location.reload(); // Refresh the page
+        alert("Successfully submitted");
+        window.location.reload(); 
       }
     } catch (err) {
       console.error(err.message);
@@ -34,11 +32,10 @@ function Tasks({ task }) {
         <div className="flex items-center">
           <label className="flex items-center">
             <span className="font-medium text-slate-800 text-base  ml-2 mb-4">
-              {task.eventName} {/* Display the event name here */}
+              {task.eventName} 
             </span>
           </label>
         </div>
-        {/* Nested checkboxes */}
 
         {task.category === "Child Education and Enrichment" && (
           <ul className="pl-12 space-y-3 ">

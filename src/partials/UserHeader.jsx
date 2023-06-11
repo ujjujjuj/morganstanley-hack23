@@ -8,9 +8,7 @@ function Header({ sidebarOpen, setSidebarOpen }) {
     <header className="sticky top-0 z-30 bg-white border-b border-slate-200">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center -mb-px h-16">
-          {/* Header: Left side */}
           <div className="flex">
-            {/* Hamburger button */}
             <button
               className="text-slate-500 hover:text-slate-600 lg:hidden"
               aria-controls="sidebar"
@@ -33,7 +31,6 @@ function Header({ sidebarOpen, setSidebarOpen }) {
             </button>
           </div>
 
-          {/* Header: Right side */}
           <div className="flex items-center space-x-3">
             <QrScanner />
             <UserMenu align="right" />

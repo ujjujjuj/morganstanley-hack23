@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import MeetupsPost from "./MeetupsPost"
-import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
 import useUser from "../../../hooks/useUser"
 

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 
 function MedicalStatus(props) {
-  const [hospitalizationRecords, setHospitalizationRecords] = useState("") // state variable for hospitalizationRecords
-  const [chronicIllnesses, setChronicIllnesses] = useState("") // state variable for chronicIllnesses
-  const [currentMedications, setCurrentMedications] = useState("") // state variable for currentMedications
-  const [bloodGroup, setBloodGroup] = useState("") // state variable bloodGroup
-  const [allergies, setAllergies] = useState("") // state variable allergies
-  const [vaccinationRecords, setVaccinationRecords] = useState("") // state variable vaccinationRecords
-  const [healthInsurance, setHealthInsurance] = useState("") // state variable healthInsurance
+  const [hospitalizationRecords, setHospitalizationRecords] = useState("")
+  const [chronicIllnesses, setChronicIllnesses] = useState("") 
+  const [currentMedications, setCurrentMedications] = useState("") 
+  const [bloodGroup, setBloodGroup] = useState("")
+  const [allergies, setAllergies] = useState("")
+  const [vaccinationRecords, setVaccinationRecords] = useState("") 
+  const [healthInsurance, setHealthInsurance] = useState("") 
 
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
   const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -197,7 +196,6 @@ function MedicalStatus(props) {
                   <option value="yes">Yes</option>
                   <option value="no">None</option>
                 </select>
-                {/* your other fields go here */}
               </div>
             </div>
           </section>
@@ -220,7 +218,6 @@ function MedicalStatus(props) {
                 value={vaccinationRecords}
                 onChange={(e) => setVaccinationRecords(e.target.value)}
               ></textarea>
-              {/* your other fields go here */}
             </div>
           </section>
         </div>

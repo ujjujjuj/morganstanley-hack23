@@ -4,17 +4,12 @@ import { useNavigate } from "react-router-dom"
 export default function UserForm() {
   const [name, setName] = useState("")
   const [pwd, setPwd] = useState("")
-
   const [gender, setGender] = useState("")
-
-  // const [Community,setCommunity]=useState("");
   const [PhoneNumber, setPhoneNumber] = useState(0)
-  // duration details
-  const [Community, setCommunityStatus] = useState("") // state variable for marital status
+  const [Community, setCommunityStatus] = useState("") 
   const [communityList, setCommunityList] = useState({})
 
   useEffect(() => {
-    // console.log(id);
     const fetchCommunity = async () => {
       try {
         const response = await fetch(
@@ -22,7 +17,6 @@ export default function UserForm() {
         )
         if (response.ok) {
           const data = await response.json()
-          // console.log(data); // Process the response data
           setCommunityList(data.result)
           console.log(data.result)
         } else {
@@ -32,7 +26,6 @@ export default function UserForm() {
         console.error("Error:", error.message)
       }
     }
-    // fetchUserDetail();
     fetchCommunity()
   }, [])
   const navigate = useNavigate()
@@ -81,7 +74,6 @@ export default function UserForm() {
       gender,
       Community,
     })
-    // just navigate !!
     navigate("/users/allUsers")
   }
   function handleCancel() {
@@ -98,8 +90,6 @@ export default function UserForm() {
           <p className="mt-1 text-sm leading-6 text-gray-600">
             Add the details Carefully !
           </p>
-
-          {/* name  */}
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label
@@ -122,26 +112,6 @@ export default function UserForm() {
                 />
               </div>
             </div>
-
-            {/* old gender component */}
-            {/* <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                Gender
-              </label>
-              <div className="mt-2">
-                <input
-                  onChange={(event)=>{setGender(event.target.value)}}
-                  type="text"
-                  name="first-name"
-                  value={gender}
-                  id="first-name"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div> */}
-
-            {/* New Gender Component */}
             <div className="sm:col-span-3">
               <label
                 className="block text-sm font-medium mb-1"
@@ -162,23 +132,6 @@ export default function UserForm() {
                 <option value="other">Other</option>
               </select>
             </div>
-
-            {/* <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
-                Community
-              </label>
-              <div className="mt-2">
-                <input
-                  onChange={(event)=>{setCommunity(event.target.value)}}
-                  type="text"
-                  name="first-name"
-                  value={Community}
-                  id="first-name"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div> */}
             <div className="sm:col-span-3">
               <label
                 className="block text-sm font-medium mb-1"
@@ -200,10 +153,7 @@ export default function UserForm() {
                   </option>
                 ))}
               </select>
-              {/* Your other fields go here */}
             </div>
-
-            {/* pwd */}
             <div className="sm:col-span-3">
               <label
                 htmlFor="first-name"

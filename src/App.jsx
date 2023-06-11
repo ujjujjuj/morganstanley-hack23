@@ -2,19 +2,12 @@ import React, { useEffect } from "react"
 import { Routes, Route, useLocation } from "react-router-dom"
 
 import "./css/style.css"
-
-import "./charts/ChartjsConfig"
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify"
 
 // Import pages
 import Dashboard from "./pages/Dashboard"
-import Customers from "./pages/ecommerce/Customers"
-import Inbox from "./pages/Inbox"
 import Campaigns from "./pages/Campaigns"
-// import UsersTabs from "./pages/community/UsersTabs"
-// import Meetups from "./pages/community/Meetups"
-// import MeetupsPost from "./pages/community/MeetupsPost"
 import Messages from "./pages/Messages"
 import AdminMessages from "./pages/AdminMessages"
 import Calendar from "./pages/Calendar"
@@ -35,13 +28,10 @@ import UsersList from "./pages/UsersSection/Users"
 import AddUsersFormPage from "./pages/UsersSection/addUser"
 import UserEditPage from "./pages/UsersSection/Account"
 
-// community related routes
-
 import "./i18n"
 
 import useUser, { UserProvider } from "../hooks/useUser"
 import UsersCommunity from "./pages/community/userCommunities"
-import AddCommunityForm from "./pages/community/addCommunityForm"
 import AddCommunity from "./pages/community/addCommunity"
 
 // community details pages
@@ -56,11 +46,9 @@ import Meetups from "./pages/community/ Meetups"
 import RegisteredEventsList from "./pages/registered/RegisteredEvents"
 import RegisteredEventPost from "./pages/registered/EventPage"
 import TasksList from "./pages/tasks/TasksList"
-import Faqs from "./pages/Faqs"
 import MedicalRecords from "./pages/settings/MedicalRecords"
 import EducationStatus from "./pages/settings/EducationStatus"
 import EmploymentStatus from "./pages/settings/EmploymentStatus"
-import GovtID from "./partials/userSettingsSideBar/GovtID"
 import GovtId from "./pages/settings/GovtID"
 import SocioeconomicStatus from "./pages/settings/SocioeconomicStatus"
 import Account from "./pages/settings/Account"
@@ -73,18 +61,15 @@ function App() {
     document.querySelector("html").style.scrollBehavior = "auto"
     window.scroll({ top: 0 })
     document.querySelector("html").style.scrollBehavior = ""
-  }, [location.pathname]) // triggered on route change
+  }, [location.pathname]) 
 
   return (
     <UserProvider>
       <SWHandler />
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-        {/* <Route path="/community/meetups" element={<Meetups />} />
-        <Route path="/community/meetups-post" element={<MeetupsPost />} /> */}
         <Route path="/messages" element={<AdminMessages />} />
         <Route path="/calendar" element={<MyCalendar />} />
-        <Route path="/Inbox" element={<Inbox />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/reset-password" element={<ResetPassword />} />
@@ -110,10 +95,7 @@ function App() {
         <Route path="/community/Dhangar" element={<Dhangar />} />
         <Route path="/community/Mali" element={<Mali />} />
         <Route path="/community/allCommunities/Maratha" element={<Maratha />} />
-        <Route
-          path="/community/allCommunities/Leva Patil"
-          element={<LevaPatil />}
-        />
+        <Route path="/community/allCommunities/Leva Patil" element={<LevaPatil />} />
         <Route path="/community/allCommunities/:id" element={<Common />} />
 
         {/* User side Routes */}
@@ -124,25 +106,12 @@ function App() {
         <Route path="/user/tasks/" element={<TasksList />} />
         <Route path="/user/calendar/" element={<Calendar />} />
         <Route path="/user/settings/account" element={<Account />} />
-        <Route
-          path="/user/settings/MedicalRecords"
-          element={<MedicalRecords />}
-        />
-        <Route
-          path="/user/settings/EducationStatus"
-          element={<EducationStatus />}
-        />
-        <Route
-          path="/user/settings/EmploymentStatus"
-          element={<EmploymentStatus />}
-        />
+        <Route path="/user/settings/MedicalRecords" element={<MedicalRecords />} />
+        <Route path="/user/settings/EducationStatus" element={<EducationStatus />} />
+        <Route path="/user/settings/EmploymentStatus" element={<EmploymentStatus />} />
         <Route path="/user/settings/GovtID" element={<GovtId />} />
-        <Route
-          path="/user/settings/SocioeconomicStatus"
-          element={<SocioeconomicStatus />}
-        />
+        <Route path="/user/settings/SocioeconomicStatus" element={<SocioeconomicStatus />} />
         <Route path="/user/contact/" element={<Messages />} />
-        <Route path="/user/faqs" element={<Faqs />} />
       </Routes>
       <ToastContainer />
     </UserProvider>

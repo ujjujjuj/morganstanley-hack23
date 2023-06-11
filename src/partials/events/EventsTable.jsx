@@ -3,20 +3,12 @@ import React, { useState, useEffect } from "react"
 import EventsTableItem from "./EventsTableItem"
 
 function EventsTable({ selectedItems, factor, value }) {
-  // console.log(factor+" "+value);
-  // let customers=[];
   const [selectAll, setSelectAll] = useState(false)
   const [isCheck, setIsCheck] = useState([])
   const [list, setList] = useState([])
-
-  // basically what we can have ? on submit : idhar category and all
-  // pahunch jayegi !!
-
-  // now : add category to it !! if not undefined !!
   useEffect(() => {
     async function fetchData() {
       try {
-        // console.log("LeetCode");
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_ADDRESS}/events`
         )
@@ -25,31 +17,23 @@ function EventsTable({ selectedItems, factor, value }) {
         const customers = data.result
         const ans = [...customers].reverse()
         setList(ans)
-        // setList(customers);
-        // Do something with the data
       } catch (error) {
         console.log("Error:", error)
       }
     }
-
     fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const searchEventCollections = (f, v) => {
-    // Filter the collections based on the search criteria
     const filteredCollections = list.filter((collection) => {
       return collection[f] === v
     })
-
-    // Update the state with the new filtered array
     setList(filteredCollections)
   }
 
   useEffect(() => {
     async function fetchData2() {
       try {
-        // console.log("LeetCode");
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_ADDRESS}/events`
         )
@@ -58,8 +42,6 @@ function EventsTable({ selectedItems, factor, value }) {
         const customers = data.result
         const ans = [...customers].reverse()
         setList(ans)
-        // setList(customers);
-        // Do something with the data
       } catch (error) {
         console.log("Error:", error)
       }
@@ -68,7 +50,6 @@ function EventsTable({ selectedItems, factor, value }) {
       try {
         console.log(factor + " Hello :  " + value)
         if (factor === "None") {
-          // do nothing !!
           fetchData2()
           return
         }
@@ -77,9 +58,7 @@ function EventsTable({ selectedItems, factor, value }) {
         console.log("Error:", error)
       }
     }
-
     fetchData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [factor])
 
   const handleSelectAll = () => {
@@ -101,7 +80,6 @@ function EventsTable({ selectedItems, factor, value }) {
 
   useEffect(() => {
     selectedItems(isCheck)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheck])
 
   return (
@@ -113,10 +91,8 @@ function EventsTable({ selectedItems, factor, value }) {
         </h2>
       </header>
       <div>
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
-            {/* Table header */}
             <thead className="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
               <tr>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
@@ -158,7 +134,6 @@ function EventsTable({ selectedItems, factor, value }) {
                 </th>
               </tr>
             </thead>
-            {/* Table body */}
             <tbody className="text-sm divide-y divide-slate-200">
               {list.map((event) => {
                 return (

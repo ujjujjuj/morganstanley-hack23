@@ -35,5 +35,9 @@
     "tailwindcss": "^3.3.1",
     "vite": "^4.2.1",
     "vite-plugin-pwa": "^0.16.3"
-  }
+  },
+  "description": "Frontend code for Code To Give 2023",
+  "main": "postcss.config.js",
+  "author": "",
+  "license": "ISC"
 }

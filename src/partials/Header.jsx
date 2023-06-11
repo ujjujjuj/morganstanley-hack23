@@ -1,8 +1,4 @@
 import React, { useState } from "react"
-
-import SearchModal from "../components/ModalSearch"
-import Notifications from "../components/DropdownNotifications"
-import Help from "../components/DropdownHelp"
 import UserMenu from "../components/DropdownProfile"
 import useUser from "../../hooks/useUser"
 
@@ -35,8 +31,6 @@ function Header({ sidebarOpen, setSidebarOpen }) {
               </svg>
             </button>
           </div>
-
-          {/* Header: Right side */}
           <div className="flex items-center space-x-3">
             <UserMenu align="right" />
           </div>

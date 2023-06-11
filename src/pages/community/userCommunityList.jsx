@@ -1,39 +1,13 @@
 import React, { useState, useEffect } from "react"
-
 import EventUserTableItem from "./communityItem"
 
 function EventUsersTable(props) {
-  // let customers=[];
   const [selectAll, setSelectAll] = useState(false)
   const [isCheck, setIsCheck] = useState([])
   const [list, setList] = useState({})
-
-  // props.list !! : "Attend" or "Register"
-  // console.log(props.list);
-
-  // const handleFilterChange = (event) => {
-  //   const selectedFilter = event.target.value;
-  //   // Logic to update the list or list2 based on the selected filter
-
-  //   // Example logic:
-  //   if (selectedFilter === 'filter1') {
-  //     setList([...]); // Update list based on filter1
-  //     setShowList1(true); // Show list
-  //   } else if (selectedFilter === 'filter2') {
-  //     setList2([...]); // Update list2 based on filter2
-  //     setShowList1(false); // Hide list
-  //   }
-  // };
-
   useEffect(() => {
-    // console.log("Yello",props.eventId);
-    // /registeredList ispe bhi call karke registerList bhi mangwalo !!
-    // also have : only registered and only attended ka funda !!
-    // have a tag against them !!
-
     async function fetchData() {
       try {
-        // get all users list !!
         const response = await fetch(
           `${import.meta.env.VITE_SERVER_ADDRESS}/user/group/community`
         )
@@ -54,18 +28,13 @@ function EventUsersTable(props) {
     }
 
     fetchData()
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const searchUserCollections = (f, v) => {
-    // Filter the collections based on the search criteria
     const filteredCollections = list.filter((collection) => {
       const propertyValue = collection.basicDetails[f]
       return propertyValue === v || propertyValue.startsWith(v)
     })
-
-    // Update the state with the new filtered array
     setList(filteredCollections)
   }
 
@@ -88,7 +57,6 @@ function EventUsersTable(props) {
 
   useEffect(() => {
     props.selectedItems(isCheck)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCheck])
 
   return (
@@ -100,21 +68,10 @@ function EventUsersTable(props) {
         </h2>
       </header>
       <div>
-        {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
-            {/* Table header */}
             <thead className="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
               <tr>
-                {/* <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                  <div className="flex items-center">
-                    <label className="inline-flex">
-                      <span className="sr-only">Select all</span>
-                      <input className="form-checkbox" type="checkbox" checked={selectAll} onChange={handleSelectAll} />
-                    </label>
-                  </div>
-                </th> */}
-
                 <th className="px-12 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                   <div className="font-semibold text-left">Community Name</div>
                 </th>
@@ -123,8 +80,6 @@ function EventUsersTable(props) {
                 </th>
               </tr>
             </thead>
-            {/* Table body */}
-            {/* key , data[key] */}
             <tbody className="text-sm divide-y divide-slate-200">
               {Object.keys(list).map((key) => (
                 <EventUserTableItem community={key} count={list[key].length} />

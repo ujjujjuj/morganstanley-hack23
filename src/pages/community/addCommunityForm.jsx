@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom"
 
 export default function AddCommunityForm() {
   const [Community, setCommunity] = useState("")
-  // duration details
-
   const navigate = useNavigate()
   const postData = async ({ Community }) => {
     try {
@@ -38,7 +36,6 @@ export default function AddCommunityForm() {
     await postData({
       Community,
     })
-    // just navigate !!
     navigate("/community")
   }
   function handleCancel() {
@@ -55,8 +52,6 @@ export default function AddCommunityForm() {
           <p className="mt-1 text-sm leading-6 text-gray-600">
             Add the details Carefully !
           </p>
-
-          {/* name  */}
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-3">
               <label

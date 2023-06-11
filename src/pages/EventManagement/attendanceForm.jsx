@@ -9,7 +9,6 @@ export default function AttendanceForm(props) {
 
     async function handleSubmit(e){
         e.preventDefault();
-        // data enter !! 
         navigate("/events/userList",{state:{eventId:props.eventId}});
     }
     function handleCancel(){

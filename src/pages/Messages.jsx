@@ -21,16 +21,12 @@ function Messages() {
 
   return (
     <div className="flex overflow-hidden h-screen">
-      {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      {/* Content area */}
       <div
         className="flex overflow-y-auto overflow-x-hidden relative flex-col flex-1"
         ref={contentArea}
       >
-        {/*  Site header */}
         <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-
         <main>
           <div className="flex relative">
             <iframe

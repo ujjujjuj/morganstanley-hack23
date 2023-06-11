@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios"
 import { useTranslation } from "react-i18next"
 import useUser from "../../../hooks/useUser"
 
 function Socioeconomic() {
-  const [cleanWaterAccess, setCleanWaterAccess] = useState("") // state variable for currentEmployment
-  const [electricityAccess, setElectricityAccess] = useState("") // state variable for previousEmployment
-  const [housingType, setHousingType] = useState("") // state variable for jobTraining
-  const [transportationAccess, setTransportationAccess] = useState("") // state variable for workNature
+  const [cleanWaterAccess, setCleanWaterAccess] = useState("")
+  const [electricityAccess, setElectricityAccess] = useState("")
+  const [housingType, setHousingType] = useState("")
+  const [transportationAccess, setTransportationAccess] = useState("") 
   const { i18n } = useTranslation()
   const { t } = useTranslation()
   const { user } = useUser()
-  const id = user._id // Constant user ID for now
+  const id = user._id 
 
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -60,14 +60,10 @@ function Socioeconomic() {
   return (
     <form className="w-full" onSubmit={handleSubmit}>
       <div className="grow">
-        {/* Panel body */}
         <div className="p-6 space-y-6">
           <h2 className="mb-5 text-2xl font-bold text-slate-800">
             {t("SocioeconomicStatus")}
           </h2>
-
-          {/* section 1*/}
-
           <section>
             <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
               {/* cleanWaterAccess,*/}

@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios" // import axios for making HTTP requests
+import axios from "axios" 
 
 function Employment(props) {
-  const [currentEmployment, setCurrentEmployment] = useState("") // state variable for currentEmployment
-  const [previousEmployment, setPreviousEmployment] = useState("") // state variable for previousEmployment
-  const [jobTraining, setJobTraining] = useState("") // state variable for jobTraining
-  const [workNature, setWorkNature] = useState("") // state variable for workNature
-  const [workIndustry, setWorkIndustry] = useState("") // state variable for workExperience
-  const [openForEmployment, setOpenForEmployment] = useState("") // state variable for openForEmployment
-
-  // const id = "d667476a-6f64-47c4-8eb7-4d4504927b60"; // Constant user ID for now
+  const [currentEmployment, setCurrentEmployment] = useState("") 
+  const [previousEmployment, setPreviousEmployment] = useState("") 
+  const [jobTraining, setJobTraining] = useState("") 
+  const [workNature, setWorkNature] = useState("") 
+  const [workIndustry, setWorkIndustry] = useState("") 
+  const [openForEmployment, setOpenForEmployment] = useState("") 
   const id = props.id
   useEffect(() => {
     const fetchUserDetail = async () => {
@@ -63,8 +61,6 @@ function Employment(props) {
           <h2 className="text-2xl text-slate-800 font-bold mb-5">
             Employment Status
           </h2>
-
-          {/* section 1*/}
 
           <section>
             <div className="sm:flex sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 ">

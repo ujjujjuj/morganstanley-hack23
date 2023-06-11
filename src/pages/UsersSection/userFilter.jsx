@@ -14,9 +14,6 @@ const FilterComponent = (props) => {
     setSelectedFactor(e.target.value);
   };
   const handleFilterSubmit = () => {
-    // Perform the filtering logic here based on searchValue and selectedFactor
-    // console.log('Search Value:', searchValue);
-    // console.log('Selected Factor:', selectedFactor);
     if(selectedFactor=="None"){  
       props.setValue("None");
       props.setFactor("None"); 
@@ -25,8 +22,6 @@ const FilterComponent = (props) => {
       props.setValue(searchValue);
       props.setFactor(selectedFactor); 
     }
-    // navigate("/events/userList",{state:{eventId:props.eventId}});
-
   };
   const factors = [
     { value: "None", label: "None" },
