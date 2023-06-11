@@ -1,12 +1,15 @@
 import React from "react"
 import axios from "axios" // You need to install axios via npm if it's not installed yet
 import useUser from "../../../hooks/useUser"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 function Tasks({ task }) {
   // Get token from local storage
   // Get token from local storage
   const { user } = useUser()
   const userID = user._id
+  const navigate = useNavigate()
 
   const markUserFollowedUp = async () => {
     try {
@@ -18,12 +21,13 @@ function Tasks({ task }) {
         }
       )
       if (response.data) {
-        alert("Successfully submitted") // Alert the message "Successfully submitted"
-        window.location.reload() // Refresh the page
+        toast.success("Successfully submitted")
+        // window.location.reload() // Alert the message "Successfully submitted"
+        navigate("/user/tasks") // Navigate to the user tasks
       }
     } catch (err) {
       console.error(err.message)
-      alert("Error in marking user as followed up")
+      toast.error("Error in marking user as followed up")
     }
   }
 

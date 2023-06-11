@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios" // import axios for making HTTP requests
 import useUser from "../../../hooks/useUser"
+import { toast } from "react-toastify" // import the toast function
 
 function AccountPanel() {
   const [kids, setKids] = useState(0)
@@ -80,10 +81,12 @@ function AccountPanel() {
         }
       )
       console.log(response.data)
-      alert("Profile updated successfully.")
+      // toast on successful update
+      toast.success("Profile updated successfully.")
     } catch (error) {
       console.error("Failed to update profile.", error)
-      alert("Failed to update profile.")
+      // toast on failed update
+      toast.error("Failed to update profile.")
     }
   }
   return (

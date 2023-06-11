@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios" // import axios for making HTTP requests
+import { toast } from "react-toastify"
 
 function EducationStatus(props) {
   const [currentEducationLevel, setCurrentEducationLevel] = useState("") // state variable for currentEmployment
@@ -44,10 +45,10 @@ function EducationStatus(props) {
         }
       )
       console.log(response.data)
-      alert("Profile updated successfully.")
+      toast.success("Profile updated successfully.")
     } catch (error) {
       console.error("Failed to update profile.", error)
-      alert("Failed to update profile.")
+      toast.error("Failed to update profile.")
     }
   }
   return (

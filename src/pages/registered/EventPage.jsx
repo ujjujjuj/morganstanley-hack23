@@ -12,6 +12,7 @@ import Header from "../../partials/UserHeader"
 
 // import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
 export default function RegisteredEventPost() {
   const [postInfo, setPostInfo] = useState(null)
@@ -46,8 +47,10 @@ export default function RegisteredEventPost() {
 
         if (response.data.message === "Success !!") {
           setIsAttended(true)
+          // toast.success("You have successfully registered for this event.") insteaad it;s for attend , marked attended for this event.")
+          toast.success("You have successfully attended this event.")
         } else {
-          alert("Error: " + response.data.message)
+          toast.error("Error: " + response.data.message)
         }
       } catch (error) {
         console.error("An error occurred:", error)
@@ -56,10 +59,10 @@ export default function RegisteredEventPost() {
           error.response.data.message ===
             "User is already registered for this event."
         ) {
-          alert("You have already attended this event.")
+          toast.warn("You have already attended this event.")
           setIsAttended(true)
         } else {
-          alert("An error occurred. Please try again.")
+          toast.error("An error occurred. Please try again.")
         }
       }
     }

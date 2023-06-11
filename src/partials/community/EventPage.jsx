@@ -1,38 +1,39 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import React from "react";
-import EventDisplay from "./DateFormat";
-import axios from "axios";
-import { Pie } from "react-chartjs-2";
-import DialogflowMessenger from "../../utils/DialogflowMessenger";
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import React from "react"
+import EventDisplay from "./DateFormat"
+import axios from "axios"
+import { Pie } from "react-chartjs-2"
+import DialogflowMessenger from "../../utils/DialogflowMessenger"
 
-import Sidebar from "../../partials/Sidebar";
-import Header from "../../partials/Header";
-import useUser from "../../../hooks/useUser";
+import Sidebar from "../../partials/Sidebar"
+import Header from "../../partials/Header"
+import useUser from "../../../hooks/useUser"
 
 // import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
 export default function RegisteredEventPost() {
-  const [postInfo, setPostInfo] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const { id } = useParams();
-  const [isAttended, setIsAttended] = useState(false);
-  const attended = postInfo ? postInfo.attended.length : 0;
-  const registered = postInfo ? postInfo.registered.length : 0;
-  const didNotAttend = registered - attended;
+  const [postInfo, setPostInfo] = useState(null)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { id } = useParams()
+  const [isAttended, setIsAttended] = useState(false)
+  const attended = postInfo ? postInfo.attended.length : 0
+  const registered = postInfo ? postInfo.registered.length : 0
+  const didNotAttend = registered - attended
   const { user } = useUser()
   const userID = user._id
 
- 
-
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then((response) => {
-      response.json().then((data) => {
-        setPostInfo(data);
-      });
-    });
-  }, []);
+    fetch(`${import.meta.env.VITE_SERVER_ADDRESS}/events/list/${id}`).then(
+      (response) => {
+        response.json().then((data) => {
+          setPostInfo(data)
+        })
+      }
+    )
+  }, [])
   const attendEvent = async () => {
     if (postInfo) {
       try {
@@ -42,30 +43,31 @@ export default function RegisteredEventPost() {
             eventId: postInfo._id,
             userId: userID,
           }
-        );
+        )
 
         if (response.data.message === "Success !!") {
-          setIsAttended(true);
+          setIsAttended(true)
+          toast.success("You have successfully registered for this event.")
         } else {
-          alert("Error: " + response.data.message);
+          toast.error("Error: " + response.data.message)
         }
       } catch (error) {
-        console.error("An error occurred:", error);
+        console.error("An error occurred:", error)
         if (
           error.response &&
           error.response.data.message ===
             "User is already registered for this event."
         ) {
-          alert("You have already attended this event.");
-          setIsAttended(true);
+          toast.warn("You have already attended this event.")
+          setIsAttended(true)
         } else {
-          alert("An error occurred. Please try again.");
+          toast.error("An error occurred. Please try again.")
         }
       }
     }
-  };
+  }
 
-  if (!postInfo) return "";
+  if (!postInfo) return ""
 
   return (
     <div className="flex overflow-hidden h-screen">
@@ -197,5 +199,5 @@ export default function RegisteredEventPost() {
         </main>
       </div>
     </div>
-  );
+  )
 }

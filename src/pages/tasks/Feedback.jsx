@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { toast } from "react-toastify"
 
 function Feedback({ followUp }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [feedbackText, setFeedbackText] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [feedbackText, setFeedbackText] = useState("")
 
   const handleExpandClick = () => {
-    setIsExpanded(!isExpanded);
-  };
+    setIsExpanded(!isExpanded)
+  }
 
   const handleFeedbackChange = (event) => {
-    setFeedbackText(event.target.value);
-  };
+    setFeedbackText(event.target.value)
+  }
 
   const handleFeedbackSubmit = () => {
-    alert("Feedback submitted!");
+    toast.success("Feedback submitted!")
     //refresh window
-    window.location.reload();
-    console.log(feedbackText);
-  };
+    console.log(feedbackText)
+  }
 
   return (
     <div className="grow space-y-3  bg-white shadow-lg rounded-sm border border-slate-200 p-4">
@@ -58,7 +58,7 @@ function Feedback({ followUp }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Feedback;
+export default Feedback
