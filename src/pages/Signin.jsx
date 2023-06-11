@@ -47,38 +47,38 @@ const Signin = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ PhoneNumber: number, pwd: password }),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data)
-      if (data.message === 'INVALID CREDENTIALS !!!') {
-        throw "Invalid Credentials"
-      } else if (!data._id) {
-        throw "Invalid"
-      }
-      toast.update(toastId, {
-        render: "Logged In",
-        type: toast.TYPE.SUCCESS,
-        autoClose: 3000,
-        isLoading: false,
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.message === "INVALID CREDENTIALS !!!") {
+          throw "Invalid Credentials"
+        } else if (!data._id) {
+          throw "Invalid"
+        }
+        toast.update(toastId, {
+          render: "Logged In",
+          type: toast.TYPE.SUCCESS,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        loginUser(data)
       })
-      loginUser(data)
-    })
-    .catch((e) => {
-      toast.update(toastId, {
-        render: e,
-        type: toast.TYPE.ERROR,
-        autoClose: 3000,
-        isLoading: false,
+      .catch((e) => {
+        toast.update(toastId, {
+          render: e,
+          type: toast.TYPE.ERROR,
+          autoClose: 3000,
+          isLoading: false,
+        })
+        console.log(e)
       })
-      console.log(e)
-    })
   }
 
   return (
     <main className="bg-white">
       <div className="relative md:flex">
         <div className="md:w-1/2">
-          <div className="flex flex-col h-full min-h-screen after:flex-1">
+          <div className="flex flex-col h-full  min-h-screen after:flex-1">
             <div className="flex-1">
               <div className="flex justify-between items-center mt-4 w-32 ms-4">
                 <img
@@ -88,13 +88,13 @@ const Signin = () => {
                 />
               </div>
             </div>
-            <div className="px-8 py-8 mx-auto w-full max-w-lg">
+            <div className="px-8 mx-auto -mt-20 sm:-mt-10 w-full max-w-lg ">
               <h1 className="mb-6 text-3xl font-bold text-slate-800">
                 {t("login")} ✨
               </h1>
               {/* Form */}
               <form onSubmit={formSubmit}>
-                <div className="space-y-4">
+                <div className=" space-y-4">
                   <div>
                     <label
                       className="block mb-1 text-sm font-medium"

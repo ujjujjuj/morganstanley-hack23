@@ -26,3 +26,14 @@
 .rbc-calendar {
   background-color: #fff !important;
 }
+
+@media only screen and (max-width: 480px) {
+  .rbc-calendar {
+    padding: 5px;
+  }
+
+  .rbc-event {
+    padding: 1px;
+    font-size: 1px; /* Adjust as needed */
+  }
+}
