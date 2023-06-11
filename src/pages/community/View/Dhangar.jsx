@@ -101,7 +101,7 @@ function Dhangar() {
               <div className="flex space-between gap-4 flex-col lg:flex-row">
                 <iframe
                   className="bg-white border-none rounded-sm h-[600px] lg:flex-1"
-                  src="https://charts.mongodb.com/charts-project1-tuzcu/embed/charts?id=6482569c-8d6d-4b3f-88fa-e3ca791f2ce1&maxDataAge=3600&theme=light&autoRefresh=true"
+                  src=""
                 ></iframe>
                
               </div>
