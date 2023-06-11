@@ -1,7 +1,6 @@
-import React from "react";
-import axios from "axios"; // You need to install axios via npm if it's not installed yet
+import React from "react"
+import axios from "axios" // You need to install axios via npm if it's not installed yet
 import useUser from "../../../hooks/useUser"
-
 
 function Tasks({ task }) {
   // Get token from local storage
@@ -17,16 +16,16 @@ function Tasks({ task }) {
           eventId: task._id,
           userId: userID,
         }
-      );
+      )
       if (response.data) {
-        alert("Successfully submitted"); // Alert the message "Successfully submitted"
-        window.location.reload(); // Refresh the page
+        alert("Successfully submitted") // Alert the message "Successfully submitted"
+        window.location.reload() // Refresh the page
       }
     } catch (err) {
-      console.error(err.message);
-      alert("Error in marking user as followed up");
+      console.error(err.message)
+      alert("Error in marking user as followed up")
     }
-  };
+  }
 
   return (
     <div className="grow space-y-3 ">
@@ -41,21 +40,21 @@ function Tasks({ task }) {
         {/* Nested checkboxes */}
 
         {task.category === "Child Education and Enrichment" && (
-          <ul className="pl-12 space-y-3 ">
+          <ul className="pl-1 sm:pl-10 space-y-3 ">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Are you using any learning methods discussed at the event with
                   your child?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation1"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -63,7 +62,7 @@ function Tasks({ task }) {
                       name="presentation1"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -74,14 +73,14 @@ function Tasks({ task }) {
                   Have you seen any improvements in your child's schoolwork
                   since the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation2"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -89,7 +88,7 @@ function Tasks({ task }) {
                       name="presentation2"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -100,14 +99,14 @@ function Tasks({ task }) {
                   Have you tried any new activities at home to help your child
                   learn?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation3"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -115,7 +114,7 @@ function Tasks({ task }) {
                       name="presentation3"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -125,14 +124,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Do you feel your child enjoys learning more now?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation4"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -140,7 +139,7 @@ function Tasks({ task }) {
                       name="presentation4"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -149,21 +148,21 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Legal" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Are you using any of the legal advice from the event in your
                   life?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation5"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -171,7 +170,7 @@ function Tasks({ task }) {
                       name="presentation5"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -182,14 +181,14 @@ function Tasks({ task }) {
                   Do you feel better equipped to understand your legal rights
                   now?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation6"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -197,7 +196,7 @@ function Tasks({ task }) {
                       name="presentation6"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -208,14 +207,14 @@ function Tasks({ task }) {
                   Has the event helped you handle any legal issues you were
                   facing?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation7"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -223,7 +222,7 @@ function Tasks({ task }) {
                       name="presentation7"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -234,14 +233,14 @@ function Tasks({ task }) {
                   Do you feel more confident when dealing with legal situations
                   now?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation8"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -249,7 +248,7 @@ function Tasks({ task }) {
                       name="presentation8"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -258,21 +257,21 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Women's Rights" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Are you more aware of women's rights after attending the
                   event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentation9"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -280,7 +279,7 @@ function Tasks({ task }) {
                       name="presentation9"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -291,14 +290,14 @@ function Tasks({ task }) {
                   Have you made any changes in your life to promote women's
                   rights?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationa"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -306,7 +305,7 @@ function Tasks({ task }) {
                       name="presentationa"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -317,14 +316,14 @@ function Tasks({ task }) {
                   Have you talked to anyone about women's rights since the
                   event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationb"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -332,7 +331,7 @@ function Tasks({ task }) {
                       name="presentationb"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -342,14 +341,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Do you feel more confident standing up for women's rights now?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationc"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -357,7 +356,7 @@ function Tasks({ task }) {
                       name="presentationc"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -366,20 +365,20 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Financial Literacy" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Are you managing your money better since attending the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationd"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -387,7 +386,7 @@ function Tasks({ task }) {
                       name="presentationd"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -397,14 +396,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Have you started saving money based on the tips shared?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentatione"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -412,7 +411,7 @@ function Tasks({ task }) {
                       name="presentatione"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -422,14 +421,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Are you able to make your money last longer since the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationz"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -437,7 +436,7 @@ function Tasks({ task }) {
                       name="presentationz"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -447,14 +446,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Are you using any of the budgeting methods discussed?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationx"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -462,7 +461,7 @@ function Tasks({ task }) {
                       name="presentationx"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -471,20 +470,20 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Health and Wellbeing" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Are you taking better care of your health since the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationv"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -492,7 +491,7 @@ function Tasks({ task }) {
                       name="presentationv"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -503,14 +502,14 @@ function Tasks({ task }) {
                   Have you started doing any of the exercises discussed at the
                   event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationn"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -518,7 +517,7 @@ function Tasks({ task }) {
                       name="presentationn"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -528,14 +527,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Have you made any changes to your diet to be healthier?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationm"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -543,7 +542,7 @@ function Tasks({ task }) {
                       name="presentationm"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -554,14 +553,14 @@ function Tasks({ task }) {
                   Are you doing anything differently to take care of your mental
                   health?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationy"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -569,7 +568,7 @@ function Tasks({ task }) {
                       name="presentationy"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -578,20 +577,20 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Government Assistance Programs" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Have you applied for any government help after the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationu"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -599,7 +598,7 @@ function Tasks({ task }) {
                       name="presentationu"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -609,14 +608,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Has the event helped you get any benefits or assistance?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationi"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -624,7 +623,7 @@ function Tasks({ task }) {
                       name="presentationi"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -634,14 +633,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Have you guided anyone else to apply for government help?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationo"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -649,7 +648,7 @@ function Tasks({ task }) {
                       name="presentationo"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -660,14 +659,14 @@ function Tasks({ task }) {
                   Do you understand more about government assistance programs
                   available?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationp"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -675,7 +674,7 @@ function Tasks({ task }) {
                       name="presentationp"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -684,21 +683,21 @@ function Tasks({ task }) {
         )}
 
         {task.category === "Employment and Career Development" && (
-          <ul className="pl-12 space-y-3">
+          <ul className="pl-1 sm:pl-10 space-y-3">
             <li>
               <div className="flex items-center justify-between">
                 <span className="text-sm text-slate-800 ">
                   Have you found a job or improved your work situation since the
                   event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationg"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -706,7 +705,7 @@ function Tasks({ task }) {
                       name="presentationg"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -717,14 +716,14 @@ function Tasks({ task }) {
                   Did the event help you get any job interviews or
                   opportunities?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationh"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -732,7 +731,7 @@ function Tasks({ task }) {
                       name="presentationh"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -742,14 +741,14 @@ function Tasks({ task }) {
                 <span className="text-sm text-slate-800 ">
                   Are you talking to more people about jobs since the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationj"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -757,7 +756,7 @@ function Tasks({ task }) {
                       name="presentationj"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -768,14 +767,14 @@ function Tasks({ task }) {
                   Have you made any changes to your job application or resume
                   based on the event?
                 </span>
-                <div className="flex gap-2 pr-10">
+                <div className="flex gap-0 sm:gap-2 sm:pr-10 pr-0">
                   <label className="flex items-center  ">
                     <input
                       type="radio"
                       name="presentationk"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">Yes</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">Yes</span>
                   </label>
                   <label className="flex items-center ml-3">
                     <input
@@ -783,7 +782,7 @@ function Tasks({ task }) {
                       name="presentationk"
                       className="peer focus:ring-0 focus-visible:ring w-5 h-5 bg-white border border-slate-200 text-indigo-500 rounded-full"
                     />
-                    <span className="text-sm text-slate-800 ml-3">No</span>
+                    <span className="text-sm text-slate-800 sm:ml-3">No</span>
                   </label>
                 </div>
               </div>
@@ -802,7 +801,7 @@ function Tasks({ task }) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default Tasks;
+export default Tasks
