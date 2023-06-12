@@ -2,10 +2,10 @@ import React from 'react';
 
 function WelcomeBanner() {
   return (
-    <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
+    <div className="overflow-hidden relative p-4 mb-8 bg-indigo-200 rounded-sm sm:p-6">
 
       {/* Background illustration */}
-      <div className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block" aria-hidden="true">
+      <div className="hidden absolute top-0 right-0 -mt-4 mr-16 pointer-events-none xl:block" aria-hidden="true">
         <svg width="319" height="198" xmlnsXlink="http://www.w3.org/1999/xlink">
           <defs>
             <path id="welcome-a" d="M64 0l64 128-64-20-64 20z" />
@@ -48,7 +48,7 @@ function WelcomeBanner() {
 
       {/* Content */}
       <div className="relative">
-        <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">Good Morning, Welcome to Tiny Miracles 👋</h1>
+        <h1 className="mb-1 text-2xl font-bold md:text-3xl text-slate-800">Good Evening, Welcome to Tiny Miracles 👋</h1>
         <p>Embark on a transformative journey empowered by data..</p>
       </div>
 
