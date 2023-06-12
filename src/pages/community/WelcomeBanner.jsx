@@ -71,7 +71,7 @@ function WelcomeBanner() {
       </div>
       <div className="relative">
         <h1 className="mb-1 text-2xl font-bold md:text-3xl text-slate-800">
-          {t("Goodafternoon")} , {user.name}. 👋
+          Good Evening, {user.name}. 👋
         </h1>
         <p>{t("bannerLine")}:</p>
       </div>
